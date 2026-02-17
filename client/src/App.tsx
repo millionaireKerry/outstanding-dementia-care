@@ -5,16 +5,37 @@ import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
+import Ebooks from "./pages/Ebooks";
+import Support from "./pages/Support";
+import Products from "./pages/Products";
+import VoiceAgent from "./pages/VoiceAgent";
+import Admin from "./pages/Admin";
 
 function Router() {
-  // make sure to consider if you need authentication for certain routes
   return (
-    <Switch>
-      <Route path={"/"} component={Home} />
-      <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
-      <Route component={NotFound} />
-    </Switch>
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      <main className="flex-1">
+        <Switch>
+          <Route path={"/"} component={Home} />
+          <Route path="/blog" component={Blog} />
+          <Route path="/blog/:slug" component={BlogPost} />
+          <Route path="/ebooks" component={Ebooks} />
+          <Route path="/support" component={Support} />
+          <Route path="/products" component={Products} />
+          <Route path="/voice-agent" component={VoiceAgent} />
+          <Route path="/admin" component={Admin} />
+          <Route path={"/404"} component={NotFound} />
+          {/* Final fallback route */}
+          <Route component={NotFound} />
+        </Switch>
+      </main>
+      <Footer />
+    </div>
   );
 }
 

@@ -1,6 +1,6 @@
-import { eq } from "drizzle-orm";
+import { eq, desc, like, or, and } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users } from "../drizzle/schema";
+import { InsertUser, users, blogPosts, InsertBlogPost, ebooks, InsertEbook, supportGroups, InsertSupportGroup } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -89,4 +89,177 @@ export async function getUserByOpenId(openId: string) {
   return result.length > 0 ? result[0] : undefined;
 }
 
-// TODO: add feature queries here as your schema grows.
+// Blog Post Helpers
+export async function getAllBlogPosts(publishedOnly: boolean = true) {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const conditions = publishedOnly ? eq(blogPosts.published, true) : undefined;
+  const result = await db
+    .select()
+    .from(blogPosts)
+    .where(conditions)
+    .orderBy(desc(blogPosts.createdAt));
+  
+  return result;
+}
+
+export async function getBlogPostBySlug(slug: string) {
+  const db = await getDb();
+  if (!db) return undefined;
+  
+  const result = await db.select().from(blogPosts).where(eq(blogPosts.slug, slug)).limit(1);
+  return result.length > 0 ? result[0] : undefined;
+}
+
+export async function getBlogPostById(id: number) {
+  const db = await getDb();
+  if (!db) return undefined;
+  
+  const result = await db.select().from(blogPosts).where(eq(blogPosts.id, id)).limit(1);
+  return result.length > 0 ? result[0] : undefined;
+}
+
+export async function createBlogPost(post: InsertBlogPost) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  
+  const result = await db.insert(blogPosts).values(post);
+  return result;
+}
+
+export async function updateBlogPost(id: number, post: Partial<InsertBlogPost>) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  
+  await db.update(blogPosts).set(post).where(eq(blogPosts.id, id));
+}
+
+export async function deleteBlogPost(id: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  
+  await db.delete(blogPosts).where(eq(blogPosts.id, id));
+}
+
+export async function searchBlogPosts(query: string) {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const result = await db
+    .select()
+    .from(blogPosts)
+    .where(
+      and(
+        eq(blogPosts.published, true),
+        or(
+          like(blogPosts.title, `%${query}%`),
+          like(blogPosts.content, `%${query}%`),
+          like(blogPosts.tags, `%${query}%`)
+        )
+      )
+    )
+    .orderBy(desc(blogPosts.createdAt));
+  
+  return result;
+}
+
+// Ebook Helpers
+export async function getAllEbooks(publishedOnly: boolean = true) {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const conditions = publishedOnly ? eq(ebooks.published, true) : undefined;
+  const result = await db
+    .select()
+    .from(ebooks)
+    .where(conditions)
+    .orderBy(desc(ebooks.createdAt));
+  
+  return result;
+}
+
+export async function getEbookById(id: number) {
+  const db = await getDb();
+  if (!db) return undefined;
+  
+  const result = await db.select().from(ebooks).where(eq(ebooks.id, id)).limit(1);
+  return result.length > 0 ? result[0] : undefined;
+}
+
+export async function createEbook(ebook: InsertEbook) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  
+  const result = await db.insert(ebooks).values(ebook);
+  return result;
+}
+
+export async function updateEbook(id: number, ebook: Partial<InsertEbook>) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  
+  await db.update(ebooks).set(ebook).where(eq(ebooks.id, id));
+}
+
+export async function deleteEbook(id: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  
+  await db.delete(ebooks).where(eq(ebooks.id, id));
+}
+
+export async function incrementEbookDownload(id: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  
+  const ebook = await getEbookById(id);
+  if (ebook) {
+    await db.update(ebooks).set({ downloadCount: (ebook.downloadCount || 0) + 1 }).where(eq(ebooks.id, id));
+  }
+}
+
+// Support Group Helpers
+export async function getAllSupportGroups(publishedOnly: boolean = true) {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const conditions = publishedOnly ? eq(supportGroups.published, true) : undefined;
+  const result = await db
+    .select()
+    .from(supportGroups)
+    .where(conditions)
+    .orderBy(desc(supportGroups.createdAt));
+  
+  return result;
+}
+
+export async function getSupportGroupById(id: number) {
+  const db = await getDb();
+  if (!db) return undefined;
+  
+  const result = await db.select().from(supportGroups).where(eq(supportGroups.id, id)).limit(1);
+  return result.length > 0 ? result[0] : undefined;
+}
+
+export async function createSupportGroup(group: InsertSupportGroup) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  
+  const result = await db.insert(supportGroups).values(group);
+  return result;
+}
+
+export async function updateSupportGroup(id: number, group: Partial<InsertSupportGroup>) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  
+  await db.update(supportGroups).set(group).where(eq(supportGroups.id, id));
+}
+
+export async function deleteSupportGroup(id: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  
+  await db.delete(supportGroups).where(eq(supportGroups.id, id));
+}
