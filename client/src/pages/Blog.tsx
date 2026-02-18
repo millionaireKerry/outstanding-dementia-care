@@ -18,17 +18,18 @@ export default function Blog() {
   const displayPosts = searchQuery.length > 0 ? searchResults : posts;
 
   return (
-    <div className="min-h-screen bg-background py-12">
-      <div className="container">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 retro-heading text-foreground">
-            Dementia Care Blog
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Expert insights and practical advice from 10 years of dementia care experience
-          </p>
-        </div>
+    <div className="min-h-screen bg-background">
+      {/* Blog Header Banner */}
+      <div className="w-full mb-12">
+        <img
+          src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663195447750/klkDzKYliMrVdngJ.png"
+          alt="Outstanding Dementia Care Blog Header"
+          className="w-full h-auto object-cover"
+          style={{ maxHeight: '300px' }}
+        />
+      </div>
+
+      <div className="container py-8">
 
         {/* Search Bar */}
         <div className="max-w-2xl mx-auto mb-12">
