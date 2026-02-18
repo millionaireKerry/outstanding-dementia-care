@@ -107,3 +107,15 @@
 - [x] Add Outstanding Dementia Care logo to header
 - [x] Add product logos to homepage product cards
 - [x] Add product logos to detailed product pages
+
+## Add Dementia Pocket Expert Product (New Request)
+- [x] Upload Dementia Pocket Expert logo to S3
+- [x] Add Dementia Pocket Expert to homepage product cards
+- [x] Add Dementia Pocket Expert to products page with full details
+
+## Voice Agent Enhancement (New Request)
+- [x] Build voice recording functionality with speech-to-text
+- [x] Add knowledge base about the website for answering site questions
+- [x] Add emergency contact information (999, NHS 111, dementia helplines)
+- [x] Implement conversational AI for natural question answering
+- [x] Test voice agent with common dementia care questions
