@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Mic2, FileCheck, BarChart3, ExternalLink } from "lucide-react";
+import { Mic2, FileCheck, BarChart3, Brain, ExternalLink } from "lucide-react";
 
 export default function Products() {
   const products = [
@@ -53,6 +53,24 @@ export default function Products() {
       color: "from-peach to-gold",
       iconBg: "bg-peach",
       link: "#surveys"
+    },
+    {
+      id: "dementia-pocket-expert",
+      name: "Dementia Pocket Expert",
+      icon: Brain,
+      logo: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663195447750/PFxsaONcEsaDAooI.png",
+      description: "An AI-powered carer support app providing instant guidance, expert advice, and practical solutions for dementia care challenges.",
+      features: [
+        "24/7 AI-powered support",
+        "Evidence-based care guidance",
+        "Personalised advice",
+        "Quick answers to common questions",
+        "Expert knowledge at your fingertips"
+      ],
+      color: "from-purple to-pink",
+      iconBg: "bg-purple-500",
+      link: "https://www.dementiapocketexpert.com",
+      isExternal: true
     }
   ];
 
