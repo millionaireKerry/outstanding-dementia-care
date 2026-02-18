@@ -25,8 +25,12 @@ export default function Header() {
           {/* Logo */}
           <Link href="/">
             <div className="flex items-center gap-3 cursor-pointer group">
-              <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center retro-border">
-                <span className="text-2xl font-bold text-primary-foreground">O</span>
+              <div className="w-12 h-12 rounded-full overflow-hidden retro-border">
+                <img 
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663195447750/ecapYscKcjYtJDOg.png" 
+                  alt="Outstanding Dementia Care Logo" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div>
                 <h1 className="text-xl font-bold text-foreground" style={{ fontFamily: "'Playfair Display', serif" }}>

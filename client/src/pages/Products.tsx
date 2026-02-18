@@ -7,6 +7,7 @@ export default function Products() {
       id: "listening-pod",
       name: "The Listening Pod",
       icon: Mic2,
+      logo: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663195447750/tofvBEYtgiEtrcDL.png",
       description: "A revolutionary recording system designed to capture and preserve precious life stories of those living with dementia.",
       features: [
         "Easy-to-use recording interface",
@@ -23,6 +24,7 @@ export default function Products() {
       id: "care-audit",
       name: "Care Documentation Audit",
       icon: FileCheck,
+      logo: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663195447750/jrDbOglyzZxWaIMz.png",
       description: "Comprehensive audit tools that help care homes ensure their care plans meet the highest standards of quality and compliance.",
       features: [
         "Systematic care plan review",
@@ -39,6 +41,7 @@ export default function Products() {
       id: "surveys",
       name: "Care Home Surveys",
       icon: BarChart3,
+      logo: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663195447750/XLGVUBlYVRHmWsYp.png",
       description: "An intuitive dashboard for collecting and analyzing feedback from families, residents, and staff to continuously improve care quality.",
       features: [
         "Multi-stakeholder surveys",
@@ -81,8 +84,12 @@ export default function Products() {
                     <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 items-center ${!isEven ? 'md:grid-flow-dense' : ''}`}>
                       {/* Icon and Title */}
                       <div className={isEven ? '' : 'md:col-start-2'}>
-                        <div className={`w-20 h-20 ${product.iconBg} rounded-full flex items-center justify-center retro-border mb-6`}>
-                          <Icon size={40} className="text-primary-foreground" />
+                        <div className="w-32 h-32 rounded-full overflow-hidden retro-border mb-6">
+                          <img 
+                            src={product.logo} 
+                            alt={`${product.name} Logo`} 
+                            className="w-full h-full object-cover"
+                          />
                         </div>
                         <h2 className="text-3xl md:text-4xl font-bold mb-4 retro-subheading text-foreground">
                           {product.name}
