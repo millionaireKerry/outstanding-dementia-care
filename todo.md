@@ -96,3 +96,14 @@
 - [x] Import sample blog post content
 - [x] Test blog layout and functionality
 - [x] Add introduction blog post to database with cover image
+
+## UK Spelling Conversion (New Request)
+- [ ] Check and convert US spelling to UK English in all pages
+- [ ] Update blog post content with UK spelling
+- [ ] Verify all text content uses UK English conventions
+
+## Product Logos Integration (New Request)
+- [x] Upload all product logos to S3
+- [x] Add Outstanding Dementia Care logo to header
+- [x] Add product logos to homepage product cards
+- [x] Add product logos to detailed product pages

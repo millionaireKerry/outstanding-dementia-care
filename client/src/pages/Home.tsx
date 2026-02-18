@@ -110,8 +110,12 @@ export default function Home() {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             <div className="retro-card p-6 bg-card">
-              <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center mb-4">
-                <Package size={24} className="text-primary-foreground" />
+              <div className="w-16 h-16 rounded-full overflow-hidden mb-4 retro-border">
+                <img 
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663195447750/tofvBEYtgiEtrcDL.png" 
+                  alt="Listening Pod Logo" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <h3 className="text-lg font-bold mb-2 text-foreground" style={{ fontFamily: "'Playfair Display', serif" }}>
                 Listening Pod
@@ -127,8 +131,12 @@ export default function Home() {
             </div>
 
             <div className="retro-card p-6 bg-card">
-              <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center mb-4">
-                <Package size={24} className="text-accent-foreground" />
+              <div className="w-16 h-16 rounded-full overflow-hidden mb-4 retro-border">
+                <img 
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663195447750/jrDbOglyzZxWaIMz.png" 
+                  alt="Care Documentation Audit Logo" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <h3 className="text-lg font-bold mb-2 text-foreground" style={{ fontFamily: "'Playfair Display', serif" }}>
                 Care Documentation Audit
@@ -144,8 +152,12 @@ export default function Home() {
             </div>
 
             <div className="retro-card p-6 bg-card">
-              <div className="w-12 h-12 bg-secondary rounded-full flex items-center justify-center mb-4">
-                <Package size={24} className="text-secondary-foreground" />
+              <div className="w-16 h-16 rounded-full overflow-hidden mb-4 retro-border">
+                <img 
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663195447750/XLGVUBlYVRHmWsYp.png" 
+                  alt="Care Home Surveys Logo" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <h3 className="text-lg font-bold mb-2 text-foreground" style={{ fontFamily: "'Playfair Display', serif" }}>
                 Care Home Surveys

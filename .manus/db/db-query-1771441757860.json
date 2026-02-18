@@ -1,0 +1,17 @@
+{
+  "query": "SELECT id, title, LEFT(content, 200) as content_preview FROM blogPosts LIMIT 5",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user y9xXqMvzCrNXPbj.1987515a4b92 --database C4sZdm4AzTGBpMWqRug5mc --execute SELECT id, title, LEFT(content, 200) as content_preview FROM blogPosts LIMIT 5",
+  "rows": [
+    {
+      "id": "1",
+      "title": "Welcome to Outstanding Dementia Care",
+      "content_preview": "# Welcome to Outstanding Dementia Care — A Resource Built by People in the Sector, for People in the Sector"
+    }
+  ],
+  "messages": [
+    "If you have landed here, there is a good chance you are a care home manager, a registered p"
+  ],
+  "stdout": "id\ttitle\tcontent_preview\n1\tWelcome to Outstanding Dementia Care\t# Welcome to Outstanding Dementia Care — A Resource Built by People in the Sector, for People in the Sector\n\nIf you have landed here, there is a good chance you are a care home manager, a registered p\n",
+  "stderr": "",
+  "execution_time_ms": 135
+}
