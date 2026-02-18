@@ -119,3 +119,10 @@
 - [x] Add emergency contact information (999, NHS 111, dementia helplines)
 - [x] Implement conversational AI for natural question answering
 - [x] Test voice agent with common dementia care questions
+
+## Add Ebooks to Library (New Request)
+- [x] Upload ebook PDFs to S3
+- [x] Upload ebook cover images to S3
+- [x] Add "An Introduction to Dementia" ebook to database
+- [x] Add "The Importance of Life Stories" ebook to database
+- [x] Add "Accessibility Over Aesthetics" ebook to database
