@@ -126,3 +126,12 @@
 - [x] Add "An Introduction to Dementia" ebook to database
 - [x] Add "The Importance of Life Stories" ebook to database
 - [x] Add "Accessibility Over Aesthetics" ebook to database
+
+## Update Product Links (New Request)
+- [x] Update product links to open in new tabs
+- [x] Add correct URLs for all four products
+- [x] Test product links work correctly
+
+## Add Support Group Links (New Request)
+- [x] Add UK dementia support organizations to database
+- [x] Populate Support Groups page with real links
