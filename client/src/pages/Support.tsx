@@ -29,7 +29,7 @@ export default function Support() {
             Support Groups Directory
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Connect with organizations and communities dedicated to dementia care and support
+            Connect with organisations and communities dedicated to dementia care and support
           </p>
         </div>
 

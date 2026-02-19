@@ -135,3 +135,8 @@
 ## Add Support Group Links (New Request)
 - [x] Add UK dementia support organizations to database
 - [x] Populate Support Groups page with real links
+
+## Convert US to UK Spelling (New Request)
+- [x] Fix "organizations" to "organisations" on Support page
+- [x] Check all pages for US spelling (organize, color, center, etc.)
+- [x] Update any US spellings found to UK English

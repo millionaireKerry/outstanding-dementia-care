@@ -21,7 +21,7 @@ export default function Home() {
     {
       icon: Users,
       title: "Support Groups",
-      description: "Connect with support organizations and communities",
+      description: "Connect with support organisations and communities",
       href: "/support",
       color: "bg-peach text-secondary-foreground",
     },
