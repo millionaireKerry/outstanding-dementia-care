@@ -123,11 +123,11 @@ export default function Home() {
               <p className="text-sm text-muted-foreground mb-4">
                 Record and preserve precious life stories with our innovative recording system
               </p>
-              <Link href="/products#listening-pod">
+              <a href="https://www.thelisteningpod.com" target="_blank" rel="noopener noreferrer">
                 <Button variant="outline" size="sm" className="retro-button bg-transparent">
                   Learn More
                 </Button>
-              </Link>
+              </a>
             </div>
 
             <div className="retro-card p-6 bg-card">
@@ -144,11 +144,11 @@ export default function Home() {
               <p className="text-sm text-muted-foreground mb-4">
                 Comprehensive audit tools to ensure care plans meet the highest standards
               </p>
-              <Link href="/products#care-audit">
+              <a href="https://www.caredocumentationaudit.co.uk" target="_blank" rel="noopener noreferrer">
                 <Button variant="outline" size="sm" className="retro-button bg-transparent">
                   Learn More
                 </Button>
-              </Link>
+              </a>
             </div>
 
             <div className="retro-card p-6 bg-card">
@@ -165,11 +165,11 @@ export default function Home() {
               <p className="text-sm text-muted-foreground mb-4">
                 Dashboard for collecting and analyzing family, resident, and staff feedback
               </p>
-              <Link href="/products#surveys">
+              <a href="https://www.carehomesurveys.online" target="_blank" rel="noopener noreferrer">
                 <Button variant="outline" size="sm" className="retro-button bg-transparent">
                   Learn More
                 </Button>
-              </Link>
+              </a>
             </div>
 
             <div className="retro-card p-6 bg-card">

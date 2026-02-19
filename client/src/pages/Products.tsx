@@ -18,7 +18,8 @@ export default function Products() {
       ],
       color: "from-teal to-mint",
       iconBg: "bg-teal",
-      link: "#listening-pod"
+      link: "https://www.thelisteningpod.com",
+      isExternal: true
     },
     {
       id: "care-audit",
@@ -35,7 +36,8 @@ export default function Products() {
       ],
       color: "from-coral to-rose",
       iconBg: "bg-coral",
-      link: "#care-audit"
+      link: "https://www.caredocumentationaudit.co.uk",
+      isExternal: true
     },
     {
       id: "surveys",
@@ -52,7 +54,8 @@ export default function Products() {
       ],
       color: "from-peach to-gold",
       iconBg: "bg-peach",
-      link: "#surveys"
+      link: "https://www.carehomesurveys.online",
+      isExternal: true
     },
     {
       id: "dementia-pocket-expert",
