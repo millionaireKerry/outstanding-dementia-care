@@ -140,3 +140,9 @@
 - [x] Fix "organizations" to "organisations" on Support page
 - [x] Check all pages for US spelling (organize, color, center, etc.)
 - [x] Update any US spellings found to UK English
+
+## Fix Blog Post Display Issue (New Request)
+- [x] Check database for blog post data
+- [x] Verify blog post query is working correctly
+- [x] Fix any issues preventing blog posts from displaying
+- [x] Test blog page shows introduction post

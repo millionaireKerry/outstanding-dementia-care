@@ -1,0 +1,24 @@
+{
+  "query": "SELECT id, title, slug, published, createdAt FROM blogPosts ORDER BY createdAt DESC;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user y9xXqMvzCrNXPbj.1987515a4b92 --database C4sZdm4AzTGBpMWqRug5mc --execute SELECT id, title, slug, published, createdAt FROM blogPosts ORDER BY createdAt DESC;",
+  "rows": [
+    {
+      "id": "30001",
+      "title": "Who Am I? Tom Kitwood's Theory of Personhood",
+      "slug": "who-am-i-tom-kitwood-theory-of-personhood",
+      "published": "1",
+      "createdAt": "2026-02-21 22:25:34"
+    },
+    {
+      "id": "1",
+      "title": "Welcome to Outstanding Dementia Care",
+      "slug": "welcome-to-outstanding-dementia-care",
+      "published": "1",
+      "createdAt": "2026-02-18 18:57:16"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tslug\tpublished\tcreatedAt\n30001\tWho Am I? Tom Kitwood's Theory of Personhood\twho-am-i-tom-kitwood-theory-of-personhood\t1\t2026-02-21 22:25:34\n1\tWelcome to Outstanding Dementia Care\twelcome-to-outstanding-dementia-care\t1\t2026-02-18 18:57:16\n",
+  "stderr": "",
+  "execution_time_ms": 58
+}
