@@ -161,3 +161,12 @@
 - [x] Add Love Letter Tales to homepage product cards
 - [x] Add Love Letter Tales to products page with full details
 - [x] Update product links to include Love Letter Tales
+
+## Add Love Letters Blog Post (New Request)
+- [x] Upload Love Letters blog cover image to S3
+- [x] Add "The Lost Art of the Letter" blog post to database
+- [x] Test blog post displays correctly
+
+## Connect Custom Domain for AdSense (New Request)
+- [x] Guide user to connect outstandingdementiacare.com domain in Management UI
+- [ ] Verify domain connection for AdSense verification (user action required)
