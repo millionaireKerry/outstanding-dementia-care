@@ -1,0 +1,17 @@
+{
+  "query": "SELECT id, title, slug, published, createdAt FROM blogPosts ORDER BY createdAt DESC;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user y9xXqMvzCrNXPbj.1987515a4b92 --database C4sZdm4AzTGBpMWqRug5mc --execute SELECT id, title, slug, published, createdAt FROM blogPosts ORDER BY createdAt DESC;",
+  "rows": [
+    {
+      "id": "1",
+      "title": "Welcome to Outstanding Dementia Care",
+      "slug": "welcome-to-outstanding-dementia-care",
+      "published": "1",
+      "createdAt": "2026-02-18 18:57:16"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tslug\tpublished\tcreatedAt\n1\tWelcome to Outstanding Dementia Care\twelcome-to-outstanding-dementia-care\t1\t2026-02-18 18:57:16\n",
+  "stderr": "",
+  "execution_time_ms": 2646
+}
