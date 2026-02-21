@@ -146,3 +146,12 @@
 - [x] Verify blog post query is working correctly
 - [x] Fix any issues preventing blog posts from displaying
 - [x] Test blog page shows introduction post
+
+## Newsletter Signup Feature (New Request)
+- [x] Add newsletter_subscribers table to database schema
+- [x] Create tRPC procedures for newsletter subscription
+- [x] Add newsletter signup component to footer
+- [x] Add newsletter signup section on homepage
+- [x] Implement email validation
+- [x] Add admin view to see newsletter subscribers
+- [x] Test newsletter signup functionality

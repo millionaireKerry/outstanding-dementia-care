@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { BookOpen, Download, Users, Mic, Package, ArrowRight } from "lucide-react";
+import NewsletterSignup from "@/components/NewsletterSignup";
 
 export default function Home() {
   const features = [
@@ -193,6 +194,13 @@ export default function Home() {
               </a>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Newsletter Section */}
+      <section className="py-16 bg-background">
+        <div className="container">
+          <NewsletterSignup source="homepage" variant="default" />
         </div>
       </section>
 
