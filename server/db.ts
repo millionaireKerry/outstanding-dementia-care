@@ -1,6 +1,6 @@
 import { eq, desc, like, or, and } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users, blogPosts, InsertBlogPost, ebooks, InsertEbook, supportGroups, InsertSupportGroup } from "../drizzle/schema";
+import { InsertUser, users, blogPosts, InsertBlogPost, ebooks, InsertEbook, supportGroups, InsertSupportGroup, newsletterSubscribers, InsertNewsletterSubscriber } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -262,4 +262,44 @@ export async function deleteSupportGroup(id: number) {
   if (!db) throw new Error("Database not available");
   
   await db.delete(supportGroups).where(eq(supportGroups.id, id));
+}
+
+// Newsletter Subscriber Helpers
+export async function getAllNewsletterSubscribers(activeOnly: boolean = true) {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const conditions = activeOnly ? eq(newsletterSubscribers.status, 'active') : undefined;
+  const result = await db
+    .select()
+    .from(newsletterSubscribers)
+    .where(conditions)
+    .orderBy(desc(newsletterSubscribers.subscribedAt));
+  
+  return result;
+}
+
+export async function getNewsletterSubscriberByEmail(email: string) {
+  const db = await getDb();
+  if (!db) return undefined;
+  
+  const result = await db.select().from(newsletterSubscribers).where(eq(newsletterSubscribers.email, email)).limit(1);
+  return result.length > 0 ? result[0] : undefined;
+}
+
+export async function createNewsletterSubscriber(subscriber: InsertNewsletterSubscriber) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  
+  const result = await db.insert(newsletterSubscribers).values(subscriber);
+  return result;
+}
+
+export async function unsubscribeNewsletter(email: string) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  
+  await db.update(newsletterSubscribers)
+    .set({ status: 'unsubscribed', unsubscribedAt: new Date() })
+    .where(eq(newsletterSubscribers.email, email));
 }

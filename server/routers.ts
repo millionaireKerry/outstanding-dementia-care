@@ -247,6 +247,52 @@ export const appRouter = router({
         return { success: true };
       }),
   }),
+
+  newsletter: router({
+    subscribe: publicProcedure
+      .input(z.object({
+        email: z.string().email(),
+        name: z.string().optional(),
+        source: z.string().optional(),
+      }))
+      .mutation(async ({ input }) => {
+        // Check if email already exists
+        const existing = await db.getNewsletterSubscriberByEmail(input.email);
+        
+        if (existing) {
+          if (existing.status === 'unsubscribed') {
+            // Resubscribe
+            await db.createNewsletterSubscriber({
+              ...input,
+              status: 'active',
+            });
+            return { success: true, message: 'Successfully resubscribed!' };
+          }
+          return { success: false, message: 'You are already subscribed!' };
+        }
+        
+        await db.createNewsletterSubscriber({
+          ...input,
+          status: 'active',
+        });
+        return { success: true, message: 'Successfully subscribed!' };
+      }),
+
+    unsubscribe: publicProcedure
+      .input(z.object({ email: z.string().email() }))
+      .mutation(async ({ input }) => {
+        await db.unsubscribeNewsletter(input.email);
+        return { success: true };
+      }),
+
+    list: adminProcedure.query(async () => {
+      return await db.getAllNewsletterSubscribers(true);
+    }),
+
+    listAll: adminProcedure.query(async () => {
+      return await db.getAllNewsletterSubscribers(false);
+    }),
+  }),
 });
 
 export type AppRouter = typeof appRouter;

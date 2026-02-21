@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Heart } from "lucide-react";
+import NewsletterSignup from "./NewsletterSignup";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -90,6 +91,11 @@ export default function Footer() {
               </li>
             </ul>
           </div>
+        </div>
+
+        {/* Newsletter Signup */}
+        <div className="mt-12">
+          <NewsletterSignup source="footer" variant="compact" />
         </div>
 
         {/* Bottom Bar */}

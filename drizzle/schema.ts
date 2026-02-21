@@ -108,3 +108,19 @@ export const voiceConversations = mysqlTable("voiceConversations", {
 
 export type VoiceConversation = typeof voiceConversations.$inferSelect;
 export type InsertVoiceConversation = typeof voiceConversations.$inferInsert;
+
+/**
+ * Newsletter subscribers table for email updates
+ */
+export const newsletterSubscribers = mysqlTable("newsletterSubscribers", {
+  id: int("id").autoincrement().primaryKey(),
+  email: varchar("email", { length: 320 }).notNull().unique(),
+  name: varchar("name", { length: 255 }),
+  status: mysqlEnum("status", ["active", "unsubscribed"]).default("active").notNull(),
+  subscribedAt: timestamp("subscribedAt").defaultNow().notNull(),
+  unsubscribedAt: timestamp("unsubscribedAt"),
+  source: varchar("source", { length: 100 }), // e.g., "homepage", "footer", "blog"
+});
+
+export type NewsletterSubscriber = typeof newsletterSubscribers.$inferSelect;
+export type InsertNewsletterSubscriber = typeof newsletterSubscribers.$inferInsert;
