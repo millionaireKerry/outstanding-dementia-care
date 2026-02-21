@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Mic2, FileCheck, BarChart3, Brain, ExternalLink } from "lucide-react";
+import { Mic2, FileCheck, BarChart3, Brain, Mail, ExternalLink } from "lucide-react";
 
 export default function Products() {
   const products = [
@@ -73,6 +73,24 @@ export default function Products() {
       color: "from-purple to-pink",
       iconBg: "bg-purple-500",
       link: "https://www.dementiapocketexpert.com",
+      isExternal: true
+    },
+    {
+      id: "love-letter-tales",
+      name: "Love Letter Tales",
+      icon: Mail,
+      logo: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663195447750/jZknyjpjKHOdNdwh.png",
+      description: "Beautiful story letters delivered by post, perfect for reminiscence therapy and meaningful engagement with care home residents living with dementia.",
+      features: [
+        "2 story letters delivered monthly",
+        "Regency romance and wartime Britain stories",
+        "Physical letters for tactile engagement",
+        "Perfect for reminiscence therapy",
+        "Gift subscriptions available"
+      ],
+      color: "from-rose to-peach",
+      iconBg: "bg-rose",
+      link: "https://www.lovelettertales.com",
       isExternal: true
     }
   ];

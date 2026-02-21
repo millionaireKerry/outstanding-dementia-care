@@ -109,7 +109,7 @@ export default function Home() {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
             <div className="retro-card p-6 bg-card">
               <div className="w-16 h-16 rounded-full overflow-hidden mb-4 retro-border">
                 <img 
@@ -188,6 +188,27 @@ export default function Home() {
                 AI-powered carer support app providing instant guidance and expert advice
               </p>
               <a href="https://www.dementiapocketexpert.com" target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" size="sm" className="retro-button bg-transparent">
+                  Learn More
+                </Button>
+              </a>
+            </div>
+
+            <div className="retro-card p-6 bg-card">
+              <div className="w-16 h-16 rounded-full overflow-hidden mb-4 retro-border">
+                <img 
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663195447750/jZknyjpjKHOdNdwh.png" 
+                  alt="Love Letter Tales Logo" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <h3 className="text-lg font-bold mb-2 text-foreground" style={{ fontFamily: "'Playfair Display', serif" }}>
+                Love Letter Tales
+              </h3>
+              <p className="text-sm text-muted-foreground mb-4">
+                Beautiful story letters delivered by post - perfect for reminiscence and engagement
+              </p>
+              <a href="https://www.lovelettertales.com" target="_blank" rel="noopener noreferrer">
                 <Button variant="outline" size="sm" className="retro-button bg-transparent">
                   Learn More
                 </Button>

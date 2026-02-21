@@ -155,3 +155,9 @@
 - [x] Implement email validation
 - [x] Add admin view to see newsletter subscribers
 - [x] Test newsletter signup functionality
+
+## Add Love Letter Tales Product (New Request)
+- [x] Upload Love Letter Tales logo to S3
+- [x] Add Love Letter Tales to homepage product cards
+- [x] Add Love Letter Tales to products page with full details
+- [x] Update product links to include Love Letter Tales
