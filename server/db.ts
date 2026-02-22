@@ -1,6 +1,6 @@
 import { eq, desc, like, or, and } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users, blogPosts, InsertBlogPost, ebooks, InsertEbook, supportGroups, InsertSupportGroup, newsletterSubscribers, InsertNewsletterSubscriber } from "../drizzle/schema";
+import { InsertUser, users, blogPosts, InsertBlogPost, ebooks, InsertEbook, supportGroups, InsertSupportGroup, newsletterSubscribers, InsertNewsletterSubscriber, dailyGoodNewsEditions, InsertDailyGoodNewsEdition } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -302,4 +302,55 @@ export async function unsubscribeNewsletter(email: string) {
   await db.update(newsletterSubscribers)
     .set({ status: 'unsubscribed', unsubscribedAt: new Date() })
     .where(eq(newsletterSubscribers.email, email));
+}
+
+// Daily Good News Helpers
+export async function getAllDailyGoodNewsEditions() {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const result = await db
+    .select()
+    .from(dailyGoodNewsEditions)
+    .orderBy(desc(dailyGoodNewsEditions.editionDate));
+  
+  return result;
+}
+
+export async function getDailyGoodNewsEditionByDate(date: Date) {
+  const db = await getDb();
+  if (!db) return undefined;
+  
+  // Normalize to start of day
+  const startOfDay = new Date(date);
+  startOfDay.setHours(0, 0, 0, 0);
+  
+  const result = await db
+    .select()
+    .from(dailyGoodNewsEditions)
+    .where(eq(dailyGoodNewsEditions.editionDate, startOfDay))
+    .limit(1);
+  
+  return result.length > 0 ? result[0] : undefined;
+}
+
+export async function createDailyGoodNewsEdition(edition: InsertDailyGoodNewsEdition) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  
+  const result = await db.insert(dailyGoodNewsEditions).values(edition);
+  return result;
+}
+
+export async function incrementDailyGoodNewsDownloadCount(id: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  
+  const edition = await db.select().from(dailyGoodNewsEditions).where(eq(dailyGoodNewsEditions.id, id)).limit(1);
+  if (edition.length === 0) return;
+  
+  const currentCount = edition[0].downloadCount || 0;
+  await db.update(dailyGoodNewsEditions)
+    .set({ downloadCount: currentCount + 1 })
+    .where(eq(dailyGoodNewsEditions.id, id));
 }

@@ -124,3 +124,23 @@ export const newsletterSubscribers = mysqlTable("newsletterSubscribers", {
 
 export type NewsletterSubscriber = typeof newsletterSubscribers.$inferSelect;
 export type InsertNewsletterSubscriber = typeof newsletterSubscribers.$inferInsert;
+
+/**
+ * Daily Good News editions table for generated newspapers
+ */
+export const dailyGoodNewsEditions = mysqlTable("dailyGoodNewsEditions", {
+  id: int("id").autoincrement().primaryKey(),
+  editionDate: timestamp("editionDate").notNull().unique(), // Date of the edition
+  headline: varchar("headline", { length: 255 }).notNull(),
+  stories: text("stories").notNull(), // JSON array of news stories
+  reminiscenceContent: text("reminiscenceContent"), // "On This Day" historical content
+  quote: text("quote"), // Uplifting quote of the day
+  pdfUrl: varchar("pdfUrl", { length: 500 }), // URL to generated PDF
+  pdfKey: varchar("pdfKey", { length: 500 }), // S3 key for PDF
+  downloadCount: int("downloadCount").default(0).notNull(),
+  generatedBy: int("generatedBy"), // User ID who generated it (if manual)
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type DailyGoodNewsEdition = typeof dailyGoodNewsEditions.$inferSelect;
+export type InsertDailyGoodNewsEdition = typeof dailyGoodNewsEditions.$inferInsert;
