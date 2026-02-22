@@ -25,18 +25,21 @@ export async function generateDailyGoodNewsContent(date: Date): Promise<DailyGoo
   });
 
   // Use LLM to generate positive news stories
-  const newsPrompt = `You are creating content for "Daily Good News" - a respectful, dignified newspaper for elderly people in care homes.
+  const newsPrompt = `You are creating content for "Daily Good News" - a respectful, dignified newspaper for older people in UK care homes.
 
 Today's date: ${dateStr}
 
 Create 3 heartwarming news stories for today. Each story should be:
-- Uplifting and positive (real or realistic scenarios)
-- Respectful (not patronizing or condescending)
+- Uplifting and positive (real or realistic scenarios from the UK)
+- Respectful (not patronising or condescending)
 - 80-120 words
-- Written in clear, accessible language
-- Focus on: community achievements, acts of kindness, scientific breakthroughs, animal stories, environmental wins, cultural celebrations
+- Written in clear, accessible British English
+- Use UK spelling (e.g., colour, organise, centre, favour)
+- Use UK terminology ("older people" or "residents", never "seniors")
+- Focus on UK locations, communities, and organisations
+- Topics: community achievements, acts of kindness, scientific breakthroughs, animal stories, environmental wins, cultural celebrations
 
-Make the stories feel current and relevant to today's date.
+Make the stories feel current and relevant to today's date with a distinctly British flavour.
 
 Return your response as JSON with this structure:
 {
@@ -52,7 +55,7 @@ Return your response as JSON with this structure:
 
   const newsResponse = await invokeLLM({
     messages: [
-      { role: "system", content: "You are a professional journalist creating uplifting news content for elderly readers." },
+      { role: "system", content: "You are a British journalist creating uplifting news content for older readers in the UK. Use British English spelling and terminology throughout." },
       { role: "user", content: newsPrompt }
     ],
     response_format: {
@@ -91,17 +94,18 @@ Return your response as JSON with this structure:
   // Generate "On This Day" reminiscence content
   const reminiscencePrompt = `Create an "On This Day" section for ${dateStr}.
 
-Include 2-3 interesting historical events that happened on this date in history. Focus on:
+Include 2-3 interesting historical events that happened on this date in history, with preference for British history and events relevant to UK readers. Focus on:
 - Positive, memorable events
 - Cultural milestones
 - Scientific achievements
 - Celebrations
 
+Use British English spelling throughout (e.g., colour, organise, favour).
 Write in a warm, engaging tone. Keep it to 100-150 words total.`;
 
   const reminiscenceResponse = await invokeLLM({
     messages: [
-      { role: "system", content: "You are a historian creating engaging reminiscence content for elderly readers." },
+      { role: "system", content: "You are a British historian creating engaging reminiscence content for older readers in the UK. Use British English spelling throughout." },
       { role: "user", content: reminiscencePrompt }
     ]
   });
@@ -111,19 +115,19 @@ Write in a warm, engaging tone. Keep it to 100-150 words total.`;
     : "";
 
   // Generate uplifting quote
-  const quotePrompt = `Provide one uplifting, inspirational quote suitable for elderly readers. 
+  const quotePrompt = `Provide one uplifting, inspirational quote suitable for older readers in the UK. 
   
 The quote should be:
 - Positive and encouraging
-- From a well-known figure or traditional wisdom
-- Not cliché or patronizing
+- From a well-known British figure, author, or traditional wisdom (prefer British sources when possible)
+- Not cliché or patronising
 - Include attribution
 
 Format: "Quote text" - Attribution`;
 
   const quoteResponse = await invokeLLM({
     messages: [
-      { role: "system", content: "You are selecting meaningful quotes for elderly readers." },
+      { role: "system", content: "You are selecting meaningful quotes for older readers in the UK, preferring British authors and figures when possible." },
       { role: "user", content: quotePrompt }
     ]
   });
