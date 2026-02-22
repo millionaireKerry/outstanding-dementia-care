@@ -228,7 +228,7 @@
 
 ## Add Five Additional Blog Posts (Batch 2)
 - [ ] Upload "Watching TV is an Activity" blog cover image to S3
-- [ ] Upload "Step Away From The Pool Noodle" blog cover image to S3
+- [x] Upload "Step Away From The Pool Noodle" blog cover image to S3
 - [ ] Add "Watching TV is an Activity" blog post to database (meaningful-activities-not-tick-box-blog.md)
 - [ ] Add "Step Away From The Pool Noodle" blog post to database (pool-noodle-right-to-do-nothing-dementia-care-blog.md)
 - [ ] Add "A Walk Down Memory Lane" blog post to database (walk-down-memory-lane-streetview-blog.md)
@@ -256,3 +256,9 @@
 - [x] Fix welcome post not appearing at top despite being featured
 - [x] Fix recent blog posts showing as "Draft" instead of published date
 - [x] Add missing cover images to recent blog posts
+
+## Add Final Two Blog Posts (Feb 22, 2026)
+- [x] Upload "The Generation Gap" blog cover image to S3
+- [x] Upload "Step Away From The Pool Noodle" blog cover image to S3
+- [x] Add "Different Generations, Same Care" blog post to database
+- [x] Add "Put Down the Pool Noodle" blog post to database
