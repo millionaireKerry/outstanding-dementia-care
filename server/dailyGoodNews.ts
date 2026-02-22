@@ -103,11 +103,13 @@ Include 3-4 interesting historical events that happened on this date in history,
 - Notable births or achievements of British figures
 
 Use British English spelling throughout (e.g., colour, organise, favour).
-Write in a warm, engaging tone with good detail for each event. Keep it to 200-300 words total, giving each event proper context and interest.`;
+Write in a warm, engaging tone with good detail for each event. Keep it to 200-300 words total, giving each event proper context and interest.
+
+IMPORTANT: Write in plain text only. Do NOT use any markdown formatting (no asterisks, underscores, or other special characters for formatting). Do not use **bold**, *italic*, or any other markdown syntax.`;
 
   const reminiscenceResponse = await invokeLLM({
     messages: [
-      { role: "system", content: "You are a British historian creating engaging reminiscence content for older readers in the UK. Use British English spelling throughout." },
+      { role: "system", content: "You are a British historian creating engaging reminiscence content for older readers in the UK. Use British English spelling throughout. Write in plain text only without any markdown formatting." },
       { role: "user", content: reminiscencePrompt }
     ]
   });
