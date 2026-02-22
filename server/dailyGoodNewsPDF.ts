@@ -1,5 +1,6 @@
 import PDFDocument from 'pdfkit';
 import { DailyGoodNewsContent, NewsStory } from './dailyGoodNews';
+import axios from 'axios';
 
 /**
  * Generate a PDF for Daily Good News edition
@@ -9,7 +10,7 @@ export async function generateDailyGoodNewsPDF(
   content: DailyGoodNewsContent,
   date: Date
 ): Promise<Buffer> {
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     try {
       const doc = new PDFDocument({
         size: 'A4',
@@ -33,13 +34,24 @@ export async function generateDailyGoodNewsPDF(
         day: 'numeric'
       });
 
-      // Page 1: Front Page with News Stories
-      // Masthead
-      doc.fontSize(32)
-        .font('Helvetica-Bold')
-        .text('DAILY GOOD NEWS', { align: 'center' });
+      // Download banner image
+      const bannerUrl = 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663195447750/bfksglZjahpOnzyr.png';
+      const bannerResponse = await axios.get(bannerUrl, { responseType: 'arraybuffer' });
+      const bannerBuffer = Buffer.from(bannerResponse.data);
 
-      doc.moveDown(0.3);
+      // Page 1: Front Page with Banner and News Stories
+      // Add banner image at top
+      const bannerWidth = 495; // A4 width minus margins
+      const bannerHeight = 80; // Proportional height
+      doc.image(bannerBuffer, 50, 50, {
+        width: bannerWidth,
+        height: bannerHeight
+      });
+
+      // Move down after banner
+      doc.y = 50 + bannerHeight + 20;
+
+      // Date
       doc.fontSize(12)
         .font('Helvetica')
         .text(dateStr, { align: 'center' });

@@ -278,3 +278,8 @@
 - [x] Add more detailed stories and articles
 - [x] Improve layout to fill pages properly
 - [x] Regenerate example edition with enhanced content
+
+## Add Banner to Daily Good News PDF (Feb 22, 2026)
+- [x] Upload banner image to S3
+- [x] Integrate banner into PDF header
+- [x] Regenerate example edition with banner
