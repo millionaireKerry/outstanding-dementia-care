@@ -1,4 +1,4 @@
-import { Link } from "wouter";
+import { useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,6 +8,7 @@ import { format } from "date-fns";
 import AdSense from "@/components/AdSense";
 
 export default function Blog() {
+  const [, setLocation] = useLocation();
   const [searchQuery, setSearchQuery] = useState("");
   const { data: posts, isLoading } = trpc.blog.list.useQuery();
   const { data: searchResults, isLoading: isSearching } = trpc.blog.search.useQuery(
@@ -63,50 +64,52 @@ export default function Blog() {
             {displayPosts && displayPosts.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {displayPosts.map((post) => (
-                  <Link key={post.id} href={`/blog/${post.slug}`}>
-                    <article className="retro-card p-6 cursor-pointer h-full flex flex-col">
-                      {post.coverImageUrl && (
-                        <div className="mb-4 -mx-6 -mt-6">
-                          <img
-                            src={post.coverImageUrl}
-                            alt={post.title}
-                            className="w-full h-48 object-cover rounded-t-lg"
-                          />
-                        </div>
-                      )}
-                      
-                      {post.category && (
-                        <div className="mb-3">
-                          <span className="inline-block px-3 py-1 text-xs font-semibold bg-primary text-primary-foreground rounded-full uppercase tracking-wide">
-                            {post.category}
-                          </span>
-                        </div>
-                      )}
-
-                      <h2 className="text-xl font-bold mb-3 text-foreground" style={{ fontFamily: "'Playfair Display', serif" }}>
-                        {post.title}
-                      </h2>
-
-                      {post.excerpt && (
-                        <p className="text-sm text-muted-foreground mb-4 line-clamp-3 flex-1">
-                          {post.excerpt}
-                        </p>
-                      )}
-
-                      <div className="flex items-center gap-4 text-xs text-muted-foreground mt-auto pt-4 border-t border-border">
-                        <div className="flex items-center gap-1">
-                          <Calendar size={14} />
-                          <span>{post.publishedAt ? format(new Date(post.publishedAt), 'MMM d, yyyy') : 'Draft'}</span>
-                        </div>
-                        {post.tags && (
-                          <div className="flex items-center gap-1">
-                            <Tag size={14} />
-                            <span className="truncate">{post.tags.split(',')[0]}</span>
-                          </div>
-                        )}
+                  <article 
+                    key={post.id}
+                    onClick={() => setLocation(`/blog/${post.slug}`)}
+                    className="retro-card p-6 cursor-pointer h-full flex flex-col hover:shadow-lg transition-shadow"
+                  >
+                    {post.coverImageUrl && (
+                      <div className="mb-4 -mx-6 -mt-6">
+                        <img
+                          src={post.coverImageUrl}
+                          alt={post.title}
+                          className="w-full h-48 object-cover rounded-t-lg"
+                        />
                       </div>
-                    </article>
-                  </Link>
+                    )}
+                    
+                    {post.category && (
+                      <div className="mb-3">
+                        <span className="inline-block px-3 py-1 text-xs font-semibold bg-primary text-primary-foreground rounded-full uppercase tracking-wide">
+                          {post.category}
+                        </span>
+                      </div>
+                    )}
+
+                    <h2 className="text-xl font-bold mb-3 text-foreground" style={{ fontFamily: "'Playfair Display', serif" }}>
+                      {post.title}
+                    </h2>
+
+                    {post.excerpt && (
+                      <p className="text-sm text-muted-foreground mb-4 line-clamp-3 flex-1">
+                        {post.excerpt}
+                      </p>
+                    )}
+
+                    <div className="flex items-center gap-4 text-xs text-muted-foreground mt-auto pt-4 border-t border-border">
+                      <div className="flex items-center gap-1">
+                        <Calendar size={14} />
+                        <span>{post.publishedAt ? format(new Date(post.publishedAt), 'MMM d, yyyy') : 'Draft'}</span>
+                      </div>
+                      {post.tags && (
+                        <div className="flex items-center gap-1">
+                          <Tag size={14} />
+                          <span className="truncate">{post.tags.split(',')[0]}</span>
+                        </div>
+                      )}
+                    </div>
+                  </article>
                 ))}
               </div>
             ) : (

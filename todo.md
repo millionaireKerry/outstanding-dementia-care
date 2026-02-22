@@ -248,3 +248,6 @@
 - [x] Care Home Survey Dashboard (Product)
 - [x] Care Documentation Audit (Product)
 - [x] The Listening Pod (Product)
+
+## Fix Nested Anchor Tag Error (Feb 22, 2026)
+- [x] Fix nested <a> tag error on blog page
