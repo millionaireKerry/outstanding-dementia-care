@@ -1,0 +1,122 @@
+{
+  "query": "SELECT id, title, featured, publishedAt, createdAt FROM blogPosts ORDER BY featured DESC, publishedAt DESC, createdAt DESC;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user y9xXqMvzCrNXPbj.1987515a4b92 --database C4sZdm4AzTGBpMWqRug5mc --execute SELECT id, title, featured, publishedAt, createdAt FROM blogPosts ORDER BY featured DESC, publishedAt DESC, createdAt DESC;",
+  "rows": [
+    {
+      "id": "30001",
+      "title": "Who Am I? Tom Kitwood's Theory of Personhood",
+      "featured": "1",
+      "publishedAt": "2026-02-21 22:25:34",
+      "createdAt": "2026-02-21 22:25:34"
+    },
+    {
+      "id": "1",
+      "title": "Welcome to Outstanding Dementia Care",
+      "featured": "1",
+      "publishedAt": "2026-02-18 18:57:16",
+      "createdAt": "2026-02-18 18:57:16"
+    },
+    {
+      "id": "90010",
+      "title": "Dementia Pocket Expert: Your On-Demand Resource for Evidence-Based Dementia Care",
+      "featured": "0",
+      "publishedAt": "2026-02-22 00:00:00",
+      "createdAt": "2026-02-22 15:38:32"
+    },
+    {
+      "id": "90009",
+      "title": "The Daily Good News: Why Every Care Home Should Start the Day with Something Positive",
+      "featured": "0",
+      "publishedAt": "2026-02-22 00:00:00",
+      "createdAt": "2026-02-22 15:38:32"
+    },
+    {
+      "id": "90013",
+      "title": "The Listening Pod: Capturing Life Stories That Matter",
+      "featured": "0",
+      "publishedAt": "2026-02-22 00:00:00",
+      "createdAt": "2026-02-22 15:38:32"
+    },
+    {
+      "id": "90012",
+      "title": "Care Documentation Audit: Ensuring Your Care Plans Meet CQC Standards",
+      "featured": "0",
+      "publishedAt": "2026-02-22 00:00:00",
+      "createdAt": "2026-02-22 15:38:32"
+    },
+    {
+      "id": "90011",
+      "title": "Care Home Survey Dashboard: Understanding What Residents, Families, and Staff Really Think",
+      "featured": "0",
+      "publishedAt": "2026-02-22 00:00:00",
+      "createdAt": "2026-02-22 15:38:32"
+    },
+    {
+      "id": "90005",
+      "title": "Activities Are Not a Tick Box: Why the Schedule Should Come from Your Residents, Not Your Head Office",
+      "featured": "0",
+      "publishedAt": "2026-02-22 00:00:00",
+      "createdAt": "2026-02-22 15:38:32"
+    },
+    {
+      "id": "90006",
+      "title": "A Walk Down Memory Lane: Using Google Street View to Reconnect People with Dementia to the Places That Shaped Them",
+      "featured": "0",
+      "publishedAt": "2026-02-22 00:00:00",
+      "createdAt": "2026-02-22 15:38:32"
+    },
+    {
+      "id": "90007",
+      "title": "That's My Spot: Why Familiarity and Routine Are Not Boring—They're Essential",
+      "featured": "0",
+      "publishedAt": "2026-02-22 00:00:00",
+      "createdAt": "2026-02-22 15:38:32"
+    },
+    {
+      "id": "90008",
+      "title": "Mealtimes Are Not Just About Food: Creating a Dining Experience That Respects the Person",
+      "featured": "0",
+      "publishedAt": "2026-02-22 00:00:00",
+      "createdAt": "2026-02-22 15:38:32"
+    },
+    {
+      "id": "90004",
+      "title": "Beyond the Front Door: Why Virtual Travel Belongs in Every Care Home's Activities Programme",
+      "featured": "0",
+      "publishedAt": "2026-02-22 00:00:00",
+      "createdAt": "2026-02-22 15:12:26"
+    },
+    {
+      "id": "90001",
+      "title": "Lights, Camera, Connection: Why Your Care Home Should Be Hosting a Monthly Family Movie Night",
+      "featured": "0",
+      "publishedAt": "2026-02-22 00:00:00",
+      "createdAt": "2026-02-22 15:12:26"
+    },
+    {
+      "id": "90003",
+      "title": "Where Did We Come From? Using Ancestry Research to Deepen Identity and Connection in Dementia Care",
+      "featured": "0",
+      "publishedAt": "2026-02-22 00:00:00",
+      "createdAt": "2026-02-22 15:12:26"
+    },
+    {
+      "id": "90002",
+      "title": "The Boomers Are Coming: And They Are Not Going to Sit Quietly with a Colouring Book",
+      "featured": "0",
+      "publishedAt": "2026-02-22 00:00:00",
+      "createdAt": "2026-02-22 15:12:26"
+    },
+    {
+      "id": "60001",
+      "title": "The Lost Art of the Letter: Why Posting a Story Could Be One of the Best Things You Do for Your Residents",
+      "featured": "0",
+      "publishedAt": "2026-02-21 23:35:16",
+      "createdAt": "2026-02-21 23:35:16"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tfeatured\tpublishedAt\tcreatedAt\n30001\tWho Am I? Tom Kitwood's Theory of Personhood\t1\t2026-02-21 22:25:34\t2026-02-21 22:25:34\n1\tWelcome to Outstanding Dementia Care\t1\t2026-02-18 18:57:16\t2026-02-18 18:57:16\n90010\tDementia Pocket Expert: Your On-Demand Resource for Evidence-Based Dementia Care\t0\t2026-02-22 00:00:00\t2026-02-22 15:38:32\n90009\tThe Daily Good News: Why Every Care Home Should Start the Day with Something Positive\t0\t2026-02-22 00:00:00\t2026-02-22 15:38:32\n90013\tThe Listening Pod: Capturing Life Stories That Matter\t0\t2026-02-22 00:00:00\t2026-02-22 15:38:32\n90012\tCare Documentation Audit: Ensuring Your Care Plans Meet CQC Standards\t0\t2026-02-22 00:00:00\t2026-02-22 15:38:32\n90011\tCare Home Survey Dashboard: Understanding What Residents, Families, and Staff Really Think\t0\t2026-02-22 00:00:00\t2026-02-22 15:38:32\n90005\tActivities Are Not a Tick Box: Why the Schedule Should Come from Your Residents, Not Your Head Office\t0\t2026-02-22 00:00:00\t2026-02-22 15:38:32\n90006\tA Walk Down Memory Lane: Using Google Street View to Reconnect People with Dementia to the Places That Shaped Them\t0\t2026-02-22 00:00:00\t2026-02-22 15:38:32\n90007\tThat's My Spot: Why Familiarity and Routine Are Not Boring—They're Essential\t0\t2026-02-22 00:00:00\t2026-02-22 15:38:32\n90008\tMealtimes Are Not Just About Food: Creating a Dining Experience That Respects the Person\t0\t2026-02-22 00:00:00\t2026-02-22 15:38:32\n90004\tBeyond the Front Door: Why Virtual Travel Belongs in Every Care Home's Activities Programme\t0\t2026-02-22 00:00:00\t2026-02-22 15:12:26\n90001\tLights, Camera, Connection: Why Your Care Home Should Be Hosting a Monthly Family Movie Night\t0\t2026-02-22 00:00:00\t2026-02-22 15:12:26\n90003\tWhere Did We Come From? Using Ancestry Research to Deepen Identity and Connection in Dementia Care\t0\t2026-02-22 00:00:00\t2026-02-22 15:12:26\n90002\tThe Boomers Are Coming: And They Are Not Going to Sit Quietly with a Colouring Book\t0\t2026-02-22 00:00:00\t2026-02-22 15:12:26\n60001\tThe Lost Art of the Letter: Why Posting a Story Could Be One of the Best Things You Do for Your Residents\t0\t2026-02-21 23:35:16\t2026-02-21 23:35:16\n",
+  "stderr": "",
+  "execution_time_ms": 56
+}

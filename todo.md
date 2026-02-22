@@ -251,3 +251,8 @@
 
 ## Fix Nested Anchor Tag Error (Feb 22, 2026)
 - [x] Fix nested <a> tag error on blog page
+
+## Fix Blog Display Issues (Feb 22, 2026)
+- [x] Fix welcome post not appearing at top despite being featured
+- [x] Fix recent blog posts showing as "Draft" instead of published date
+- [x] Add missing cover images to recent blog posts

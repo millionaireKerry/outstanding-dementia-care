@@ -99,7 +99,7 @@ export async function getAllBlogPosts(publishedOnly: boolean = true) {
     .select()
     .from(blogPosts)
     .where(conditions)
-    .orderBy(desc(blogPosts.featured), desc(blogPosts.createdAt));
+    .orderBy(desc(blogPosts.featured), desc(blogPosts.publishedAt), desc(blogPosts.createdAt));
   
   return result;
 }
