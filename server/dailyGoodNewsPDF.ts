@@ -3,6 +3,19 @@ import { DailyGoodNewsContent, NewsStory } from './dailyGoodNews';
 import axios from 'axios';
 
 /**
+ * Strip markdown formatting from text
+ */
+function stripMarkdown(text: string): string {
+  return text
+    .replace(/\*\*([^*]+)\*\*/g, '$1') // Remove **bold**
+    .replace(/\*([^*]+)\*/g, '$1')     // Remove *italic*
+    .replace(/__([^_]+)__/g, '$1')     // Remove __bold__
+    .replace(/_([^_]+)_/g, '$1')       // Remove _italic_
+    .replace(/##\s/g, '')              // Remove ## headers
+    .replace(/#\s/g, '');              // Remove # headers
+}
+
+/**
  * Generate a PDF for Daily Good News edition
  * Returns a Buffer containing the PDF data
  */
@@ -137,10 +150,10 @@ export async function generateDailyGoodNewsPDF(
 
       doc.moveDown(1);
 
-      // Display full reminiscence content
+      // Display full reminiscence content (strip markdown)
       doc.fontSize(11)
         .font('Helvetica')
-        .text(content.reminiscenceContent, {
+        .text(stripMarkdown(content.reminiscenceContent), {
           align: 'justify',
           lineGap: 3
         });

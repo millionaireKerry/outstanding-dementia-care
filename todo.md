@@ -283,3 +283,8 @@
 - [x] Upload banner image to S3
 - [x] Integrate banner into PDF header
 - [x] Regenerate example edition with banner
+
+## Remove Markdown Asterisks from Daily Good News PDF (Feb 22, 2026)
+- [x] Update LLM prompts to prevent markdown formatting
+- [x] Add markdown stripping to PDF generation
+- [x] Regenerate example edition without asterisks
