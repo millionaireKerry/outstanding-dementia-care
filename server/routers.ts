@@ -310,6 +310,11 @@ export const appRouter = router({
         await db.incrementDailyGoodNewsDownloadCount(input.id);
         return { success: true };
       }),
+    
+    // Get example edition (public, no auth required)
+    getExample: publicProcedure.query(async () => {
+      return await db.getExampleDailyGoodNewsEdition();
+    }),
   }),
 
   newsletter: router({

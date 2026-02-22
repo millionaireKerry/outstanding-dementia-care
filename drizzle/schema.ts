@@ -139,6 +139,7 @@ export const dailyGoodNewsEditions = mysqlTable("dailyGoodNewsEditions", {
   pdfKey: varchar("pdfKey", { length: 500 }), // S3 key for PDF
   downloadCount: int("downloadCount").default(0).notNull(),
   generatedBy: int("generatedBy"), // User ID who generated it (if manual)
+  isExample: boolean("isExample").default(false).notNull(), // Flag for public example edition
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
 

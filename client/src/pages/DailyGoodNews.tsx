@@ -12,6 +12,7 @@ export default function DailyGoodNews() {
   const [isGenerating, setIsGenerating] = useState(false);
   
   const { data: editions, isLoading, refetch } = trpc.dailyGoodNews.list.useQuery();
+  const { data: exampleEdition } = trpc.dailyGoodNews.getExample.useQuery();
   const generateMutation = trpc.dailyGoodNews.generateToday.useMutation();
   const downloadMutation = trpc.dailyGoodNews.download.useMutation();
 
@@ -67,6 +68,19 @@ export default function DailyGoodNews() {
           <p className="text-center text-xl text-[#2C5F4F]/80 max-w-3xl mx-auto">
             A respectful, dignified newspaper for care home residents. Only uplifting stories, no doom and gloom.
           </p>
+          {exampleEdition && (
+            <div className="flex justify-center mt-6">
+              <Button
+                onClick={() => window.open(exampleEdition.pdfUrl || '', '_blank')}
+                variant="outline"
+                size="lg"
+                className="retro-button bg-[#bc9c2f] hover:bg-[#a88a28] text-white border-charcoal"
+              >
+                <FileText className="mr-2" size={20} />
+                View Example
+              </Button>
+            </div>
+          )}
         </div>
       </div>
 
