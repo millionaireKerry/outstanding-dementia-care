@@ -237,3 +237,14 @@
 - [x] Set welcome blog post as featured in database
 - [x] Update blog query to sort featured posts first
 - [x] Test that welcome post appears at top of blog page
+
+## Add Nine Additional Blog Posts (Feb 22, 2026)
+- [x] Activities Are Not a Tick Box
+- [x] Walk Down Memory Lane (Street View)
+- [x] That's My Spot (Comfort of Familiarity)
+- [x] Mealtimes Dining Experience
+- [x] Daily Good News
+- [x] Dementia Pocket Expert (Product)
+- [x] Care Home Survey Dashboard (Product)
+- [x] Care Documentation Audit (Product)
+- [x] The Listening Pod (Product)
