@@ -29,17 +29,18 @@ export async function generateDailyGoodNewsContent(date: Date): Promise<DailyGoo
 
 Today's date: ${dateStr}
 
-Create 3 heartwarming news stories for today. Each story should be:
+Create 5 heartwarming news stories for today. Each story should be:
 - Uplifting and positive (real or realistic scenarios from the UK)
 - Respectful (not patronising or condescending)
-- 80-120 words
-- Written in clear, accessible British English
+- 150-250 words (substantial enough to be engaging)
+- Written in clear, accessible British English with good detail
 - Use UK spelling (e.g., colour, organise, centre, favour)
 - Use UK terminology ("older people" or "residents", never "seniors")
 - Focus on UK locations, communities, and organisations
-- Topics: community achievements, acts of kindness, scientific breakthroughs, animal stories, environmental wins, cultural celebrations
+- Topics: community achievements, acts of kindness, scientific breakthroughs, animal stories, environmental wins, cultural celebrations, local heroes, heartwarming reunions
+- Include specific details, quotes, and context to make stories feel real and engaging
 
-Make the stories feel current and relevant to today's date with a distinctly British flavour.
+Make the stories feel current and relevant to today's date with a distinctly British flavour. Each story should be rich enough to hold reader interest.
 
 Return your response as JSON with this structure:
 {
@@ -94,14 +95,15 @@ Return your response as JSON with this structure:
   // Generate "On This Day" reminiscence content
   const reminiscencePrompt = `Create an "On This Day" section for ${dateStr}.
 
-Include 2-3 interesting historical events that happened on this date in history, with preference for British history and events relevant to UK readers. Focus on:
+Include 3-4 interesting historical events that happened on this date in history, with preference for British history and events relevant to UK readers. Focus on:
 - Positive, memorable events
 - Cultural milestones
 - Scientific achievements
 - Celebrations
+- Notable births or achievements of British figures
 
 Use British English spelling throughout (e.g., colour, organise, favour).
-Write in a warm, engaging tone. Keep it to 100-150 words total.`;
+Write in a warm, engaging tone with good detail for each event. Keep it to 200-300 words total, giving each event proper context and interest.`;
 
   const reminiscenceResponse = await invokeLLM({
     messages: [
