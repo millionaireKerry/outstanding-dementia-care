@@ -225,3 +225,15 @@
 - [x] Add "The Boomers Are Coming" blog post to database
 - [x] Add "Who Do You Think You Are" (ancestry) blog post to database
 - [x] Add "Wish You Were Here" (virtual travel) blog post to database
+
+## Add Five Additional Blog Posts (Batch 2)
+- [ ] Upload "Watching TV is an Activity" blog cover image to S3
+- [ ] Upload "Step Away From The Pool Noodle" blog cover image to S3
+- [ ] Add "Watching TV is an Activity" blog post to database (meaningful-activities-not-tick-box-blog.md)
+- [ ] Add "Step Away From The Pool Noodle" blog post to database (pool-noodle-right-to-do-nothing-dementia-care-blog.md)
+- [ ] Add "A Walk Down Memory Lane" blog post to database (walk-down-memory-lane-streetview-blog.md)
+
+## Pin Welcome Blog Post (New Request)
+- [x] Set welcome blog post as featured in database
+- [x] Update blog query to sort featured posts first
+- [x] Test that welcome post appears at top of blog page
