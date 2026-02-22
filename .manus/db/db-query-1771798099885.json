@@ -1,0 +1,170 @@
+{
+  "query": "SELECT id, title, slug, featured, published, publishedAt, coverImageUrl, createdAt FROM blogPosts ORDER BY featured DESC, createdAt DESC LIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user y9xXqMvzCrNXPbj.1987515a4b92 --database C4sZdm4AzTGBpMWqRug5mc --execute SELECT id, title, slug, featured, published, publishedAt, coverImageUrl, createdAt FROM blogPosts ORDER BY featured DESC, createdAt DESC LIMIT 20;",
+  "rows": [
+    {
+      "id": "30001",
+      "title": "Who Am I? Tom Kitwood's Theory of Personhood",
+      "slug": "who-am-i-tom-kitwood-theory-of-personhood",
+      "featured": "1",
+      "published": "1",
+      "publishedAt": "2026-02-21 22:25:34",
+      "coverImageUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663195447750/gPaZzWsMFudIcDAx.jpg",
+      "createdAt": "2026-02-21 22:25:34"
+    },
+    {
+      "id": "1",
+      "title": "Welcome to Outstanding Dementia Care",
+      "slug": "welcome-to-outstanding-dementia-care",
+      "featured": "1",
+      "published": "1",
+      "publishedAt": "2026-02-18 18:57:16",
+      "coverImageUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663195447750/klkDzKYliMrVdngJ.png",
+      "createdAt": "2026-02-18 18:57:16"
+    },
+    {
+      "id": "90007",
+      "title": "That's My Spot: Why Familiarity and Routine Are Not Boring—They're Essential",
+      "slug": "comfort-of-familiarity-dementia",
+      "featured": "0",
+      "published": "1",
+      "publishedAt": "NULL",
+      "coverImageUrl": "NULL",
+      "createdAt": "2026-02-22 15:38:32"
+    },
+    {
+      "id": "90005",
+      "title": "Activities Are Not a Tick Box: Why the Schedule Should Come from Your Residents, Not Your Head Office",
+      "slug": "meaningful-activities-not-tick-box",
+      "featured": "0",
+      "published": "1",
+      "publishedAt": "NULL",
+      "coverImageUrl": "NULL",
+      "createdAt": "2026-02-22 15:38:32"
+    },
+    {
+      "id": "90010",
+      "title": "Dementia Pocket Expert: Your On-Demand Resource for Evidence-Based Dementia Care",
+      "slug": "dementia-pocket-expert-app",
+      "featured": "0",
+      "published": "1",
+      "publishedAt": "NULL",
+      "coverImageUrl": "NULL",
+      "createdAt": "2026-02-22 15:38:32"
+    },
+    {
+      "id": "90008",
+      "title": "Mealtimes Are Not Just About Food: Creating a Dining Experience That Respects the Person",
+      "slug": "mealtimes-dining-experience-dementia",
+      "featured": "0",
+      "published": "1",
+      "publishedAt": "NULL",
+      "coverImageUrl": "NULL",
+      "createdAt": "2026-02-22 15:38:32"
+    },
+    {
+      "id": "90013",
+      "title": "The Listening Pod: Capturing Life Stories That Matter",
+      "slug": "listening-pod-life-stories",
+      "featured": "0",
+      "published": "1",
+      "publishedAt": "NULL",
+      "coverImageUrl": "NULL",
+      "createdAt": "2026-02-22 15:38:32"
+    },
+    {
+      "id": "90006",
+      "title": "A Walk Down Memory Lane: Using Google Street View to Reconnect People with Dementia to the Places That Shaped Them",
+      "slug": "walk-down-memory-lane-streetview",
+      "featured": "0",
+      "published": "1",
+      "publishedAt": "NULL",
+      "coverImageUrl": "NULL",
+      "createdAt": "2026-02-22 15:38:32"
+    },
+    {
+      "id": "90009",
+      "title": "The Daily Good News: Why Every Care Home Should Start the Day with Something Positive",
+      "slug": "daily-good-news-dementia-care",
+      "featured": "0",
+      "published": "1",
+      "publishedAt": "NULL",
+      "coverImageUrl": "NULL",
+      "createdAt": "2026-02-22 15:38:32"
+    },
+    {
+      "id": "90011",
+      "title": "Care Home Survey Dashboard: Understanding What Residents, Families, and Staff Really Think",
+      "slug": "care-home-survey-dashboard",
+      "featured": "0",
+      "published": "1",
+      "publishedAt": "NULL",
+      "coverImageUrl": "NULL",
+      "createdAt": "2026-02-22 15:38:32"
+    },
+    {
+      "id": "90012",
+      "title": "Care Documentation Audit: Ensuring Your Care Plans Meet CQC Standards",
+      "slug": "care-documentation-audit-app",
+      "featured": "0",
+      "published": "1",
+      "publishedAt": "NULL",
+      "coverImageUrl": "NULL",
+      "createdAt": "2026-02-22 15:38:32"
+    },
+    {
+      "id": "90002",
+      "title": "The Boomers Are Coming: And They Are Not Going to Sit Quietly with a Colouring Book",
+      "slug": "boomers-are-coming-dementia-care",
+      "featured": "0",
+      "published": "1",
+      "publishedAt": "2026-02-22 00:00:00",
+      "coverImageUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663195447750/dZQoKKGNAXXzTBsj.png",
+      "createdAt": "2026-02-22 15:12:26"
+    },
+    {
+      "id": "90004",
+      "title": "Beyond the Front Door: Why Virtual Travel Belongs in Every Care Home's Activities Programme",
+      "slug": "virtual-travel-dementia-care",
+      "featured": "0",
+      "published": "1",
+      "publishedAt": "2026-02-22 00:00:00",
+      "coverImageUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663195447750/WifmvrnfJUHzMqPT.png",
+      "createdAt": "2026-02-22 15:12:26"
+    },
+    {
+      "id": "90003",
+      "title": "Where Did We Come From? Using Ancestry Research to Deepen Identity and Connection in Dementia Care",
+      "slug": "ancestry-genealogy-dementia-care",
+      "featured": "0",
+      "published": "1",
+      "publishedAt": "2026-02-22 00:00:00",
+      "coverImageUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663195447750/EXlBmbAQtayRwQkO.png",
+      "createdAt": "2026-02-22 15:12:26"
+    },
+    {
+      "id": "90001",
+      "title": "Lights, Camera, Connection: Why Your Care Home Should Be Hosting a Monthly Family Movie Night",
+      "slug": "family-movie-night-care-home",
+      "featured": "0",
+      "published": "1",
+      "publishedAt": "2026-02-22 00:00:00",
+      "coverImageUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663195447750/KsreMdQUVeYcMrWh.png",
+      "createdAt": "2026-02-22 15:12:26"
+    },
+    {
+      "id": "60001",
+      "title": "The Lost Art of the Letter: Why Posting a Story Could Be One of the Best Things You Do for Your Residents",
+      "slug": "lost-art-of-letter-writing",
+      "featured": "0",
+      "published": "1",
+      "publishedAt": "2026-02-21 23:35:16",
+      "coverImageUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663195447750/HbofYAUIhRLPCVmo.png",
+      "createdAt": "2026-02-21 23:35:16"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tslug\tfeatured\tpublished\tpublishedAt\tcoverImageUrl\tcreatedAt\n30001\tWho Am I? Tom Kitwood's Theory of Personhood\twho-am-i-tom-kitwood-theory-of-personhood\t1\t1\t2026-02-21 22:25:34\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663195447750/gPaZzWsMFudIcDAx.jpg\t2026-02-21 22:25:34\n1\tWelcome to Outstanding Dementia Care\twelcome-to-outstanding-dementia-care\t1\t1\t2026-02-18 18:57:16\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663195447750/klkDzKYliMrVdngJ.png\t2026-02-18 18:57:16\n90007\tThat's My Spot: Why Familiarity and Routine Are Not Boring—They're Essential\tcomfort-of-familiarity-dementia\t0\t1\tNULL\tNULL\t2026-02-22 15:38:32\n90005\tActivities Are Not a Tick Box: Why the Schedule Should Come from Your Residents, Not Your Head Office\tmeaningful-activities-not-tick-box\t0\t1\tNULL\tNULL\t2026-02-22 15:38:32\n90010\tDementia Pocket Expert: Your On-Demand Resource for Evidence-Based Dementia Care\tdementia-pocket-expert-app\t0\t1\tNULL\tNULL\t2026-02-22 15:38:32\n90008\tMealtimes Are Not Just About Food: Creating a Dining Experience That Respects the Person\tmealtimes-dining-experience-dementia\t0\t1\tNULL\tNULL\t2026-02-22 15:38:32\n90013\tThe Listening Pod: Capturing Life Stories That Matter\tlistening-pod-life-stories\t0\t1\tNULL\tNULL\t2026-02-22 15:38:32\n90006\tA Walk Down Memory Lane: Using Google Street View to Reconnect People with Dementia to the Places That Shaped Them\twalk-down-memory-lane-streetview\t0\t1\tNULL\tNULL\t2026-02-22 15:38:32\n90009\tThe Daily Good News: Why Every Care Home Should Start the Day with Something Positive\tdaily-good-news-dementia-care\t0\t1\tNULL\tNULL\t2026-02-22 15:38:32\n90011\tCare Home Survey Dashboard: Understanding What Residents, Families, and Staff Really Think\tcare-home-survey-dashboard\t0\t1\tNULL\tNULL\t2026-02-22 15:38:32\n90012\tCare Documentation Audit: Ensuring Your Care Plans Meet CQC Standards\tcare-documentation-audit-app\t0\t1\tNULL\tNULL\t2026-02-22 15:38:32\n90002\tThe Boomers Are Coming: And They Are Not Going to Sit Quietly with a Colouring Book\tboomers-are-coming-dementia-care\t0\t1\t2026-02-22 00:00:00\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663195447750/dZQoKKGNAXXzTBsj.png\t2026-02-22 15:12:26\n90004\tBeyond the Front Door: Why Virtual Travel Belongs in Every Care Home's Activities Programme\tvirtual-travel-dementia-care\t0\t1\t2026-02-22 00:00:00\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663195447750/WifmvrnfJUHzMqPT.png\t2026-02-22 15:12:26\n90003\tWhere Did We Come From? Using Ancestry Research to Deepen Identity and Connection in Dementia Care\tancestry-genealogy-dementia-care\t0\t1\t2026-02-22 00:00:00\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663195447750/EXlBmbAQtayRwQkO.png\t2026-02-22 15:12:26\n90001\tLights, Camera, Connection: Why Your Care Home Should Be Hosting a Monthly Family Movie Night\tfamily-movie-night-care-home\t0\t1\t2026-02-22 00:00:00\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663195447750/KsreMdQUVeYcMrWh.png\t2026-02-22 15:12:26\n60001\tThe Lost Art of the Letter: Why Posting a Story Could Be One of the Best Things You Do for Your Residents\tlost-art-of-letter-writing\t0\t1\t2026-02-21 23:35:16\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663195447750/HbofYAUIhRLPCVmo.png\t2026-02-21 23:35:16\n",
+  "stderr": "",
+  "execution_time_ms": 88
+}
