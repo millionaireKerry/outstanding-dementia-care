@@ -208,3 +208,10 @@
 - [x] Focus news generation on UK news sources and stories
 - [x] Regenerate example edition with UK content
 - [x] Test updated PDF formatting
+
+## Add Open Graph Meta Tags (New Request)
+- [x] Add OG meta tags to index.html for default site sharing
+- [x] Add dynamic OG meta tags to blog post pages (title, description, image)
+- [x] Add OG meta tags for Twitter Cards
+- [ ] Test OG tags with Facebook Sharing Debugger
+- [x] Ensure blog cover images appear when shared on social media

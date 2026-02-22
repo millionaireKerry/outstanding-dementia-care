@@ -4,12 +4,49 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar, Tag, Loader2 } from "lucide-react";
 import { format } from "date-fns";
 import { Streamdown } from "streamdown";
+import { useEffect } from "react";
 
 export default function BlogPost() {
   const [, params] = useRoute("/blog/:slug");
   const slug = params?.slug || "";
 
   const { data: post, isLoading } = trpc.blog.getBySlug.useQuery({ slug });
+
+  // Update meta tags for social sharing
+  useEffect(() => {
+    if (post) {
+      const url = `https://outstandingdementiacare.com/blog/${post.slug}`;
+      const image = post.coverImageUrl || 'https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/logos/outstanding-dementia-care-logo.png';
+      
+      // Update title
+      document.title = `${post.title} | Outstanding Dementia Care`;
+      
+      // Update or create meta tags
+      const updateMetaTag = (property: string, content: string) => {
+        let meta = document.querySelector(`meta[property="${property}"]`);
+        if (!meta) {
+          meta = document.createElement('meta');
+          meta.setAttribute('property', property);
+          document.head.appendChild(meta);
+        }
+        meta.setAttribute('content', content);
+      };
+      
+      // Open Graph tags
+      updateMetaTag('og:type', 'article');
+      updateMetaTag('og:url', url);
+      updateMetaTag('og:title', post.title);
+      updateMetaTag('og:description', post.excerpt || 'Read this article on Outstanding Dementia Care');
+      updateMetaTag('og:image', image);
+      
+      // Twitter tags
+      updateMetaTag('twitter:card', 'summary_large_image');
+      updateMetaTag('twitter:url', url);
+      updateMetaTag('twitter:title', post.title);
+      updateMetaTag('twitter:description', post.excerpt || 'Read this article on Outstanding Dementia Care');
+      updateMetaTag('twitter:image', image);
+    }
+  }, [post]);
 
   if (isLoading) {
     return (
