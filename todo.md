@@ -170,3 +170,9 @@
 ## Connect Custom Domain for AdSense (New Request)
 - [x] Guide user to connect outstandingdementiacare.com domain in Management UI
 - [ ] Verify domain connection for AdSense verification (user action required)
+
+## Integrate Google AdSense (New Request)
+- [x] Add AdSense script to website head
+- [x] Add ad placements on blog pages
+- [x] Add ad placements on homepage
+- [x] Test AdSense integration

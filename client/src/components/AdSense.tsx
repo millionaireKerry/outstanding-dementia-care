@@ -1,6 +1,8 @@
+import { useEffect } from "react";
+
 /**
- * AdSense Placeholder Component
- * Replace with actual AdSense code when ready to monetize
+ * Google AdSense Component
+ * Displays Google AdSense ads throughout the site
  */
 
 type AdSenseProps = {
@@ -9,42 +11,32 @@ type AdSenseProps = {
   className?: string;
 };
 
-export default function AdSense({ slot = "placeholder", format = "auto", className = "" }: AdSenseProps) {
-  // For now, show a placeholder
-  // When ready to use AdSense, replace this with actual Google AdSense code
-  
-  const isDevelopment = import.meta.env.DEV;
-  
-  if (!isDevelopment) {
-    // In production, this is where you'd insert the actual AdSense script
-    // Example:
-    // useEffect(() => {
-    //   try {
-    //     (window.adsbygoogle = window.adsbygoogle || []).push({});
-    //   } catch (err) {
-    //     console.error('AdSense error:', err);
-    //   }
-    // }, []);
-    
-    return (
-      <div className={`adsense-container ${className}`}>
-        <ins
-          className="adsbygoogle"
-          style={{ display: "block" }}
-          data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" // Replace with your AdSense ID
-          data-ad-slot={slot}
-          data-ad-format={format}
-          data-full-width-responsive="true"
-        ></ins>
-      </div>
-    );
+declare global {
+  interface Window {
+    adsbygoogle: any[];
   }
+}
+
+export default function AdSense({ slot = "auto", format = "auto", className = "" }: AdSenseProps) {
+  useEffect(() => {
+    try {
+      // Push ad to AdSense
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (err) {
+      console.error('AdSense error:', err);
+    }
+  }, []);
   
-  // Development placeholder
   return (
-    <div className={`border-2 border-dashed border-muted rounded-lg p-4 text-center bg-muted/10 ${className}`}>
-      <p className="text-xs text-muted-foreground">AdSense Placeholder</p>
-      <p className="text-xs text-muted-foreground/60 mt-1">Slot: {slot}</p>
+    <div className={`adsense-container my-4 ${className}`}>
+      <ins
+        className="adsbygoogle"
+        style={{ display: "block" }}
+        data-ad-client="ca-pub-3819753512414775"
+        data-ad-slot={slot}
+        data-ad-format={format}
+        data-full-width-responsive="true"
+      ></ins>
     </div>
   );
 }
