@@ -215,3 +215,13 @@
 - [x] Add OG meta tags for Twitter Cards
 - [ ] Test OG tags with Facebook Sharing Debugger
 - [x] Ensure blog cover images appear when shared on social media
+
+## Add Four New Blog Posts (New Request)
+- [x] Upload Home Movie Night blog cover image to S3
+- [x] Upload The Boomers Are Coming blog cover image to S3
+- [x] Upload Who Do You Think You Are blog cover image to S3
+- [x] Upload Wish You Were Here blog cover image to S3
+- [x] Add "Home Movie Night" blog post to database
+- [x] Add "The Boomers Are Coming" blog post to database
+- [x] Add "Who Do You Think You Are" (ancestry) blog post to database
+- [x] Add "Wish You Were Here" (virtual travel) blog post to database
