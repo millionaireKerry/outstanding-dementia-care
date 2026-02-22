@@ -188,3 +188,8 @@
 - [x] Add authentication/login for care homes
 - [x] Test PDF generation with real news content
 - [x] Style PDF to look like a newspaper (not patronizing)
+
+## Update Header Colors (New Request)
+- [x] Change header text color to #357372 (teal)
+- [x] Change header shadow/outline to #bc9c2f (gold)
+- [x] Test color changes across all pages
