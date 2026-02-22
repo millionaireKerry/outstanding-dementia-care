@@ -262,3 +262,9 @@
 - [x] Upload "Step Away From The Pool Noodle" blog cover image to S3
 - [x] Add "Different Generations, Same Care" blog post to database
 - [x] Add "Put Down the Pool Noodle" blog post to database
+
+## Blog Category Filter Feature (Feb 22, 2026)
+- [x] Add category filter buttons to blog page
+- [x] Implement category filtering logic
+- [x] Style category filter with active states
+- [x] Test category filtering functionality

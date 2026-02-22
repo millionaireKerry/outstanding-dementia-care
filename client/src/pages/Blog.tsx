@@ -3,20 +3,32 @@ import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search, Calendar, Tag, Loader2 } from "lucide-react";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { format } from "date-fns";
 import AdSense from "@/components/AdSense";
+
+const CATEGORIES = ['All', 'Person-Centred Care', 'Activities & Engagement', 'Products'] as const;
 
 export default function Blog() {
   const [, setLocation] = useLocation();
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const { data: posts, isLoading } = trpc.blog.list.useQuery();
   const { data: searchResults, isLoading: isSearching } = trpc.blog.search.useQuery(
     { query: searchQuery },
     { enabled: searchQuery.length > 0 }
   );
 
-  const displayPosts = searchQuery.length > 0 ? searchResults : posts;
+  // Filter by category and search
+  const displayPosts = useMemo(() => {
+    let filtered = searchQuery.length > 0 ? searchResults : posts;
+    
+    if (selectedCategory !== 'All' && filtered) {
+      filtered = filtered.filter(post => post.category === selectedCategory);
+    }
+    
+    return filtered;
+  }, [posts, searchResults, searchQuery, selectedCategory]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -31,6 +43,25 @@ export default function Blog() {
       </div>
 
       <div className="container py-8">
+
+        {/* Category Filter */}
+        <div className="max-w-4xl mx-auto mb-8">
+          <div className="flex flex-wrap gap-3 justify-center">
+            {CATEGORIES.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-5 py-2 rounded-full text-sm font-semibold transition-all ${
+                  selectedCategory === category
+                    ? 'bg-primary text-primary-foreground shadow-md'
+                    : 'bg-card text-foreground border-2 border-border hover:border-primary hover:bg-accent'
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        </div>
 
         {/* Search Bar */}
         <div className="max-w-2xl mx-auto mb-12">
