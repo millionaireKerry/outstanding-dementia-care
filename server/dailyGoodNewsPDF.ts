@@ -60,56 +60,49 @@ export async function generateDailyGoodNewsPDF(
 
       doc.moveDown(1);
 
-      // News Stories
-      content.stories.forEach((story: NewsStory, index: number) => {
+      // News Stories - limit to first 3 and keep content concise
+      const displayStories = content.stories.slice(0, 3);
+      displayStories.forEach((story: NewsStory, index: number) => {
+        // Check if we're approaching bottom of page, leave room for footer
+        if (doc.y > 650) {
+          return; // Skip remaining stories if running out of space
+        }
+
         if (index > 0) {
-          doc.moveDown(0.8);
+          doc.moveDown(0.6);
         }
 
         // Story title
-        doc.fontSize(16)
+        doc.fontSize(14)
           .font('Helvetica-Bold')
-          .text(story.title);
+          .text(story.title, {
+            continued: false
+          });
 
-        doc.moveDown(0.3);
+        doc.moveDown(0.2);
 
-        // Story content
-        doc.fontSize(11)
+        // Story content - truncate if too long
+        const truncatedContent = story.content.length > 150 
+          ? story.content.substring(0, 147) + '...' 
+          : story.content;
+        
+        doc.fontSize(10)
           .font('Helvetica')
-          .text(story.content, {
+          .text(truncatedContent, {
             align: 'justify',
-            lineGap: 2
+            lineGap: 1
           });
 
         // Source attribution
         if (story.source) {
-          doc.moveDown(0.2);
-          doc.fontSize(9)
+          doc.moveDown(0.1);
+          doc.fontSize(8)
             .font('Helvetica-Oblique')
             .fillColor('#666666')
             .text(`— ${story.source}`, { align: 'right' });
           doc.fillColor('#000000');
         }
       });
-
-      // Add footer to page 1 before moving to page 2
-      const addFooter = (pageNum: number) => {
-        doc.fontSize(9)
-          .font('Helvetica')
-          .fillColor('#666666')
-          .text(
-            `Daily Good News • ${dateStr} • Page ${pageNum} of 2`,
-            50,
-            doc.page.height - 40,
-            {
-              align: 'center',
-              width: doc.page.width - 100
-            }
-          );
-        doc.fillColor('#000000');
-      };
-
-      addFooter(1);
 
       // Page 2: Reminiscence & Quote
       doc.addPage();
@@ -128,11 +121,16 @@ export async function generateDailyGoodNewsPDF(
 
       doc.moveDown(1);
 
-      doc.fontSize(11)
+      // Truncate reminiscence content if too long to fit on one page
+      const truncatedReminiscence = content.reminiscenceContent.length > 400
+        ? content.reminiscenceContent.substring(0, 397) + '...'
+        : content.reminiscenceContent;
+
+      doc.fontSize(10)
         .font('Helvetica')
-        .text(content.reminiscenceContent, {
+        .text(truncatedReminiscence, {
           align: 'justify',
-          lineGap: 3
+          lineGap: 2
         });
 
       doc.moveDown(2);
@@ -157,21 +155,6 @@ export async function generateDailyGoodNewsPDF(
           align: 'center',
           lineGap: 4
         });
-
-      // Add footer to page 2
-      doc.fontSize(9)
-        .font('Helvetica')
-        .fillColor('#666666')
-        .text(
-          `Daily Good News • ${dateStr} • Page 2 of 2`,
-          50,
-          doc.page.height - 40,
-          {
-            align: 'center',
-            width: doc.page.width - 100
-          }
-        );
-      doc.fillColor('#000000');
 
       doc.end();
     } catch (error) {
