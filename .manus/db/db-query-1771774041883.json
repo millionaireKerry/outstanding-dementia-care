@@ -1,0 +1,52 @@
+{
+  "query": "SELECT id, title, slug, featured FROM blogPosts ORDER BY createdAt DESC;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user y9xXqMvzCrNXPbj.1987515a4b92 --database C4sZdm4AzTGBpMWqRug5mc --execute SELECT id, title, slug, featured FROM blogPosts ORDER BY createdAt DESC;",
+  "rows": [
+    {
+      "id": "90001",
+      "title": "Lights, Camera, Connection: Why Your Care Home Should Be Hosting a Monthly Family Movie Night",
+      "slug": "family-movie-night-care-home",
+      "featured": "0"
+    },
+    {
+      "id": "90002",
+      "title": "The Boomers Are Coming: And They Are Not Going to Sit Quietly with a Colouring Book",
+      "slug": "boomers-are-coming-dementia-care",
+      "featured": "0"
+    },
+    {
+      "id": "90003",
+      "title": "Where Did We Come From? Using Ancestry Research to Deepen Identity and Connection in Dementia Care",
+      "slug": "ancestry-genealogy-dementia-care",
+      "featured": "0"
+    },
+    {
+      "id": "90004",
+      "title": "Beyond the Front Door: Why Virtual Travel Belongs in Every Care Home's Activities Programme",
+      "slug": "virtual-travel-dementia-care",
+      "featured": "0"
+    },
+    {
+      "id": "60001",
+      "title": "The Lost Art of the Letter: Why Posting a Story Could Be One of the Best Things You Do for Your Residents",
+      "slug": "lost-art-of-letter-writing",
+      "featured": "0"
+    },
+    {
+      "id": "30001",
+      "title": "Who Am I? Tom Kitwood's Theory of Personhood",
+      "slug": "who-am-i-tom-kitwood-theory-of-personhood",
+      "featured": "1"
+    },
+    {
+      "id": "1",
+      "title": "Welcome to Outstanding Dementia Care",
+      "slug": "welcome-to-outstanding-dementia-care",
+      "featured": "1"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tslug\tfeatured\n90001\tLights, Camera, Connection: Why Your Care Home Should Be Hosting a Monthly Family Movie Night\tfamily-movie-night-care-home\t0\n90002\tThe Boomers Are Coming: And They Are Not Going to Sit Quietly with a Colouring Book\tboomers-are-coming-dementia-care\t0\n90003\tWhere Did We Come From? Using Ancestry Research to Deepen Identity and Connection in Dementia Care\tancestry-genealogy-dementia-care\t0\n90004\tBeyond the Front Door: Why Virtual Travel Belongs in Every Care Home's Activities Programme\tvirtual-travel-dementia-care\t0\n60001\tThe Lost Art of the Letter: Why Posting a Story Could Be One of the Best Things You Do for Your Residents\tlost-art-of-letter-writing\t0\n30001\tWho Am I? Tom Kitwood's Theory of Personhood\twho-am-i-tom-kitwood-theory-of-personhood\t1\n1\tWelcome to Outstanding Dementia Care\twelcome-to-outstanding-dementia-care\t1\n",
+  "stderr": "",
+  "execution_time_ms": 105
+}
