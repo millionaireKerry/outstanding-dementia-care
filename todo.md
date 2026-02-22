@@ -193,3 +193,10 @@
 - [x] Change header text color to #357372 (teal)
 - [x] Change header shadow/outline to #bc9c2f (gold)
 - [x] Test color changes across all pages
+
+## Daily Good News Example Feature (New Request)
+- [x] Generate today's Daily Good News edition
+- [x] Store example edition in database
+- [x] Add public route to view example PDF
+- [x] Add "View Example" button to Daily Good News page
+- [x] Test example viewing without login

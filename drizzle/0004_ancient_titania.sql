@@ -1,0 +1,1 @@
+ALTER TABLE `dailyGoodNewsEditions` ADD `isExample` boolean DEFAULT false NOT NULL;

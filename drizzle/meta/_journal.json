@@ -29,6 +29,13 @@
       "when": 1771760495515,
       "tag": "0003_bent_cloak",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1771762985823,
+      "tag": "0004_ancient_titania",
+      "breakpoints": true
     }
   ]
 }

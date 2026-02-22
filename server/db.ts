@@ -334,6 +334,20 @@ export async function getDailyGoodNewsEditionByDate(date: Date) {
   return result.length > 0 ? result[0] : undefined;
 }
 
+export async function getExampleDailyGoodNewsEdition() {
+  const db = await getDb();
+  if (!db) return undefined;
+  
+  const result = await db
+    .select()
+    .from(dailyGoodNewsEditions)
+    .where(eq(dailyGoodNewsEditions.isExample, true))
+    .orderBy(desc(dailyGoodNewsEditions.editionDate))
+    .limit(1);
+  
+  return result.length > 0 ? result[0] : undefined;
+}
+
 export async function createDailyGoodNewsEdition(edition: InsertDailyGoodNewsEdition) {
   const db = await getDb();
   if (!db) throw new Error("Database not available");
