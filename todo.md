@@ -176,3 +176,15 @@
 - [x] Add ad placements on blog pages
 - [x] Add ad placements on homepage
 - [x] Test AdSense integration
+
+## Daily Good News Feature (New Request)
+- [x] Research Daily Sparkle format and design approach
+- [x] Find good news API sources for positive stories
+- [x] Design database schema for storing generated newspapers
+- [x] Create backend logic to fetch good news stories
+- [x] Add reminiscence story generation/selection
+- [x] Implement PDF generation with newspaper layout
+- [x] Create frontend page for care homes to generate/download PDFs
+- [x] Add authentication/login for care homes
+- [x] Test PDF generation with real news content
+- [x] Style PDF to look like a newspaper (not patronizing)

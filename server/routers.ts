@@ -248,6 +248,70 @@ export const appRouter = router({
       }),
   }),
 
+  dailyGoodNews: router({
+    // Generate today's edition
+    generateToday: protectedProcedure.mutation(async ({ ctx }) => {
+      const { generateDailyGoodNewsContent } = await import('./dailyGoodNews');
+      const { generateDailyGoodNewsPDF } = await import('./dailyGoodNewsPDF');
+      const { storagePut } = await import('./storage');
+      
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      
+      // Check if edition already exists for today
+      const existing = await db.getDailyGoodNewsEditionByDate(today);
+      if (existing) {
+        return { success: true, edition: existing, message: 'Today\'s edition already exists' };
+      }
+      
+      // Generate content
+      const content = await generateDailyGoodNewsContent(today);
+      
+      // Generate PDF
+      const pdfBuffer = await generateDailyGoodNewsPDF(content, today);
+      
+      // Upload to S3
+      const dateStr = today.toISOString().split('T')[0];
+      const fileKey = `daily-good-news/${dateStr}.pdf`;
+      const { url: pdfUrl } = await storagePut(fileKey, pdfBuffer, 'application/pdf');
+      
+      // Save to database
+      await db.createDailyGoodNewsEdition({
+        editionDate: today,
+        headline: content.headline,
+        stories: JSON.stringify(content.stories),
+        reminiscenceContent: content.reminiscenceContent,
+        quote: content.quote,
+        pdfUrl,
+        pdfKey: fileKey,
+        generatedBy: ctx.user.id,
+      });
+      
+      const edition = await db.getDailyGoodNewsEditionByDate(today);
+      return { success: true, edition, message: 'Today\'s edition generated successfully!' };
+    }),
+    
+    // List all editions
+    list: publicProcedure.query(async () => {
+      return await db.getAllDailyGoodNewsEditions();
+    }),
+    
+    // Get edition by date
+    getByDate: publicProcedure
+      .input(z.object({ date: z.date() }))
+      .query(async ({ input }) => {
+        return await db.getDailyGoodNewsEditionByDate(input.date);
+      }),
+    
+    // Download edition (increment counter)
+    download: publicProcedure
+      .input(z.object({ id: z.number() }))
+      .mutation(async ({ input }) => {
+        await db.incrementDailyGoodNewsDownloadCount(input.id);
+        return { success: true };
+      }),
+  }),
+
   newsletter: router({
     subscribe: publicProcedure
       .input(z.object({

@@ -22,6 +22,13 @@
       "when": 1771713241609,
       "tag": "0002_brave_nitro",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1771760495515,
+      "tag": "0003_bent_cloak",
+      "breakpoints": true
     }
   ]
 }

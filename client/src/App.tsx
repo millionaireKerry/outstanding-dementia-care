@@ -14,6 +14,7 @@ import Support from "./pages/Support";
 import Products from "./pages/Products";
 import VoiceAgent from "./pages/VoiceAgent";
 import Admin from "./pages/Admin";
+import DailyGoodNews from "./pages/DailyGoodNews";
 
 function Router() {
   return (
@@ -28,6 +29,7 @@ function Router() {
           <Route path="/support" component={Support} />
           <Route path="/products" component={Products} />
           <Route path="/voice-agent" component={VoiceAgent} />
+          <Route path="/daily-good-news" component={DailyGoodNews} />
           <Route path="/admin" component={Admin} />
           <Route path={"/404"} component={NotFound} />
           {/* Final fallback route */}

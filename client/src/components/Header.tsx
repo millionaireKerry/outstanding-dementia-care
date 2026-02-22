@@ -16,6 +16,7 @@ export default function Header() {
     { name: "Support Groups", href: "/support" },
     { name: "Products", href: "/products" },
     { name: "Voice Assistant", href: "/voice-agent" },
+    { name: "Daily Good News", href: "/daily-good-news" },
   ];
 
   return (
