@@ -288,3 +288,6 @@
 - [x] Update LLM prompts to prevent markdown formatting
 - [x] Add markdown stripping to PDF generation
 - [x] Regenerate example edition without asterisks
+
+## Add Google Analytics (Feb 22, 2026)
+- [x] Add Google Analytics tracking code (G-HSR8VEQMJF) to website
