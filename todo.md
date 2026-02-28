@@ -291,3 +291,6 @@
 
 ## Add Google Analytics (Feb 22, 2026)
 - [x] Add Google Analytics tracking code (G-HSR8VEQMJF) to website
+
+## Create ads.txt File (Feb 28, 2026)
+- [x] Create ads.txt in public directory with AdSense publisher ID
