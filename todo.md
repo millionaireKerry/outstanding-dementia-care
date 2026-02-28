@@ -294,3 +294,6 @@
 
 ## Create ads.txt File (Feb 28, 2026)
 - [x] Create ads.txt in public directory with AdSense publisher ID
+
+## Add AdSense Meta Tag (Feb 28, 2026)
+- [x] Add google-adsense-account meta tag (ca-pub-3819753512414775) to index.html
