@@ -15,6 +15,9 @@ import Products from "./pages/Products";
 import VoiceAgent from "./pages/VoiceAgent";
 import Admin from "./pages/Admin";
 import DailyGoodNews from "./pages/DailyGoodNews";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Terms from "./pages/Terms";
+import CookieBanner from "./components/CookieBanner";
 
 function Router() {
   return (
@@ -31,12 +34,15 @@ function Router() {
           <Route path="/voice-agent" component={VoiceAgent} />
           <Route path="/daily-good-news" component={DailyGoodNews} />
           <Route path="/admin" component={Admin} />
+          <Route path="/privacy-policy" component={PrivacyPolicy} />
+          <Route path="/terms" component={Terms} />
           <Route path={"/404"} component={NotFound} />
           {/* Final fallback route */}
           <Route component={NotFound} />
         </Switch>
       </main>
       <Footer />
+      <CookieBanner />
     </div>
   );
 }

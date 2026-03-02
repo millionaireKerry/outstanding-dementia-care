@@ -104,9 +104,17 @@ export default function Footer() {
             <p className="text-sm text-muted-foreground">
               © {currentYear} Outstanding Dementia Care. All rights reserved.
             </p>
-            <p className="text-xs text-muted-foreground">
-              10 years of experience in dementia care | Masters in Dementia
-            </p>
+            <div className="flex items-center gap-4 text-xs text-muted-foreground">
+              <Link href="/privacy-policy" className="hover:text-primary transition-colors">
+                Privacy Policy
+              </Link>
+              <span>·</span>
+              <Link href="/terms" className="hover:text-primary transition-colors">
+                Terms &amp; Conditions
+              </Link>
+              <span>·</span>
+              <span>10 years in dementia care | Masters in Dementia</span>
+            </div>
           </div>
         </div>
       </div>
