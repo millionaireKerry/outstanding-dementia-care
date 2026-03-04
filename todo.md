@@ -305,3 +305,9 @@
 - [x] Add cookie consent banner with accept/decline options
 - [x] Add footer links to Privacy Policy and Terms pages
 - [x] Register routes for new pages in App.tsx
+
+## The Dementia Experience Training Page (Mar 4, 2026)
+- [x] Create DementiaExperience.tsx page with benefits headline, agenda, pricing, T&Cs
+- [x] Add route /dementia-experience to App.tsx
+- [x] Add navigation link in header/footer
+- [x] Add Book Now button linking to Google Calendar
