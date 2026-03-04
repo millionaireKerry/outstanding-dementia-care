@@ -311,3 +311,7 @@
 - [x] Add route /dementia-experience to App.tsx
 - [x] Add navigation link in header/footer
 - [x] Add Book Now button linking to Google Calendar
+
+## Fix Em Dashes & UK English on Dementia Experience Page (Mar 4, 2026)
+- [x] Remove all em dashes from DementiaExperience.tsx
+- [x] Convert all American English spellings to UK English

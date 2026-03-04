@@ -25,7 +25,7 @@ const benefits = [
     icon: Eye,
     title: "See Through Their Eyes",
     description:
-      "Staff wear specialist simulation glasses that replicate the visual disturbances caused by dementia — blurred peripheral vision, contrast loss, and depth perception changes — so they truly understand what residents experience every day.",
+      "Staff wear specialist simulation glasses that replicate the visual disturbances caused by dementia, including blurred peripheral vision, contrast loss, and depth perception changes, so they truly understand what residents experience every day.",
   },
   {
     icon: Ear,
@@ -37,91 +37,91 @@ const benefits = [
     icon: Hand,
     title: "Feel What They Feel",
     description:
-      "Tactile gloves and mobility restrictors give staff a first-hand experience of the physical challenges of dementia — from struggling with buttons and cutlery to navigating an unfamiliar environment with reduced sensation.",
+      "Tactile gloves and mobility restrictors give staff a first-hand experience of the physical challenges of dementia, from struggling with buttons and cutlery to navigating an unfamiliar environment with reduced sensation.",
   },
   {
     icon: Heart,
     title: "Build Genuine Empathy",
     description:
-      "Research consistently shows that immersive simulation training produces lasting behaviour change in care staff. This is not a lecture — it is a lived experience that transforms the way your team approaches every interaction.",
+      "Research consistently shows that immersive simulation training produces lasting behaviour change in care staff. This is not a lecture; it is a lived experience that transforms the way your team approaches every interaction.",
   },
   {
     icon: MessageCircle,
     title: "Transform Communication",
     description:
-      "Staff learn the Positive Physical Approach — approaching from the front, at eye level, with slower movements — and the critical importance of 'the pause' before reacting, dramatically reducing distress for residents.",
+      "Staff learn the Positive Physical Approach: approaching from the front, at eye level, with slower movements, and the critical importance of 'the pause' before reacting, dramatically reducing distress for residents.",
   },
   {
     icon: Lightbulb,
     title: "Reframe Challenging Behaviour",
     description:
-      "Every 'difficult' behaviour is an expression of an unmet need. Staff leave equipped to decode these expressions — whether pain, hunger, or environmental overstimulation — and respond with compassion rather than frustration.",
+      "Every 'difficult' behaviour is an expression of an unmet need. Staff leave equipped to decode these expressions, whether pain, hunger, or environmental overstimulation, and respond with compassion rather than frustration.",
   },
 ];
 
 const agenda = [
   {
-    time: "09:00 – 09:45",
+    time: "09:00 - 09:45",
     title: "Introduction to Dementia",
     description:
-      "An engaging introduction to the different types of dementia — Alzheimer's, Lewy Body, Vascular, and more. We explore the neurobiology of dementia in accessible terms: what is happening in the brain, how it progresses, and crucially, what this means from the resident's perspective.",
+      "An engaging introduction to the different types of dementia, including Alzheimer's, Lewy Body, Vascular, and more. We explore the neurobiology of dementia in accessible terms: what is happening in the brain, how it progresses, and crucially, what this means from the resident's perspective.",
     color: "bg-primary/10 border-primary",
   },
   {
-    time: "09:45 – 10:45",
+    time: "09:45 - 10:45",
     title: "Life History & Identity",
     description:
-      "A person's identity does not disappear with dementia — it becomes more important than ever. This session explores the power of life history work, how to record it meaningfully, and practical tools including memory boxes and person-centred care planning.",
+      "A person's identity does not disappear with dementia; it becomes more important than ever. This session explores the power of life history work, how to record it meaningfully, and practical tools including memory boxes and person-centred care planning.",
     color: "bg-secondary/30 border-secondary",
   },
   {
-    time: "10:45 – 11:00",
+    time: "10:45 - 11:00",
     title: "Morning Break",
     description: "Refreshments provided.",
     color: "bg-muted/30 border-muted",
     isBreak: true,
   },
   {
-    time: "11:00 – 12:30",
+    time: "11:00 - 12:30",
     title: "The Simulation Experience",
     description:
-      "The heart of the day. Staff rotate through immersive round-robin stations wearing specialist simulation equipment — experiencing visual, auditory, tactile, and mobility challenges whilst attempting everyday tasks. This is where understanding becomes empathy.",
+      "The heart of the day. Staff rotate through immersive round-robin stations wearing specialist simulation equipment, experiencing visual, auditory, tactile, and mobility challenges whilst attempting everyday tasks. This is where understanding becomes empathy.",
     color: "bg-accent/20 border-accent",
     highlight: true,
   },
   {
-    time: "12:30 – 13:30",
+    time: "12:30 - 13:30",
     title: "Lunch Break",
     description: "Time to reflect on the morning's experience.",
     color: "bg-muted/30 border-muted",
     isBreak: true,
   },
   {
-    time: "13:30 – 14:30",
+    time: "13:30 - 14:30",
     title: "Debrief & Communication Skills",
     description:
-      "The most critical component of the day. A facilitated reflection on the feelings of vulnerability experienced during simulation. Staff learn the Positive Physical Approach and the transformative power of 'the pause' — the moment between stimulus and response that can change everything.",
+      "The most critical component of the day. A facilitated reflection on the feelings of vulnerability experienced during simulation. Staff learn the Positive Physical Approach and the transformative power of 'the pause': the moment between stimulus and response that can change everything.",
     color: "bg-primary/10 border-primary",
   },
   {
-    time: "14:30 – 15:30",
+    time: "14:30 - 15:30",
     title: "Behaviours & Problem Solving",
     description:
-      "We reframe 'challenging behaviours' as 'adaptive behaviours' — expressions of unmet needs. Staff learn a practical framework for identifying triggers (pain, hunger, environmental overstimulation) and responding with curiosity rather than correction.",
+      "We reframe 'challenging behaviours' as 'adaptive behaviours', expressions of unmet needs. Staff learn a practical framework for identifying triggers (pain, hunger, environmental overstimulation) and responding with curiosity rather than correction.",
     color: "bg-secondary/30 border-secondary",
   },
   {
-    time: "15:30 – 15:45",
+    time: "15:30 - 15:45",
     title: "Afternoon Break",
     description: "Refreshments provided.",
     color: "bg-muted/30 border-muted",
     isBreak: true,
   },
   {
-    time: "15:45 – 16:15",
+    time: "15:45 - 16:15",
     title: "Action Planning & Daily Living",
     description:
-      "Applying the day's insights to the routines that matter most — bathing, dressing, and dining — guided by the philosophy of 'doing with' rather than 'doing for'. Each participant leaves with a personal action plan to implement immediately.",
+      "Applying the day's insights to the routines that matter most, namely bathing, dressing, and dining, guided by the philosophy of 'doing with' rather than 'doing for'. Each participant leaves with a personal action plan to implement immediately.",
     color: "bg-accent/20 border-accent",
   },
 ];
@@ -159,10 +159,10 @@ export default function DementiaExperience() {
               The Dementia Experience
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground mb-4 italic">
-              "Walk a mile in their shoes — and transform the care you give."
+              "Walk a mile in their shoes, and transform the care you give."
             </p>
             <p className="text-lg text-foreground/80 mb-10 max-w-2xl mx-auto leading-relaxed">
-              A full-day immersive simulation workshop that gives your care team a genuine, visceral understanding of what it feels like to live with dementia — and the practical skills to respond with compassion, confidence, and competence.
+              A full-day immersive simulation workshop that gives your care team a genuine, visceral understanding of what it feels like to live with dementia, and the practical skills to respond with compassion, confidence, and competence.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
@@ -241,7 +241,7 @@ export default function DementiaExperience() {
               Full-Day Agenda
             </h2>
             <p className="text-muted-foreground text-lg">
-              9:00 AM – 4:15 PM &nbsp;|&nbsp; On-site at your care home
+              9:00 AM - 4:15 PM &nbsp;|&nbsp; On-site at your care home
             </p>
           </div>
           <div className="max-w-3xl mx-auto space-y-4">
@@ -295,7 +295,7 @@ export default function DementiaExperience() {
               Investment & Pricing
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Everything your team needs for a transformative day of learning — delivered on-site at your care home.
+              Everything your team needs for a transformative day of learning, delivered on-site at your care home.
             </p>
           </div>
 
@@ -416,7 +416,7 @@ export default function DementiaExperience() {
             Ready to Transform Your Team?
           </h2>
           <p className="text-lg mb-8 opacity-90 max-w-2xl mx-auto">
-            Give your care staff the gift of understanding. Book The Dementia Experience and watch the quality of care in your home change — permanently.
+            Give your care staff the gift of understanding. Book The Dementia Experience and watch the quality of care in your home change, permanently.
           </p>
           <Button
             size="lg"
@@ -424,7 +424,7 @@ export default function DementiaExperience() {
             onClick={() => window.open(BOOKING_URL, "_blank")}
           >
             <CalendarCheck className="mr-2 h-5 w-5" />
-            Book Now — Check Availability
+            Book Now: Check Availability
           </Button>
         </div>
       </section>
