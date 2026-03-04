@@ -59,6 +59,13 @@ export default function Footer() {
                   </a>
                 </Link>
               </li>
+              <li>
+                <Link href="/dementia-experience">
+                  <a className="text-muted-foreground hover:text-primary transition-colors">
+                    Training
+                  </a>
+                </Link>
+              </li>
             </ul>
           </div>
 
