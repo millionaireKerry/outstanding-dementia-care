@@ -315,3 +315,16 @@
 ## Fix Em Dashes & UK English on Dementia Experience Page (Mar 4, 2026)
 - [x] Remove all em dashes from DementiaExperience.tsx
 - [x] Convert all American English spellings to UK English
+
+## Create Meta Ad for Dementia Experience Training (Mar 5, 2026)
+- [x] Generate scroll-stopping Meta ad image (1200x628px)
+- [x] Write optimised Meta ad copy (primary text, headline, description)
+
+## Update Dementia Experience Page Wording (Mar 5, 2026)
+- [x] Fix simulation description: reframe goggles/audio as "perceptual changes + co-existing sensory impairment" not "dementia itself"
+- [x] Soften "lasting behaviour change" claim to "can improve empathy, knowledge and care confidence"
+- [x] Add pre-brief mention to the agenda (10-15 mins before simulation)
+- [x] Update cancellation policy from 24 hours to 14 days notice
+- [x] Add Dementia Training Standards Framework alignment note
+- [x] Add Mental Capacity Act micro-segment to agenda
+- [x] Add travel mileage rate reference (HMRC 45p/mile)

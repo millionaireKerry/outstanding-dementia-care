@@ -25,37 +25,37 @@ const benefits = [
     icon: Eye,
     title: "See Through Their Eyes",
     description:
-      "Staff wear specialist simulation glasses that replicate the visual disturbances caused by dementia, including blurred peripheral vision, contrast loss, and depth perception changes, so they truly understand what residents experience every day.",
+      "Staff wear specialist simulation glasses designed to replicate a blend of the perceptual changes that can occur in dementia, including altered contrast, depth perception, and visual processing, alongside the age-related sensory impairment that many residents experience simultaneously. It is a powerful window into why familiar environments can suddenly feel confusing and threatening.",
   },
   {
     icon: Ear,
     title: "Hear What They Hear",
     description:
-      "Auditory simulation equipment recreates the confusion of competing sounds, muffled speech, and auditory hallucinations. Staff leave with a profound appreciation of why a busy dining room can be overwhelming for someone living with dementia.",
+      "Auditory simulation recreates the confusion of competing sounds, muffled speech, and auditory overload. Dementia can affect how the brain interprets what is heard, and when combined with age-related hearing loss, a busy dining room can become genuinely overwhelming. Staff leave with a real appreciation of why calm, quiet environments matter so much.",
   },
   {
     icon: Hand,
     title: "Feel What They Feel",
     description:
-      "Tactile gloves and mobility restrictors give staff a first-hand experience of the physical challenges of dementia, from struggling with buttons and cutlery to navigating an unfamiliar environment with reduced sensation.",
+      "Tactile gloves and mobility aids give staff a first-hand experience of reduced dexterity and restricted movement, reflecting the physical challenges that frequently accompany dementia and frailty in older age. Struggling with buttons, cutlery, and everyday objects in an unfamiliar way builds empathy that no lecture can replicate.",
   },
   {
     icon: Heart,
     title: "Build Genuine Empathy",
     description:
-      "Research consistently shows that immersive simulation training produces lasting behaviour change in care staff. This is not a lecture; it is a lived experience that transforms the way your team approaches every interaction.",
+      "Research shows that immersive simulation training can meaningfully improve empathy, dementia knowledge, and care confidence in staff. This is not a lecture; it is a lived experience designed to shift perspective and transform the way your team approaches every interaction, supported by expert facilitation and structured debrief.",
   },
   {
     icon: MessageCircle,
     title: "Transform Communication",
     description:
-      "Staff learn the Positive Physical Approach: approaching from the front, at eye level, with slower movements, and the critical importance of 'the pause' before reacting, dramatically reducing distress for residents.",
+      "Staff learn the Positive Physical Approach: approaching from the front, at eye level, with slower movements, and the critical importance of 'the pause' before reacting. Communication works best in calm, well-lit environments, and staff leave understanding exactly why, and how to create those conditions every day.",
   },
   {
     icon: Lightbulb,
-    title: "Reframe Challenging Behaviour",
+    title: "Reframe Behaviour as Communication",
     description:
-      "Every 'difficult' behaviour is an expression of an unmet need. Staff leave equipped to decode these expressions, whether pain, hunger, or environmental overstimulation, and respond with compassion rather than frustration.",
+      "Every 'difficult' behaviour is an expression of an unmet need. Staff leave equipped to decode these expressions, whether pain, hunger, or environmental overstimulation, and respond with compassion rather than frustration. We also explore the Mental Capacity Act principles to ensure care remains person-centred and least restrictive.",
   },
 ];
 
@@ -64,14 +64,14 @@ const agenda = [
     time: "09:00 - 09:45",
     title: "Introduction to Dementia",
     description:
-      "An engaging introduction to the different types of dementia, including Alzheimer's, Lewy Body, Vascular, and more. We explore the neurobiology of dementia in accessible terms: what is happening in the brain, how it progresses, and crucially, what this means from the resident's perspective.",
+      "An engaging introduction to the different types of dementia, including Alzheimer's, Lewy Body, Vascular, and more. We explore the neurobiology of dementia in accessible terms: what is happening in the brain, how it progresses, and crucially, what this means from the resident's perspective. We also address common myths and stigma that can affect the quality of care.",
     color: "bg-primary/10 border-primary",
   },
   {
     time: "09:45 - 10:45",
     title: "Life History & Identity",
     description:
-      "A person's identity does not disappear with dementia; it becomes more important than ever. This session explores the power of life history work, how to record it meaningfully, and practical tools including memory boxes and person-centred care planning.",
+      "A person's identity does not disappear with dementia; it becomes more important than ever. This session explores the power of life history work, how to record it meaningfully, and practical tools including memory boxes and person-centred care planning. We introduce the 'This is Me' profile tool, widely used across UK care settings to support personalised, compassionate care.",
     color: "bg-secondary/30 border-secondary",
   },
   {
@@ -82,10 +82,17 @@ const agenda = [
     isBreak: true,
   },
   {
-    time: "11:00 - 12:30",
+    time: "11:00 - 11:15",
+    title: "Simulation Pre-Brief",
+    description:
+      "Before the simulation begins, we take time to explain clearly what the experience involves and what it does not. The simulation is a learning tool designed to build empathy and awareness; it is not a clinical recreation of any single person's dementia journey. Participants are reminded of the opt-out signal and how facilitators will support them throughout. Psychological safety comes first.",
+    color: "bg-accent/20 border-accent",
+  },
+  {
+    time: "11:15 - 12:30",
     title: "The Simulation Experience",
     description:
-      "The heart of the day. Staff rotate through immersive round-robin stations wearing specialist simulation equipment, experiencing visual, auditory, tactile, and mobility challenges whilst attempting everyday tasks. This is where understanding becomes empathy.",
+      "The heart of the day. Staff rotate through immersive round-robin stations wearing specialist simulation equipment, experiencing perceptual, auditory, tactile, and mobility challenges whilst attempting everyday tasks. The equipment simulates a blend of the brain-based perceptual changes associated with dementia and the sensory impairments that commonly co-exist in older age. This is where understanding becomes empathy.",
     color: "bg-accent/20 border-accent",
     highlight: true,
   },
@@ -100,14 +107,14 @@ const agenda = [
     time: "13:30 - 14:30",
     title: "Debrief & Communication Skills",
     description:
-      "The most critical component of the day. A facilitated reflection on the feelings of vulnerability experienced during simulation. Staff learn the Positive Physical Approach and the transformative power of 'the pause': the moment between stimulus and response that can change everything.",
+      "The most critical component of the day. A facilitated reflection on the feelings of vulnerability, confusion, and frustration experienced during simulation. Staff learn the Positive Physical Approach and the transformative power of 'the pause': the moment between stimulus and response that can change everything. We explore how calm environments, good lighting, and reduced background noise directly support communication.",
     color: "bg-primary/10 border-primary",
   },
   {
     time: "14:30 - 15:30",
-    title: "Behaviours & Problem Solving",
+    title: "Behaviours, Capacity & Person-Centred Care",
     description:
-      "We reframe 'challenging behaviours' as 'adaptive behaviours', expressions of unmet needs. Staff learn a practical framework for identifying triggers (pain, hunger, environmental overstimulation) and responding with curiosity rather than correction.",
+      "We reframe 'challenging behaviours' as 'adaptive behaviours': expressions of unmet needs. Staff learn a practical framework for identifying triggers (pain, hunger, environmental overstimulation) and responding with curiosity rather than correction. We also cover the core principles of the Mental Capacity Act 2005, including presuming capacity, supporting decision-making, and applying the least restrictive approach in everyday care routines.",
     color: "bg-secondary/30 border-secondary",
   },
   {
@@ -121,7 +128,7 @@ const agenda = [
     time: "15:45 - 16:15",
     title: "Action Planning & Daily Living",
     description:
-      "Applying the day's insights to the routines that matter most, namely bathing, dressing, and dining, guided by the philosophy of 'doing with' rather than 'doing for'. Each participant leaves with a personal action plan to implement immediately.",
+      "Applying the day's insights to the routines that matter most, namely bathing, dressing, and dining, guided by the philosophy of 'doing with' rather than 'doing for'. Each participant leaves with a personal action plan to implement immediately. The home manager receives a post-session summary report to support ongoing quality improvement.",
     color: "bg-accent/20 border-accent",
   },
 ];
@@ -132,6 +139,7 @@ const included = [
   "Post-session report for the home manager",
   "Certificate of attendance for each participant",
   "Follow-up resources and reading list",
+  "Mapped to the Dementia Training Standards Framework (2026)",
 ];
 
 export default function DementiaExperience() {
@@ -187,6 +195,15 @@ export default function DementiaExperience() {
               </Button>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* DTSF Alignment Banner */}
+      <section className="py-4 bg-secondary/20 border-b-2 border-border">
+        <div className="container">
+          <p className="text-center text-sm text-muted-foreground">
+            <span className="font-semibold text-foreground">Mapped to the Dementia Training Standards Framework (2026)</span> &nbsp;|&nbsp; Aligned to Tier 2 (direct care roles) and Tier 3 (leaders and specialists) learning outcomes
+          </p>
         </div>
       </section>
 
@@ -384,21 +401,21 @@ export default function DementiaExperience() {
                 <AlertCircle className="h-5 w-5 text-coral shrink-0 mt-0.5" />
                 <div>
                   <p className="font-semibold text-foreground mb-1">Cancellation Policy</p>
-                  <p>A minimum of 24 hours' notice is required for any cancellation or rescheduling. If notice is not given within this period, the full fee will be forfeited. We understand that care homes face unpredictable circumstances and will always endeavour to rearrange where possible with sufficient notice.</p>
+                  <p>We understand that care homes face unpredictable staffing pressures. Our cancellation policy is designed to be fair to both parties. Cancellations made with 14 or more days' notice will receive a full refund or free rescheduling. Cancellations made between 7 and 13 days' notice will be offered one free rescheduling to an alternative date. Cancellations made with less than 7 days' notice will forfeit the full fee, though we will always endeavour to rearrange where circumstances allow.</p>
                 </div>
               </div>
               <div className="flex items-start gap-3 p-4 bg-background rounded-lg border-2 border-border">
                 <AlertCircle className="h-5 w-5 text-muted-foreground shrink-0 mt-0.5" />
                 <div>
                   <p className="font-semibold text-foreground mb-1">Travel Expenses</p>
-                  <p>Travel expenses are charged in addition to the day rate and will be confirmed at the time of booking based on your location. We travel throughout the UK.</p>
+                  <p>Travel expenses are charged in addition to the day rate and will be confirmed at the time of booking based on your location. Mileage is charged at the HMRC approved rate of 45p per mile. We travel throughout the UK.</p>
                 </div>
               </div>
               <div className="flex items-start gap-3 p-4 bg-background rounded-lg border-2 border-border">
                 <AlertCircle className="h-5 w-5 text-muted-foreground shrink-0 mt-0.5" />
                 <div>
                   <p className="font-semibold text-foreground mb-1">Regulatory Note</p>
-                  <p>As an educational training provider, Outstanding Dementia Care does not provide personal care directly to residents and therefore does not require registration with the Care Quality Commission (CQC). Our training is delivered in accordance with current dementia care best practice and evidence-based guidelines.</p>
+                  <p>As an educational training provider, Outstanding Dementia Care does not provide personal care directly to residents and therefore does not require registration with the Care Quality Commission (CQC). Our training is delivered in accordance with current dementia care best practice, the Dementia Training Standards Framework (2026), and evidence-based guidelines.</p>
                 </div>
               </div>
             </div>
