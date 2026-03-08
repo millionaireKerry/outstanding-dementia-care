@@ -328,3 +328,8 @@
 - [x] Add Dementia Training Standards Framework alignment note
 - [x] Add Mental Capacity Act micro-segment to agenda
 - [x] Add travel mileage rate reference (HMRC 45p/mile)
+
+## International Women's Day Blog Post (Mar 8, 2026)
+- [x] Write IWD blog post: Women in Dementia Care
+- [x] Add blog post to database via admin seed/SQL
+- [x] Ensure image placeholder is ready for user to upload
