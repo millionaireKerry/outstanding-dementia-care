@@ -1,0 +1,19 @@
+{
+  "query": "SELECT id, title, slug, category, published, featured, coverImageUrl FROM blogPosts WHERE slug = 'women-in-dementia-care-international-womens-day';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user y9xXqMvzCrNXPbj.1987515a4b92 --database C4sZdm4AzTGBpMWqRug5mc --execute SELECT id, title, slug, category, published, featured, coverImageUrl FROM blogPosts WHERE slug = 'women-in-dementia-care-international-womens-day';",
+  "rows": [
+    {
+      "id": "150001",
+      "title": "The Backbone of Dementia Care: Celebrating Women on International Women's Day",
+      "slug": "women-in-dementia-care-international-womens-day",
+      "category": "Carers & Wellbeing",
+      "published": "1",
+      "featured": "1",
+      "coverImageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/iwd-blog-cover_5879ad4a.png"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tslug\tcategory\tpublished\tfeatured\tcoverImageUrl\n150001\tThe Backbone of Dementia Care: Celebrating Women on International Women's Day\twomen-in-dementia-care-international-womens-day\tCarers & Wellbeing\t1\t1\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/iwd-blog-cover_5879ad4a.png\n",
+  "stderr": "",
+  "execution_time_ms": 343
+}
