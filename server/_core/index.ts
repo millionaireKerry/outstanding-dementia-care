@@ -33,6 +33,16 @@ async function startServer() {
   // Configure body parser with larger size limit for file uploads
   app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
+
+  // Redirect www to non-www (canonical domain)
+  app.use((req, res, next) => {
+    const host = req.headers.host || "";
+    if (host.startsWith("www.")) {
+      const newHost = host.slice(4);
+      return res.redirect(301, `https://${newHost}${req.originalUrl}`);
+    }
+    next();
+  });
   // OAuth callback under /api/oauth/callback
   registerOAuthRoutes(app);
   // tRPC API

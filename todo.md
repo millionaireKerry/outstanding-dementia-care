@@ -333,3 +333,8 @@
 - [x] Write IWD blog post: Women in Dementia Care
 - [x] Add blog post to database via admin seed/SQL
 - [x] Ensure image placeholder is ready for user to upload
+
+## SEO Canonical Fix (Mar 9, 2026)
+- [x] Add canonical link tag to index.html pointing to https://outstandingdementiacare.com
+- [x] Add www-to-non-www redirect in Express server
+- [x] Add dynamic canonical tags per page via React Helmet or equivalent

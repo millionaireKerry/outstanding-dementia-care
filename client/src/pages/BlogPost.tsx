@@ -45,6 +45,22 @@ export default function BlogPost() {
       updateMetaTag('twitter:title', post.title);
       updateMetaTag('twitter:description', post.excerpt || 'Read this article on Outstanding Dementia Care');
       updateMetaTag('twitter:image', image);
+
+      // Canonical tag — tells Google the definitive URL for this page
+      let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+      if (!canonical) {
+        canonical = document.createElement('link');
+        canonical.setAttribute('rel', 'canonical');
+        document.head.appendChild(canonical);
+      }
+      canonical.setAttribute('href', url);
+
+      return () => {
+        // Reset canonical to homepage on unmount
+        const link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+        if (link) link.setAttribute('href', 'https://outstandingdementiacare.com/');
+        document.title = 'Outstanding Dementia Care - Resources for Carers';
+      };
     }
   }, [post]);
 
