@@ -346,3 +346,8 @@
 - [x] Fix Generate Today's Edition button not working
 - [x] Regenerate Feb 22 edition with working PDF (PDF was always fine - browser display issue fixed)
 - [x] Fix "View Example" button not working on Daily Good News page
+
+## Daily Good News - Round 2 Fix (Mar 11, 2026)
+- [x] Make PDF download open to all visitors (no login required)
+- [x] Keep Generate button admin-only, hidden from visitors when no edition exists
+- [x] Fix blank PDF - added server-side PDF proxy route to bypass CloudFront CORS restriction

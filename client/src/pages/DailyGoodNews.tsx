@@ -61,40 +61,33 @@ export default function DailyGoodNews() {
 
   const handleDownload = async (id: number, pdfUrl: string, date: Date) => {
     try {
-      await downloadMutation.mutateAsync({ id });
+      // Track download count (best effort, no login required)
+      downloadMutation.mutate({ id });
       
-      // Force download via fetch to avoid blank-page issue in some browsers
+      // Use server-side proxy to bypass CORS and force file download
       const dateStr = new Date(date).toISOString().split('T')[0];
-      const response = await fetch(pdfUrl);
-      const blob = await response.blob();
-      const url = URL.createObjectURL(blob);
+      const filename = `daily-good-news-${dateStr}.pdf`;
+      const proxyUrl = `/api/pdf-proxy?url=${encodeURIComponent(pdfUrl)}&filename=${encodeURIComponent(filename)}`;
       const a = document.createElement('a');
-      a.href = url;
-      a.download = `daily-good-news-${dateStr}.pdf`;
+      a.href = proxyUrl;
+      a.download = filename;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
-      URL.revokeObjectURL(url);
     } catch (error) {
       console.error('Error downloading edition:', error);
     }
   };
 
   const handleViewExample = (pdfUrl: string) => {
-    // Force download for cross-browser compatibility
-    fetch(pdfUrl)
-      .then(r => r.blob())
-      .then(blob => {
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'daily-good-news-example.pdf';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-      })
-      .catch(() => window.open(pdfUrl, '_blank'));
+    // Use server-side proxy to bypass CORS
+    const proxyUrl = `/api/pdf-proxy?url=${encodeURIComponent(pdfUrl)}&filename=daily-good-news-example.pdf`;
+    const a = document.createElement('a');
+    a.href = proxyUrl;
+    a.download = 'daily-good-news-example.pdf';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   };
 
   const todayEdition = editions?.find(e => {
@@ -134,62 +127,73 @@ export default function DailyGoodNews() {
       </div>
 
       <div className="container py-12">
-        {/* Generate Today's Edition Section */}
+        {/* Generate Today's Edition Section - only show to logged-in admin users */}
+        {(user || todayEdition) && (
         <Card className="mb-12 retro-border">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <FileText size={24} />
-              Generate Today's Edition
+              {todayEdition ? "Today's Edition" : "Generate Today's Edition"}
             </CardTitle>
             <CardDescription>
-              Create a fresh edition of Daily Good News with today's positive stories and reminiscence content.
-              {!user && " Please log in to generate editions."}
+              {todayEdition
+                ? "Today's uplifting newspaper is ready to download for free."
+                : "Create a fresh edition of Daily Good News with today's positive stories and reminiscence content."}
             </CardDescription>
           </CardHeader>
           <CardContent>
             {todayEdition ? (
               <div className="space-y-4">
                 <p className="text-sm text-muted-foreground">
-                  Today's edition has already been generated!
+                  Today's edition is ready — download it for free below!
                 </p>
                 <Button
                   onClick={() => handleDownload(todayEdition.id, todayEdition.pdfUrl!, todayEdition.editionDate)}
                   className="bg-[#2C5F4F] hover:bg-[#234a3e]"
                 >
                   <Download size={18} className="mr-2" />
-                  Download Today's Edition
+                  Download Today's Edition (Free)
                 </Button>
               </div>
             ) : (
               <div className="space-y-3">
-                <Button
-                  onClick={handleGenerate}
-                  disabled={isGenerating || !user}
-                  className="bg-[#2C5F4F] hover:bg-[#234a3e]"
-                >
-                  {isGenerating ? (
-                    <>
-                      <Loader2 size={18} className="mr-2 animate-spin" />
-                      Generating...
-                    </>
-                  ) : (
-                    <>
-                      <Newspaper size={18} className="mr-2" />
-                      Generate Today's Edition
-                    </>
-                  )}
-                </Button>
-                {isGenerating && generatingStep && (
-                  <div className="flex items-center gap-2 text-sm text-[#2C5F4F] font-medium">
-                    <Loader2 size={14} className="animate-spin" />
-                    <span>{generatingStep}</span>
-                    <span className="text-xs text-muted-foreground ml-1">(this takes about 60 seconds)</span>
-                  </div>
+                {user ? (
+                  <>
+                    <Button
+                      onClick={handleGenerate}
+                      disabled={isGenerating}
+                      className="bg-[#2C5F4F] hover:bg-[#234a3e]"
+                    >
+                      {isGenerating ? (
+                        <>
+                          <Loader2 size={18} className="mr-2 animate-spin" />
+                          Generating...
+                        </>
+                      ) : (
+                        <>
+                          <Newspaper size={18} className="mr-2" />
+                          Generate Today's Edition
+                        </>
+                      )}
+                    </Button>
+                    {isGenerating && generatingStep && (
+                      <div className="flex items-center gap-2 text-sm text-[#2C5F4F] font-medium">
+                        <Loader2 size={14} className="animate-spin" />
+                        <span>{generatingStep}</span>
+                        <span className="text-xs text-muted-foreground ml-1">(this takes about 60 seconds)</span>
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <p className="text-sm text-muted-foreground">
+                    Today's edition has not been generated yet. Check back later — a fresh edition is published each day.
+                  </p>
                 )}
               </div>
             )}
           </CardContent>
         </Card>
+        )}
 
         {/* Previous Editions */}
         <div>
