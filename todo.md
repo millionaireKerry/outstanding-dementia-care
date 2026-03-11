@@ -351,3 +351,7 @@
 - [x] Make PDF download open to all visitors (no login required)
 - [x] Keep Generate button admin-only, hidden from visitors when no edition exists
 - [x] Fix blank PDF - added server-side PDF proxy route to bypass CloudFront CORS restriction
+
+## Daily Good News - PDF Generation Fix (Mar 11, 2026)
+- [x] Fix blank/empty PDF being generated and stored in S3 (upgraded to PDF 1.7, added metadata)
+- [x] Regenerate today's edition with working PDF (329KB, 3 pages, verified)

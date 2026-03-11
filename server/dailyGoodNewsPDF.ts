@@ -32,7 +32,16 @@ export async function generateDailyGoodNewsPDF(
           bottom: 50,
           left: 50,
           right: 50
-        }
+        },
+        pdfVersion: '1.7',
+        info: {
+          Title: 'Daily Good News',
+          Author: 'Outstanding Dementia Care',
+          Subject: 'Uplifting daily newspaper for care home residents',
+          Creator: 'Outstanding Dementia Care',
+          Producer: 'Outstanding Dementia Care'
+        },
+        compress: false
       });
 
       const chunks: Buffer[] = [];
