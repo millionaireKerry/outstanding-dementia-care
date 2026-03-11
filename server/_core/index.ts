@@ -45,6 +45,31 @@ async function startServer() {
   });
   // OAuth callback under /api/oauth/callback
   registerOAuthRoutes(app);
+
+  // PDF proxy route - bypasses CORS on CloudFront, forces file download
+  app.get('/api/pdf-proxy', async (req, res) => {
+    const url = req.query.url as string;
+    const filename = (req.query.filename as string) || 'daily-good-news.pdf';
+    if (!url || !url.startsWith('https://')) {
+      return res.status(400).json({ error: 'Invalid URL' });
+    }
+    try {
+      const https = await import('https');
+      const http = await import('http');
+      const client = url.startsWith('https://') ? https : http;
+      const proxyReq = (client as any).get(url, (proxyRes: any) => {
+        res.setHeader('Content-Type', 'application/pdf');
+        res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
+        if (proxyRes.headers['content-length']) {
+          res.setHeader('Content-Length', proxyRes.headers['content-length']);
+        }
+        proxyRes.pipe(res);
+      });
+      proxyReq.on('error', () => res.status(500).json({ error: 'Failed to fetch PDF' }));
+    } catch {
+      res.status(500).json({ error: 'Proxy error' });
+    }
+  });
   // tRPC API
   app.use(
     "/api/trpc",
