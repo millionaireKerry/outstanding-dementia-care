@@ -32,39 +32,19 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/blog">
-                  <a className="text-muted-foreground hover:text-primary transition-colors">
-                    Blog
-                  </a>
-                </Link>
+                <Link href="/blog" className="text-muted-foreground hover:text-primary transition-colors">Blog</Link>
               </li>
               <li>
-                <Link href="/ebooks">
-                  <a className="text-muted-foreground hover:text-primary transition-colors">
-                    Free Ebooks
-                  </a>
-                </Link>
+                <Link href="/ebooks" className="text-muted-foreground hover:text-primary transition-colors">Free Ebooks</Link>
               </li>
               <li>
-                <Link href="/support">
-                  <a className="text-muted-foreground hover:text-primary transition-colors">
-                    Support Groups
-                  </a>
-                </Link>
+                <Link href="/support" className="text-muted-foreground hover:text-primary transition-colors">Support Groups</Link>
               </li>
               <li>
-                <Link href="/voice-agent">
-                  <a className="text-muted-foreground hover:text-primary transition-colors">
-                    Voice Assistant
-                  </a>
-                </Link>
+                <Link href="/voice-agent" className="text-muted-foreground hover:text-primary transition-colors">Voice Assistant</Link>
               </li>
               <li>
-                <Link href="/dementia-experience">
-                  <a className="text-muted-foreground hover:text-primary transition-colors">
-                    Training
-                  </a>
-                </Link>
+                <Link href="/dementia-experience" className="text-muted-foreground hover:text-primary transition-colors">Training</Link>
               </li>
             </ul>
           </div>
@@ -76,25 +56,13 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/products#listening-pod">
-                  <a className="text-muted-foreground hover:text-primary transition-colors">
-                    Listening Pod
-                  </a>
-                </Link>
+                <Link href="/products#listening-pod" className="text-muted-foreground hover:text-primary transition-colors">Listening Pod</Link>
               </li>
               <li>
-                <Link href="/products#care-audit">
-                  <a className="text-muted-foreground hover:text-primary transition-colors">
-                    Care Documentation Audit
-                  </a>
-                </Link>
+                <Link href="/products#care-audit" className="text-muted-foreground hover:text-primary transition-colors">Care Documentation Audit</Link>
               </li>
               <li>
-                <Link href="/products#surveys">
-                  <a className="text-muted-foreground hover:text-primary transition-colors">
-                    Care Home Surveys
-                  </a>
-                </Link>
+                <Link href="/products#surveys" className="text-muted-foreground hover:text-primary transition-colors">Care Home Surveys</Link>
               </li>
             </ul>
           </div>

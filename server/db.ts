@@ -1,4 +1,4 @@
-import { eq, desc, like, or, and } from "drizzle-orm";
+import { eq, desc, like, or, and, gte, lt } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import { InsertUser, users, blogPosts, InsertBlogPost, ebooks, InsertEbook, supportGroups, InsertSupportGroup, newsletterSubscribers, InsertNewsletterSubscriber, dailyGoodNewsEditions, InsertDailyGoodNewsEdition } from "../drizzle/schema";
 import { ENV } from './_core/env';
@@ -321,14 +321,16 @@ export async function getDailyGoodNewsEditionByDate(date: Date) {
   const db = await getDb();
   if (!db) return undefined;
   
-  // Normalize to start of day
+  // Use date-range comparison to avoid exact timestamp mismatch
   const startOfDay = new Date(date);
   startOfDay.setHours(0, 0, 0, 0);
+  const endOfDay = new Date(date);
+  endOfDay.setHours(23, 59, 59, 999);
   
   const result = await db
     .select()
     .from(dailyGoodNewsEditions)
-    .where(eq(dailyGoodNewsEditions.editionDate, startOfDay))
+    .where(and(gte(dailyGoodNewsEditions.editionDate, startOfDay), lt(dailyGoodNewsEditions.editionDate, endOfDay)))
     .limit(1);
   
   return result.length > 0 ? result[0] : undefined;

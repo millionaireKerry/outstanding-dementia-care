@@ -10,6 +10,7 @@ import { getLoginUrl } from "@/const";
 export default function DailyGoodNews() {
   const { user } = useAuth();
   const [isGenerating, setIsGenerating] = useState(false);
+  const [generatingStep, setGeneratingStep] = useState('');
   
   const { data: editions, isLoading, refetch } = trpc.dailyGoodNews.list.useQuery();
   const { data: exampleEdition } = trpc.dailyGoodNews.getExample.useQuery();
@@ -23,14 +24,35 @@ export default function DailyGoodNews() {
     }
 
     setIsGenerating(true);
+    setGeneratingStep('Gathering today\'s uplifting stories...');
+    
+    // Cycle through progress messages while waiting
+    const steps = [
+      'Gathering today\'s uplifting stories...',
+      'Writing heartwarming content...',
+      'Adding reminiscence memories...',
+      'Selecting an inspiring quote...',
+      'Designing the newspaper layout...',
+      'Almost ready — creating your PDF...'
+    ];
+    let stepIdx = 0;
+    const stepTimer = setInterval(() => {
+      stepIdx = (stepIdx + 1) % steps.length;
+      setGeneratingStep(steps[stepIdx]);
+    }, 8000);
+    
     try {
       const result = await generateMutation.mutateAsync();
+      clearInterval(stepTimer);
       if (result.success) {
+        setGeneratingStep('Edition ready!');
         await refetch();
-        alert(result.message);
+        setTimeout(() => setGeneratingStep(''), 2000);
       }
     } catch (error) {
+      clearInterval(stepTimer);
       console.error('Error generating edition:', error);
+      setGeneratingStep('');
       alert('Failed to generate today\'s edition. Please try again.');
     } finally {
       setIsGenerating(false);
@@ -41,11 +63,38 @@ export default function DailyGoodNews() {
     try {
       await downloadMutation.mutateAsync({ id });
       
-      // Open PDF in new tab
-      window.open(pdfUrl, '_blank');
+      // Force download via fetch to avoid blank-page issue in some browsers
+      const dateStr = new Date(date).toISOString().split('T')[0];
+      const response = await fetch(pdfUrl);
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `daily-good-news-${dateStr}.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
     } catch (error) {
       console.error('Error downloading edition:', error);
     }
+  };
+
+  const handleViewExample = (pdfUrl: string) => {
+    // Force download for cross-browser compatibility
+    fetch(pdfUrl)
+      .then(r => r.blob())
+      .then(blob => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'daily-good-news-example.pdf';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      })
+      .catch(() => window.open(pdfUrl, '_blank'));
   };
 
   const todayEdition = editions?.find(e => {
@@ -71,7 +120,7 @@ export default function DailyGoodNews() {
           {exampleEdition && (
             <div className="flex justify-center mt-6">
               <Button
-                onClick={() => window.open(exampleEdition.pdfUrl || '', '_blank')}
+                onClick={() => handleViewExample(exampleEdition.pdfUrl || '')}
                 variant="outline"
                 size="lg"
                 className="retro-button bg-[#bc9c2f] hover:bg-[#a88a28] text-white border-charcoal"
@@ -112,23 +161,32 @@ export default function DailyGoodNews() {
                 </Button>
               </div>
             ) : (
-              <Button
-                onClick={handleGenerate}
-                disabled={isGenerating || !user}
-                className="bg-[#2C5F4F] hover:bg-[#234a3e]"
-              >
-                {isGenerating ? (
-                  <>
-                    <Loader2 size={18} className="mr-2 animate-spin" />
-                    Generating...
-                  </>
-                ) : (
-                  <>
-                    <Newspaper size={18} className="mr-2" />
-                    Generate Today's Edition
-                  </>
+              <div className="space-y-3">
+                <Button
+                  onClick={handleGenerate}
+                  disabled={isGenerating || !user}
+                  className="bg-[#2C5F4F] hover:bg-[#234a3e]"
+                >
+                  {isGenerating ? (
+                    <>
+                      <Loader2 size={18} className="mr-2 animate-spin" />
+                      Generating...
+                    </>
+                  ) : (
+                    <>
+                      <Newspaper size={18} className="mr-2" />
+                      Generate Today's Edition
+                    </>
+                  )}
+                </Button>
+                {isGenerating && generatingStep && (
+                  <div className="flex items-center gap-2 text-sm text-[#2C5F4F] font-medium">
+                    <Loader2 size={14} className="animate-spin" />
+                    <span>{generatingStep}</span>
+                    <span className="text-xs text-muted-foreground ml-1">(this takes about 60 seconds)</span>
+                  </div>
                 )}
-              </Button>
+              </div>
             )}
           </CardContent>
         </Card>
