@@ -338,3 +338,11 @@
 - [x] Add canonical link tag to index.html pointing to https://outstandingdementiacare.com
 - [x] Add www-to-non-www redirect in Express server
 - [x] Add dynamic canonical tags per page via React Helmet or equivalent
+
+## Daily Good News Bug Fix (Mar 11, 2026)
+- [x] Investigate why "Generate Today's Edition" button is not working
+- [x] Fix the generation issue - date comparison bug + server timeout + progress UI
+- [x] Fix blank PDF on download (Feb 22 edition)
+- [x] Fix Generate Today's Edition button not working
+- [x] Regenerate Feb 22 edition with working PDF (PDF was always fine - browser display issue fixed)
+- [x] Fix "View Example" button not working on Daily Good News page

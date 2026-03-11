@@ -67,6 +67,11 @@ async function startServer() {
     console.log(`Port ${preferredPort} is busy, using port ${port} instead`);
   }
 
+  // Increase timeout to 5 minutes for long-running LLM generation requests
+  server.timeout = 300000;
+  server.keepAliveTimeout = 305000;
+  server.headersTimeout = 310000;
+
   server.listen(port, () => {
     console.log(`Server running on http://localhost:${port}/`);
   });
