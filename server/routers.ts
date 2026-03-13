@@ -7,6 +7,8 @@ import { TRPCError } from "@trpc/server";
 import * as db from "./db";
 import { voiceRouter } from "./voiceRouter";
 import { uploadRouter } from "./uploadRouter";
+import { createCheckoutSession } from "./stripeWebhook";
+import { PRODUCTS, type ProductKey } from "./products";
 
 // Admin-only procedure
 const adminProcedure = protectedProcedure.use(({ ctx, next }) => {
@@ -362,6 +364,31 @@ export const appRouter = router({
       return await db.getAllNewsletterSubscribers(false);
     }),
   }),
-});
 
+  payments: router({
+    createCheckout: publicProcedure
+      .input(z.object({
+        productKey: z.enum(["familyWorkshop", "dementiaExperience", "excellenceProgramme"]),
+        origin: z.string().url(),
+      }))
+      .mutation(async ({ input, ctx }) => {
+        const product = PRODUCTS[input.productKey as ProductKey];
+        if (!product) {
+          throw new TRPCError({ code: "NOT_FOUND", message: "Product not found" });
+        }
+        const session = await createCheckoutSession({
+          productKey: input.productKey,
+          productName: product.name,
+          amount: product.amount,
+          currency: product.currency,
+          customerEmail: ctx.user?.email ?? undefined,
+          userId: ctx.user?.id?.toString(),
+          origin: input.origin,
+          successPath: input.productKey === "familyWorkshop" ? "/family-workshop?booked=true" : "/dementia-experience?booked=true",
+          cancelPath: input.productKey === "familyWorkshop" ? "/family-workshop" : "/dementia-experience",
+        });
+        return session;
+      }),
+  }),
+});
 export type AppRouter = typeof appRouter;

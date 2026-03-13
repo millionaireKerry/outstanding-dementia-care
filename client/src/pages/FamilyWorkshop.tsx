@@ -12,12 +12,43 @@ import {
   MessageCircle,
   BookOpen,
   Shield,
+  Loader2,
 } from "lucide-react";
+import { trpc } from "@/lib/trpc";
+import { toast } from "sonner";
+import { useEffect } from "react";
+import { useLocation } from "wouter";
 
 export default function FamilyWorkshop() {
+  const [location] = useLocation();
+  const checkoutMutation = trpc.payments.createCheckout.useMutation({
+    onSuccess: (data) => {
+      window.open(data.url, "_blank");
+    },
+    onError: (error) => {
+      toast.error("Booking unavailable", {
+        description: error.message || "Please try again shortly.",
+      });
+    },
+  });
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("booked") === "true") {
+      toast.success("Booking confirmed!", {
+        description: "Thank you for booking. Check your email for your Zoom link.",
+      });
+    }
+    if (params.get("cancelled") === "true") {
+      toast.error("Booking cancelled", {
+        description: "No payment was taken. You can book again anytime.",
+      });
+    }
+  }, [location]);
+
   const handleBook = () => {
-    // Payment link to be added by site owner
-    window.open("https://outstandingdementiacare.com", "_blank");
+    toast.info("Redirecting to secure checkout...", { description: "Opening Stripe payment page." });
+    checkoutMutation.mutate({ productKey: "familyWorkshop", origin: window.location.origin });
   };
 
   const topics = [
@@ -206,14 +237,18 @@ export default function FamilyWorkshop() {
                 </p>
                 <Button
                   onClick={handleBook}
+                  disabled={checkoutMutation.isPending}
                   className="w-full font-bold text-base"
                   style={{ backgroundColor: "#bc9c2f", color: "#fff" }}
                 >
-                  <Calendar className="mr-2" size={18} />
-                  Book Now
+                  {checkoutMutation.isPending ? (
+                    <><Loader2 className="mr-2 animate-spin" size={18} />Processing...</>
+                  ) : (
+                    <><Calendar className="mr-2" size={18} />Book Now — Secure Payment</>
+                  )}
                 </Button>
                 <p className="text-[#E8DCC4]/60 text-xs mt-3">
-                  Payment link coming soon — register your interest below
+                  Powered by Stripe · Secure checkout
                 </p>
               </CardContent>
             </Card>
