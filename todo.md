@@ -393,3 +393,9 @@
 - [ ] Add Consultancy page to website (3-Month Excellence Programme)
 - [ ] Add newsletter email capture with Mailchimp integration
 - [ ] Push code to GitHub (outstanding-dementia-care repo)
+
+## Replace Logo (Mar 13, 2026)
+- [x] Upload new Outstanding Dementia Care logo to CDN (Kerry's updated design with carer and older person)
+- [x] Update Header.tsx to use new logo URL
+- [x] Test logo displays correctly across all pages
+- [x] Save checkpoint with new logo

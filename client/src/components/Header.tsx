@@ -30,7 +30,7 @@ export default function Header() {
             <div className="flex items-center gap-3 cursor-pointer group">
               <div className="w-12 h-12 rounded-full overflow-hidden retro-border">
                 <img 
-                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663195447750/ecapYscKcjYtJDOg.png" 
+                  src="https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/outstanding-dementia-care-logo_c1c886f3.png" 
                   alt="Outstanding Dementia Care Logo" 
                   className="w-full h-full object-cover"
                 />
