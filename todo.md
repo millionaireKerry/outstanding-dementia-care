@@ -376,3 +376,20 @@
 - [x] Scrape CQC ratings for first 100 homes
 - [x] Build colour-coded Excel spreadsheet with all data
 - [x] Deliver spreadsheet to user
+
+## Business Launch Features (Mar 13, 2026)
+- [x] Create professional training brochure PDF (The Dementia Experience, 2-page, teal/gold design)
+- [x] Create family workshop lead magnet ebook PDF (Understanding Dementia: A Practical Guide for Families, 7 pages)
+- [x] Upload both PDFs to CDN
+- [x] Install stripe and @stripe/stripe-js packages
+- [x] Create server/products.ts with product definitions (£25 workshop, £650 training day, £1,750 programme)
+- [x] Create server/stripeWebhook.ts with webhook handler and createCheckoutSession helper
+- [x] Register Stripe webhook in server index BEFORE express.json()
+- [x] Add payments.createCheckout tRPC procedure to routers.ts
+- [x] Update FamilyWorkshop.tsx with live Stripe checkout button and loading state
+- [x] Seed family ebook into database (Understanding Dementia guide)
+- [x] Create 30-day ADHD-friendly business launch plan (PDF + Markdown)
+- [ ] Claim Stripe sandbox (Kerry action required - deadline 12 May 2026)
+- [ ] Add Consultancy page to website (3-Month Excellence Programme)
+- [ ] Add newsletter email capture with Mailchimp integration
+- [ ] Push code to GitHub (outstanding-dementia-care repo)
