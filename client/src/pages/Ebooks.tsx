@@ -1,13 +1,21 @@
-import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
-import { Download, BookOpen, Loader2, FileText } from "lucide-react";
+import { Download, BookOpen, Loader2, FileText, X } from "lucide-react";
 import { useState } from "react";
+import { Input } from "@/components/ui/input";
+import { toast } from "sonner";
+import { Link } from "wouter";
 
 export default function Ebooks() {
   const { data: ebooks, isLoading } = trpc.ebook.list.useQuery();
   const incrementDownload = trpc.ebook.incrementDownload.useMutation();
+  const downloadWithEmail = trpc.ebook.downloadWithEmail.useMutation();
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [showEmailModal, setShowEmailModal] = useState(false);
+  const [pendingDownload, setPendingDownload] = useState<{ ebookId: number; fileUrl: string; title: string } | null>(null);
+  const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
   const categories = ebooks
     ? ["all", ...Array.from(new Set(ebooks.map(e => e.category).filter((c): c is string => Boolean(c))))]
@@ -17,14 +25,38 @@ export default function Ebooks() {
     ? ebooks
     : ebooks?.filter(e => e.category === selectedCategory);
 
-  const handleDownload = async (ebookId: number, fileUrl: string, title: string) => {
+  const handleDownloadClick = (ebookId: number, fileUrl: string, title: string) => {
+    setPendingDownload({ ebookId, fileUrl, title });
+    setShowEmailModal(true);
+  };
+
+  const handleEmailSubmit = async () => {
+    if (!email || !pendingDownload) return;
+
     try {
-      await incrementDownload.mutateAsync({ id: ebookId });
+      // Send email to HighLevel
+      await downloadWithEmail.mutateAsync({
+        ebookId: pendingDownload.ebookId.toString(),
+        email,
+        firstName: firstName || undefined,
+        lastName: lastName || undefined,
+      });
+
+      // Increment download count
+      await incrementDownload.mutateAsync({ id: pendingDownload.ebookId });
+
+      // Open PDF
+      window.open(pendingDownload.fileUrl, '_blank');
       
-      // Open PDF in new tab
-      window.open(fileUrl, '_blank');
+      toast.success("Download started! Check your email for more resources.");
+      setShowEmailModal(false);
+      setEmail("");
+      setFirstName("");
+      setLastName("");
+      setPendingDownload(null);
     } catch (error) {
       console.error('Download error:', error);
+      toast.error("Download failed. Please try again.");
     }
   };
 
@@ -124,9 +156,9 @@ export default function Ebooks() {
 
                     {/* Download Button */}
                     <Button
-                      onClick={() => handleDownload(ebook.id, ebook.fileUrl, ebook.title)}
+                      onClick={() => handleDownloadClick(ebook.id, ebook.fileUrl, ebook.title)}
                       className="retro-button bg-accent text-accent-foreground hover:bg-accent/90 w-full"
-                      disabled={incrementDownload.isPending}
+                      disabled={downloadWithEmail.isPending}
                     >
                       <Download className="mr-2" size={16} />
                       Download PDF
@@ -161,6 +193,68 @@ export default function Ebooks() {
             </Button>
           </Link>
         </div>
+
+        {/* Email Capture Modal */}
+        {showEmailModal && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+            <div className="bg-card rounded-lg shadow-xl max-w-md w-full p-6 retro-card">
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-2xl font-bold text-foreground" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  Get Your Ebook
+                </h2>
+                <button
+                  onClick={() => setShowEmailModal(false)}
+                  className="text-muted-foreground hover:text-foreground"
+                >
+                  <X size={24} />
+                </button>
+              </div>
+              <p className="text-muted-foreground mb-6">
+                Enter your details to download and receive related resources via email.
+              </p>
+              <div className="space-y-4">
+                <Input
+                  type="email"
+                  placeholder="Email address *"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="retro-input"
+                  required
+                />
+                <Input
+                  type="text"
+                  placeholder="First name (optional)"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  className="retro-input"
+                />
+                <Input
+                  type="text"
+                  placeholder="Last name (optional)"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                  className="retro-input"
+                />
+                <div className="flex gap-3 pt-4">
+                  <Button
+                    onClick={() => setShowEmailModal(false)}
+                    variant="outline"
+                    className="flex-1"
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    onClick={handleEmailSubmit}
+                    disabled={!email || downloadWithEmail.isPending}
+                    className="flex-1 retro-button bg-primary text-primary-foreground"
+                  >
+                    {downloadWithEmail.isPending ? "Processing..." : "Download"}
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -404,3 +404,13 @@
 - [x] Upload final Outstanding Dementia Care logo to CDN (diverse children holding Earth - global dementia care)
 - [x] Update Header.tsx to use final logo URL
 - [x] Save checkpoint with final logo
+
+
+## HighLevel CRM Integration (Mar 13, 2026)
+- [x] Add HighLevel API credentials to environment variables
+- [x] Create HighLevel service (server/highlevel.ts) with contact creation function
+- [x] Add downloadWithEmail procedure to ebook router
+- [x] Update Ebooks page with email capture modal
+- [x] Test TypeScript compilation and types
+- [x] Verify HighLevel contact creation works end-to-end
+- [x] Save checkpoint with HighLevel integration

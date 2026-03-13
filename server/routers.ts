@@ -9,6 +9,7 @@ import { voiceRouter } from "./voiceRouter";
 import { uploadRouter } from "./uploadRouter";
 import { createCheckoutSession } from "./stripeWebhook";
 import { PRODUCTS, type ProductKey } from "./products";
+import { createHighLevelContact } from "./highlevel";
 
 // Admin-only procedure
 const adminProcedure = protectedProcedure.use(({ ctx, next }) => {
@@ -188,6 +189,34 @@ export const appRouter = router({
       .mutation(async ({ input }) => {
         await db.incrementEbookDownload(input.id);
         return { success: true };
+      }),
+    downloadWithEmail: publicProcedure
+      .input(z.object({
+        ebookId: z.string(),
+        email: z.string().email(),
+        firstName: z.string().optional(),
+        lastName: z.string().optional(),
+      }))
+      .mutation(async ({ input }) => {
+        try {
+          const contact = await createHighLevelContact({
+            email: input.email,
+            firstName: input.firstName,
+            lastName: input.lastName,
+            source: "Website - Ebook Download",
+            tags: ["ebook-download", `ebook-${input.ebookId}`],
+          });
+
+          if (!contact) {
+            console.warn("[Ebook] Failed to create HighLevel contact");
+            return { success: true, message: "Ebook download initiated" };
+          }
+
+          return { success: true, message: "Contact added to CRM" };
+        } catch (error) {
+          console.error("[Ebook] Error:", error);
+          return { success: true, message: "Ebook download initiated" };
+        }
       }),
   }),
 
