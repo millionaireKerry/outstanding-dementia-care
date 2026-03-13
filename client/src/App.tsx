@@ -18,6 +18,7 @@ import DailyGoodNews from "./pages/DailyGoodNews";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import DementiaExperience from "./pages/DementiaExperience";
 import Terms from "./pages/Terms";
+import FamilyWorkshop from "./pages/FamilyWorkshop";
 import CookieBanner from "./components/CookieBanner";
 
 function Router() {
@@ -38,6 +39,7 @@ function Router() {
           <Route path="/dementia-experience" component={DementiaExperience} />
           <Route path="/privacy-policy" component={PrivacyPolicy} />
           <Route path="/terms" component={Terms} />
+          <Route path="/family-workshop" component={FamilyWorkshop} />
           <Route path={"/404"} component={NotFound} />
           {/* Final fallback route */}
           <Route component={NotFound} />
