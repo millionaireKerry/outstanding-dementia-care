@@ -355,3 +355,24 @@
 ## Daily Good News - PDF Generation Fix (Mar 11, 2026)
 - [x] Fix blank/empty PDF being generated and stored in S3 (upgraded to PDF 1.7, added metadata)
 - [x] Regenerate today's edition with working PDF (329KB, 3 pages, verified)
+
+## Family Dementia Workshop Page (Mar 13, 2026)
+- [x] Create FamilyWorkshop.tsx page with 90-min Zoom call details, pricing (£25), and payment link placeholder
+- [x] Add route /family-workshop to App.tsx
+- [x] Add "Family Workshop" link to navigation
+- [ ] Care homes research: 30-mile radius of Gravesend, Kent - name, address, email, CQC rating, phone
+- [ ] Compile care home data into downloadable Excel/CSV spreadsheet
+
+## Family Dementia Workshop Page (Mar 13, 2026)
+- [x] Create FamilyWorkshop.tsx page with 90-min Zoom call details, pricing (£25), and payment link placeholder
+- [x] Add route /family-workshop to App.tsx
+- [x] Add "Family Workshop" link to navigation
+
+## Care Home Research Spreadsheet (Mar 13, 2026)
+- [x] Download CQC directory (March 2026) - 56,000+ locations
+- [x] Filter to care homes in postcodes within 30 miles of Gravesend
+- [x] Geocode all postcodes using postcodes.io API
+- [x] Filter by exact 30-mile radius using haversine distance (859 homes found)
+- [x] Scrape CQC ratings for first 100 homes
+- [x] Build colour-coded Excel spreadsheet with all data
+- [x] Deliver spreadsheet to user

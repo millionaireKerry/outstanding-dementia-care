@@ -18,6 +18,7 @@ export default function Header() {
     { name: "Voice Assistant", href: "/voice-agent" },
     { name: "Daily Good News", href: "/daily-good-news" },
     { name: "Training", href: "/dementia-experience" },
+    { name: "Family Workshop", href: "/family-workshop" },
   ];
 
   return (
