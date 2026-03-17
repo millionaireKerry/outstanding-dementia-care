@@ -514,7 +514,7 @@ export const dreamHomeData: DreamHomeCard[] = [
     id: "picture-menu",
     title: "Visual Picture Menus",
     category: "Feature",
-    image: "/images/dream-home/31C7A829-6D89-49D8-94D0-0796DA30A20E.png",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/31C7A829-6D89-49D8-94D0-0796DA30A20E_e7a1718a.png",
     shortDescription: "Clear, appetising visual menus to help residents make independent choices.",
     howToAchieve: [
       "Use high-quality, bright photographs of the actual food being served.",
@@ -533,7 +533,7 @@ export const dreamHomeData: DreamHomeCard[] = [
     id: "activities-board",
     title: "Visual Activities Board",
     category: "Feature",
-    image: "/images/dream-home/140FD6BD-D0B8-4A52-8A4D-74669ADE1DC3.png",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/140FD6BD-D0B8-4A52-8A4D-74669ADE1DC3_ee8288ef.png",
     shortDescription: "An easy-to-read daily schedule using clear imagery.",
     howToAchieve: [
       "Divide the day clearly into 'This Morning' and 'This Afternoon'.",
@@ -552,7 +552,7 @@ export const dreamHomeData: DreamHomeCard[] = [
     id: "dementia-signage",
     title: "Dementia-Friendly Signage",
     category: "Feature",
-    image: "/images/dream-home/2CC1AF3B-D292-4EA4-9F09-D2FF80D81642.png",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/2CC1AF3B-D292-4EA4-9F09-D2FF80D81642_9e68ca64.png",
     shortDescription: "High-contrast, icon-based directional signage.",
     howToAchieve: [
       "Use strong contrasting colours (e.g., white text on dark backgrounds).",
@@ -571,7 +571,7 @@ export const dreamHomeData: DreamHomeCard[] = [
     id: "pet-corner",
     title: "Indoor Pet Corner",
     category: "Feature",
-    image: "/images/dream-home/4333D945-BB70-4D62-9554-671DEE94FC70.png",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/4333D945-BB70-4D62-9554-671DEE94FC70_bcc87d88.png",
     shortDescription: "A calming area featuring small, safe indoor pets like fish or birds.",
     howToAchieve: [
       "Set up a brightly lit, well-maintained fish tank at seated eye level.",
@@ -590,7 +590,7 @@ export const dreamHomeData: DreamHomeCard[] = [
     id: "memory-wall",
     title: "The Memory Wall",
     category: "Feature",
-    image: "/images/dream-home/3C04ADD0-E1BF-41F4-A0A0-8D6B9F8FE5A9.png",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/3C04ADD0-E1BF-41F4-A0A0-8D6B9F8FE5A9_3fb665db.png",
     shortDescription: "A tactile, visual display of residents' history and achievements.",
     howToAchieve: [
       "Use a mix of framed photographs, postcards, and memorabilia.",
