@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { BookOpen, Download, Users, Mic, Package, ArrowRight } from "lucide-react";
+import { BookOpen, Download, Users, Mic, Package, ArrowRight, Building2, Award, Phone } from "lucide-react";
 import NewsletterSignup from "@/components/NewsletterSignup";
 
 export default function Home() {
@@ -213,6 +213,101 @@ export default function Home() {
                   Learn More
                 </Button>
               </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Consultancy Section */}
+      <section className="py-16 bg-background">
+        <div className="container">
+          <div
+            className="relative rounded-2xl overflow-hidden retro-border max-w-5xl mx-auto"
+            style={{ background: "linear-gradient(135deg, #2C5F4F 0%, #1a3d32 60%, #bc9c2f 100%)" }}
+          >
+            <div
+              className="absolute inset-0 opacity-10"
+              style={{
+                backgroundImage: "radial-gradient(circle, #ffffff 1px, transparent 1px)",
+                backgroundSize: "24px 24px",
+              }}
+            />
+            <div className="relative z-10 p-8 md:p-12">
+              <div className="flex flex-col md:flex-row items-center gap-8">
+                <div className="flex-1 text-center md:text-left">
+                  <div className="flex items-center justify-center md:justify-start gap-2 mb-3">
+                    <Building2 size={28} className="text-[#bc9c2f]" />
+                    <span
+                      className="text-sm font-bold uppercase tracking-widest text-[#bc9c2f]"
+                      style={{ fontFamily: "'Playfair Display', serif" }}
+                    >
+                      For Care Homes
+                    </span>
+                  </div>
+                  <h2
+                    className="text-3xl md:text-4xl font-bold text-[#E8DCC4] mb-4"
+                    style={{ fontFamily: "'Playfair Display', serif" }}
+                  >
+                    Dementia Consultancy
+                  </h2>
+                  <p className="text-[#E8DCC4]/85 text-lg leading-relaxed mb-6">
+                    Expert, hands-on support to help your care home achieve outstanding dementia care —
+                    from audit and training to surveys and CQC preparation.
+                  </p>
+                  <div className="flex flex-wrap gap-3 justify-center md:justify-start mb-6">
+                    <div className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-1.5 text-[#E8DCC4] text-sm">
+                      <Award size={15} />
+                      <span>10 years' experience</span>
+                    </div>
+                    <div className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-1.5 text-[#E8DCC4] text-sm">
+                      <BookOpen size={15} />
+                      <span>Masters in Dementia</span>
+                    </div>
+                    <div className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-1.5 text-[#E8DCC4] text-sm">
+                      <Users size={15} />
+                      <span>UK-wide</span>
+                    </div>
+                  </div>
+                  <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
+                    <Link href="/consultancy">
+                      <Button
+                        size="lg"
+                        className="font-bold rounded-full shadow-lg transition-transform hover:scale-105 w-full sm:w-auto"
+                        style={{ backgroundColor: "#bc9c2f", color: "#fff", fontFamily: "'Playfair Display', serif" }}
+                      >
+                        <Building2 className="mr-2" size={18} />
+                        Find Out More
+                      </Button>
+                    </Link>
+                    <a href="https://calendar.app.google/xbEjKsJCiFMWThpTA" target="_blank" rel="noopener noreferrer">
+                      <Button
+                        size="lg"
+                        variant="outline"
+                        className="font-bold rounded-full border-[#E8DCC4] text-[#E8DCC4] hover:bg-[#E8DCC4] hover:text-[#2C5F4F] w-full sm:w-auto"
+                      >
+                        <Phone className="mr-2" size={18} />
+                        Book Free Discovery Call
+                      </Button>
+                    </a>
+                  </div>
+                </div>
+                <div className="hidden md:grid grid-cols-1 gap-4 w-56 shrink-0">
+                  {[
+                    { label: "Care Documentation Audit", icon: "📋" },
+                    { label: "Immersive Staff Training", icon: "🎓" },
+                    { label: "CQC-Ready Written Report", icon: "📄" },
+                    { label: "Family & Resident Surveys", icon: "📊" },
+                  ].map((item) => (
+                    <div
+                      key={item.label}
+                      className="flex items-center gap-3 bg-white/10 rounded-xl px-4 py-3 text-[#E8DCC4] text-sm"
+                    >
+                      <span className="text-xl">{item.icon}</span>
+                      <span className="font-medium">{item.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
