@@ -19,6 +19,7 @@ export default function Header() {
     { name: "Daily Good News", href: "/daily-good-news" },
     { name: "Training", href: "/dementia-experience" },
     { name: "Family Workshop", href: "/family-workshop" },
+    { name: "Dream Home", href: "/dream-home" },
   ];
 
   return (
