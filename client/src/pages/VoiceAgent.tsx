@@ -75,17 +75,49 @@ export default function VoiceAgent() {
     }
   };
 
+  const uploadMutation = trpc.upload.uploadFile.useMutation();
+
   const processAudio = async (audioBlob: Blob) => {
     setIsProcessing(true);
     
     try {
-      // For now, show a message that voice recording will be available soon
-      toast.info("Voice recording feature coming soon! Please use text input for now.");
-      setIsProcessing(false);
-      return;
-      
-      // TODO: Implement proper audio upload and transcription
-      // This requires setting up proper file upload endpoints
+      // Convert blob to base64
+      const arrayBuffer = await audioBlob.arrayBuffer();
+      const uint8Array = new Uint8Array(arrayBuffer);
+      let binary = '';
+      for (let i = 0; i < uint8Array.byteLength; i++) {
+        binary += String.fromCharCode(uint8Array[i]);
+      }
+      const base64Data = btoa(binary);
+      const fileName = `voice-recordings/recording-${Date.now()}.webm`;
+
+      // Upload audio to S3
+      const uploadResult = await uploadMutation.mutateAsync({
+        fileData: base64Data,
+        fileName,
+        contentType: 'audio/webm',
+      });
+
+      if (!uploadResult.success || !uploadResult.url) {
+        throw new Error('Failed to upload audio');
+      }
+
+      // Transcribe the uploaded audio
+      const transcribeResult = await transcribeMutation.mutateAsync({
+        audioUrl: uploadResult.url,
+      });
+
+      if (!transcribeResult.success || !transcribeResult.transcript) {
+        throw new Error('Failed to transcribe audio');
+      }
+
+      const transcript = transcribeResult.transcript;
+      toast.success(`Heard: "${transcript.slice(0, 60)}${transcript.length > 60 ? '...' : ''}"`); 
+
+      // Add user message and get AI response
+      const userMessage: Message = { role: 'user', content: transcript };
+      setMessages(prev => [...prev, userMessage]);
+      await getAIResponse(transcript);
     } catch (error) {
       console.error("Error processing audio:", error);
       toast.error("Failed to process audio. Please try again.");

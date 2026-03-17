@@ -21,6 +21,9 @@ import Terms from "./pages/Terms";
 import FamilyWorkshop from "./pages/FamilyWorkshop";
 import DreamHome from "./pages/DreamHome";
 import Consultancy from "./pages/Consultancy";
+import AdminBlog from "./pages/AdminBlog";
+import AdminEbooks from "./pages/AdminEbooks";
+import AdminSupport from "./pages/AdminSupport";
 import CookieBanner from "./components/CookieBanner";
 
 function Router() {
@@ -38,6 +41,9 @@ function Router() {
           <Route path="/voice-agent" component={VoiceAgent} />
           <Route path="/daily-good-news" component={DailyGoodNews} />
           <Route path="/admin" component={Admin} />
+          <Route path="/admin/blog" component={AdminBlog} />
+          <Route path="/admin/ebooks" component={AdminEbooks} />
+          <Route path="/admin/support" component={AdminSupport} />
           <Route path="/dementia-experience" component={DementiaExperience} />
           <Route path="/privacy-policy" component={PrivacyPolicy} />
           <Route path="/terms" component={Terms} />

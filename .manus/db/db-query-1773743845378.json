@@ -1,0 +1,17 @@
+{
+  "query": "SELECT (SELECT COUNT(*) FROM supportGroups) as support_groups, (SELECT COUNT(*) FROM ebooks) as ebooks, (SELECT COUNT(*) FROM blogPosts) as blog_posts, (SELECT COUNT(*) FROM newsletterSubscribers) as newsletter_subs, (SELECT COUNT(*) FROM dailyGoodNewsEditions) as daily_news;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user y9xXqMvzCrNXPbj.1987515a4b92 --database C4sZdm4AzTGBpMWqRug5mc --execute SELECT (SELECT COUNT(*) FROM supportGroups) as support_groups, (SELECT COUNT(*) FROM ebooks) as ebooks, (SELECT COUNT(*) FROM blogPosts) as blog_posts, (SELECT COUNT(*) FROM newsletterSubscribers) as newsletter_subs, (SELECT COUNT(*) FROM dailyGoodNewsEditions) as daily_news;",
+  "rows": [
+    {
+      "support_groups": "10",
+      "ebooks": "4",
+      "blog_posts": "19",
+      "newsletter_subs": "4",
+      "daily_news": "2"
+    }
+  ],
+  "messages": [],
+  "stdout": "support_groups\tebooks\tblog_posts\tnewsletter_subs\tdaily_news\n10\t4\t19\t4\t2\n",
+  "stderr": "",
+  "execution_time_ms": 355
+}

@@ -432,3 +432,18 @@
 - [x] Add Consultancy nav link to header
 - [x] Add Consultancy route to App.tsx
 - [ ] Save checkpoint
+
+## Full Site Audit & Fixes (Mar 17, 2026)
+- [x] Fix Dream Home images (25 images were 0-byte empty files - regenerated and re-uploaded)
+- [x] Update Consultancy page with real Google Calendar booking link
+- [x] Add Consultancy section to homepage
+- [x] Fix Family Workshop year from 2025 to 2026
+- [x] Add "Add to Google Calendar" link for webinar on Family Workshop page
+- [x] Create AdminBlog.tsx - full CRUD admin page for blog posts
+- [x] Create AdminEbooks.tsx - full CRUD admin page for ebooks
+- [x] Create AdminSupport.tsx - full CRUD admin page for support groups
+- [x] Register admin sub-routes in App.tsx (/admin/blog, /admin/ebooks, /admin/support)
+- [x] Implement voice recording with audio upload + Whisper transcription (was placeholder)
+- [x] Fix stale TypeScript incremental build cache (disabled incremental compilation)
+- [ ] Write vitest tests for admin procedures
+- [ ] Push code to GitHub (outstanding-dementia-care repo)

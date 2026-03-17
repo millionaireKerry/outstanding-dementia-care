@@ -1,0 +1,30 @@
+{
+  "query": "SELECT 'supportGroups' as tbl, COUNT(*) as cnt FROM supportGroups UNION ALL SELECT 'ebooks', COUNT(*) FROM ebooks UNION ALL SELECT 'blogPosts', COUNT(*) FROM blogPosts UNION ALL SELECT 'newsletterSubscribers', COUNT(*) FROM newsletterSubscribers UNION ALL SELECT 'dailyGoodNewsEditions', COUNT(*) FROM dailyGoodNewsEditions;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user y9xXqMvzCrNXPbj.1987515a4b92 --database C4sZdm4AzTGBpMWqRug5mc --execute SELECT 'supportGroups' as tbl, COUNT(*) as cnt FROM supportGroups UNION ALL SELECT 'ebooks', COUNT(*) FROM ebooks UNION ALL SELECT 'blogPosts', COUNT(*) FROM blogPosts UNION ALL SELECT 'newsletterSubscribers', COUNT(*) FROM newsletterSubscribers UNION ALL SELECT 'dailyGoodNewsEditions', COUNT(*) FROM dailyGoodNewsEditions;",
+  "rows": [
+    {
+      "tbl": "ebooks",
+      "cnt": "4"
+    },
+    {
+      "tbl": "dailyGoodNewsEditions",
+      "cnt": "2"
+    },
+    {
+      "tbl": "blogPosts",
+      "cnt": "19"
+    },
+    {
+      "tbl": "supportGroups",
+      "cnt": "10"
+    },
+    {
+      "tbl": "newsletterSubscribers",
+      "cnt": "4"
+    }
+  ],
+  "messages": [],
+  "stdout": "tbl\tcnt\nebooks\t4\ndailyGoodNewsEditions\t2\nblogPosts\t19\nsupportGroups\t10\nnewsletterSubscribers\t4\n",
+  "stderr": "",
+  "execution_time_ms": 371
+}

@@ -46,9 +46,15 @@ export default function FamilyWorkshop() {
     }
   }, [location]);
 
+  const WEBINAR_CALENDAR_URL = "https://calendar.app.google/nqrd2issowWwMiAt9";
+
   const handleBook = () => {
     toast.info("Redirecting to secure checkout...", { description: "Opening Stripe payment page." });
     checkoutMutation.mutate({ productKey: "familyWorkshop", origin: window.location.origin });
+  };
+
+  const handleAddToCalendar = () => {
+    window.open(WEBINAR_CALENDAR_URL, "_blank");
   };
 
   const topics = [
@@ -105,7 +111,7 @@ export default function FamilyWorkshop() {
             className="mb-4 text-sm px-4 py-1 font-semibold"
             style={{ backgroundColor: "#bc9c2f", color: "#fff", fontFamily: "Playfair Display, serif" }}
           >
-            📅 Next Session: Friday 11th April 2025 · 10:00am–11:30am
+            📅 Next Session: Friday 11th April 2026 · 10:00am–11:30am
           </Badge>
           <div className="flex items-center justify-center gap-3 mb-4">
             <Video size={44} className="text-[#E8DCC4]" />
@@ -152,9 +158,17 @@ export default function FamilyWorkshop() {
             <Calendar className="mr-2" size={22} />
             Book Your Place — £25
           </Button>
-          <p className="text-[#E8DCC4]/70 text-sm mt-3">
-            Friday 11th April · 10:00am–11:30am · Zoom · Limited places
-          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-4">
+            <p className="text-[#E8DCC4]/70 text-sm">
+              Friday 11th April 2026 · 10:00am–11:30am · Zoom · Limited places
+            </p>
+            <button
+              onClick={handleAddToCalendar}
+              className="text-[#E8DCC4]/80 text-sm underline hover:text-[#E8DCC4] transition-colors"
+            >
+              📅 Add to Google Calendar
+            </button>
+          </div>
         </div>
       </div>
 
