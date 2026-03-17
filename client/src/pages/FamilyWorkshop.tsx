@@ -105,7 +105,7 @@ export default function FamilyWorkshop() {
             className="mb-4 text-sm px-4 py-1 font-semibold"
             style={{ backgroundColor: "#bc9c2f", color: "#fff", fontFamily: "Playfair Display, serif" }}
           >
-            NEW — Starting Soon
+            📅 Next Session: Friday 11th April 2025 · 10:00am–11:30am
           </Badge>
           <div className="flex items-center justify-center gap-3 mb-4">
             <Video size={44} className="text-[#E8DCC4]" />
@@ -153,7 +153,7 @@ export default function FamilyWorkshop() {
             Book Your Place — £25
           </Button>
           <p className="text-[#E8DCC4]/70 text-sm mt-3">
-            Secure your spot · Small group · Live Q&amp;A included
+            Friday 11th April · 10:00am–11:30am · Zoom · Limited places
           </p>
         </div>
       </div>

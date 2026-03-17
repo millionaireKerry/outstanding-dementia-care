@@ -20,6 +20,7 @@ import DementiaExperience from "./pages/DementiaExperience";
 import Terms from "./pages/Terms";
 import FamilyWorkshop from "./pages/FamilyWorkshop";
 import DreamHome from "./pages/DreamHome";
+import Consultancy from "./pages/Consultancy";
 import CookieBanner from "./components/CookieBanner";
 
 function Router() {
@@ -42,6 +43,7 @@ function Router() {
           <Route path="/terms" component={Terms} />
           <Route path="/family-workshop" component={FamilyWorkshop} />
           <Route path="/dream-home" component={DreamHome} />
+          <Route path="/consultancy" component={Consultancy} />
           <Route path={"/404"} component={NotFound} />
           {/* Final fallback route */}
           <Route component={NotFound} />

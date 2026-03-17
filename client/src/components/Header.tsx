@@ -20,6 +20,7 @@ export default function Header() {
     { name: "Training", href: "/dementia-experience" },
     { name: "Family Workshop", href: "/family-workshop" },
     { name: "Dream Home", href: "/dream-home" },
+    { name: "Consultancy", href: "/consultancy" },
   ];
 
   return (

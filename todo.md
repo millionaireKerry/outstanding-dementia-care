@@ -424,3 +424,11 @@
 - [x] Add "Dream Home" link to Header.tsx navigation
 - [x] Fix TypeScript errors
 - [x] Save checkpoint with Dream Home page live
+
+## Consultancy Page & Workshop Date (Mar 17, 2026)
+- [x] Update Family Workshop page with 11th April 2026 date
+- [x] Add seats remaining / urgency element to workshop page
+- [x] Build Dementia Consultancy page with programme details
+- [x] Add Consultancy nav link to header
+- [x] Add Consultancy route to App.tsx
+- [ ] Save checkpoint
