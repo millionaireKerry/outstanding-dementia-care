@@ -16,7 +16,7 @@ import {
 
 export default function Consultancy() {
   const handleDiscoveryCall = () => {
-    window.open("https://calendly.com/outstandingdementiacare", "_blank");
+    window.open("https://calendar.app.google/xbEjKsJCiFMWThpTA", "_blank");
   };
 
   const handleBrochure = () => {
