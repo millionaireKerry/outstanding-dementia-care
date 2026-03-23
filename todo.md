@@ -447,3 +447,14 @@
 - [x] Fix stale TypeScript incremental build cache (disabled incremental compilation)
 - [ ] Write vitest tests for admin procedures
 - [ ] Push code to GitHub (outstanding-dementia-care repo)
+
+## Consultancy Page Pricing Removal (Mar 23, 2026)
+- [x] Remove all prices from Consultancy page (£1,750, £350, etc.)
+- [x] Replace pricing cards with a free consultation CTA section
+- [x] Keep programme details and outcomes but remove price references
+- [x] Ensure "Book Your Free Call" button links to Google Calendar
+
+## HighLevel Newsletter Integration (Mar 23, 2026)
+- [x] Connect newsletter subscribe procedure to HighLevel CRM
+- [x] Tag newsletter subscribers with "newsletter-subscriber" in HighLevel
+- [ ] Test newsletter signup flows into HighLevel (verify with real signup)

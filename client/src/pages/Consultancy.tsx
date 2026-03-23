@@ -84,46 +84,36 @@ export default function Consultancy() {
     },
   ];
 
-  const packages = [
+  const services = [
     {
-      name: "Discovery Session",
-      price: "Free",
-      desc: "A 30-minute call to understand your home's needs and explore how we can help.",
-      features: ["Needs assessment", "No obligation", "Tailored advice"],
-      cta: "Book Free Call",
-      highlight: false,
-      action: handleDiscoveryCall,
+      name: "Care Documentation Audit",
+      icon: <ClipboardList size={28} className="text-[#2C5F4F]" />,
+      desc: "A thorough review of your care plans and documentation — identifying gaps, strengths, and opportunities to evidence outstanding care.",
     },
     {
-      name: "Dementia Excellence Programme",
-      price: "£1,750",
-      priceNote: "3-month programme",
-      desc: "Our flagship consultancy package — a structured 3-month journey to outstanding dementia care.",
-      features: [
-        "Full care documentation audit",
-        "Immersive staff training day",
-        "Family & resident surveys",
-        "CQC-ready written report",
-        "Monthly support calls",
-        "Action plan & follow-up",
-      ],
-      cta: "Book Discovery Call",
-      highlight: true,
-      action: handleDiscoveryCall,
+      name: "The Dementia Experience",
+      icon: <BookOpen size={28} className="text-[#bc9c2f]" />,
+      desc: "An immersive, evidence-based training day that builds genuine empathy and practical skills in your care team.",
     },
     {
-      name: "Individual Services",
-      price: "From £350",
-      desc: "Pick the services your home needs most — audit, training, or surveys as standalone packages.",
-      features: [
-        "Care documentation audit",
-        "The Dementia Experience training",
-        "Care home survey dashboard",
-        "Bespoke consultancy days",
-      ],
-      cta: "Enquire Now",
-      highlight: false,
-      action: handleDiscoveryCall,
+      name: "Care Home Surveys",
+      icon: <BarChart2 size={28} className="text-[#2C5F4F]" />,
+      desc: "Resident, family, and staff satisfaction surveys with a live dashboard — giving you the evidence you need for CQC inspections.",
+    },
+    {
+      name: "The Dementia Excellence Programme",
+      icon: <Award size={28} className="text-[#bc9c2f]" />,
+      desc: "Our flagship 3-month consultancy package — combining audit, training, surveys, and a CQC-ready written report into one structured journey.",
+    },
+    {
+      name: "Bespoke Consultancy",
+      icon: <Users size={28} className="text-[#2C5F4F]" />,
+      desc: "Not sure what you need? Book a free call and we will put together a plan that fits your home, your team, and your budget.",
+    },
+    {
+      name: "Change Management Support",
+      icon: <Heart size={28} className="text-[#bc9c2f]" />,
+      desc: "Hands-on support to help your home navigate change — whether that is a new manager, a CQC improvement plan, or a culture shift towards person-centred care.",
     },
   ];
 
@@ -283,83 +273,61 @@ export default function Consultancy() {
           </div>
         </div>
 
-        {/* Pricing */}
+        {/* How We Can Help */}
         <div className="mb-16">
           <h3
             className="text-2xl font-bold mb-2 text-center text-[#2C5F4F]"
             style={{ fontFamily: "Playfair Display, serif" }}
           >
-            Packages &amp; Pricing
+            How we can help your home
           </h3>
-          <p className="text-center text-muted-foreground mb-10">
-            All packages can be tailored to your home's specific needs and budget.
+          <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
+            Every care home is different. We offer a range of services that can be combined or delivered individually — all tailored to your home's specific needs, team, and goals.
           </p>
-          <div className="grid md:grid-cols-3 gap-8">
-            {packages.map((pkg, i) => (
-              <Card
-                key={i}
-                className={`retro-border relative ${
-                  pkg.highlight ? "ring-2 ring-[#bc9c2f]" : ""
-                }`}
-                style={pkg.highlight ? { backgroundColor: "#2C5F4F" } : {}}
-              >
-                {pkg.highlight && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <Badge style={{ backgroundColor: "#bc9c2f", color: "#fff" }}>
-                      Most Popular
-                    </Badge>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((svc, i) => (
+              <Card key={i} className="retro-border">
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    {svc.icon}
+                    <h4
+                      className="text-lg font-bold text-[#2C5F4F]"
+                      style={{ fontFamily: "Playfair Display, serif" }}
+                    >
+                      {svc.name}
+                    </h4>
                   </div>
-                )}
-                <CardContent className="p-6 text-center">
-                  <h4
-                    className={`text-xl font-bold mb-2 ${
-                      pkg.highlight ? "text-[#E8DCC4]" : "text-[#2C5F4F]"
-                    }`}
-                    style={{ fontFamily: "Playfair Display, serif" }}
-                  >
-                    {pkg.name}
-                  </h4>
-                  <p
-                    className={`text-4xl font-bold mb-1 ${
-                      pkg.highlight ? "text-[#E8DCC4]" : "text-[#2C5F4F]"
-                    }`}
-                    style={{ fontFamily: "Playfair Display, serif" }}
-                  >
-                    {pkg.price}
-                  </p>
-                  {pkg.priceNote && (
-                    <p className={`text-sm mb-3 ${pkg.highlight ? "text-[#E8DCC4]/70" : "text-muted-foreground"}`}>
-                      {pkg.priceNote}
-                    </p>
-                  )}
-                  <p className={`text-sm mb-5 leading-relaxed ${pkg.highlight ? "text-[#E8DCC4]/80" : "text-muted-foreground"}`}>
-                    {pkg.desc}
-                  </p>
-                  <div className="space-y-2 mb-6 text-left">
-                    {pkg.features.map((f, j) => (
-                      <div key={j} className="flex items-start gap-2">
-                        <CheckCircle
-                          size={15}
-                          className={pkg.highlight ? "text-[#bc9c2f] mt-0.5 shrink-0" : "text-[#2C5F4F] mt-0.5 shrink-0"}
-                        />
-                        <span className={`text-sm ${pkg.highlight ? "text-[#E8DCC4]/90" : ""}`}>{f}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <Button
-                    onClick={pkg.action}
-                    className="w-full font-bold"
-                    style={
-                      pkg.highlight
-                        ? { backgroundColor: "#bc9c2f", color: "#fff" }
-                        : { backgroundColor: "#2C5F4F", color: "#fff" }
-                    }
-                  >
-                    {pkg.cta}
-                  </Button>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{svc.desc}</p>
                 </CardContent>
               </Card>
             ))}
+          </div>
+          {/* Consultation CTA */}
+          <div className="mt-12 text-center">
+            <div
+              className="inline-block rounded-2xl px-10 py-8 retro-border max-w-2xl w-full"
+              style={{ background: "linear-gradient(135deg, #F5F0E8, #EDE5D0)" }}
+            >
+              <h4
+                className="text-2xl font-bold text-[#2C5F4F] mb-3"
+                style={{ fontFamily: "Playfair Display, serif" }}
+              >
+                Not sure where to start?
+              </h4>
+              <p className="text-muted-foreground mb-6 leading-relaxed">
+                Book a free 30-minute call with Kerry. She will listen to where your home is now, talk through what is possible, and suggest the right next step — with no obligation and no sales pressure.
+              </p>
+              <Button
+                onClick={handleDiscoveryCall}
+                size="lg"
+                className="font-bold px-10 py-5 rounded-full text-lg shadow-lg transition-transform hover:scale-105"
+                style={{ backgroundColor: "#2C5F4F", color: "#fff", fontFamily: "Playfair Display, serif" }}
+              >
+                <Phone className="mr-2" size={20} />
+                Click Here to Book Your Free Call
+              </Button>
+              <p className="text-xs text-muted-foreground mt-3">Free · No obligation · 30 minutes · Tailored to your home</p>
+            </div>
           </div>
         </div>
 

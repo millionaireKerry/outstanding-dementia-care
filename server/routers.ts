@@ -375,6 +375,19 @@ export const appRouter = router({
           ...input,
           status: 'active',
         });
+        // Sync to HighLevel CRM (non-fatal)
+        try {
+          const nameParts = (input.name || "").trim().split(" ");
+          await createHighLevelContact({
+            email: input.email,
+            firstName: nameParts[0] || undefined,
+            lastName: nameParts.slice(1).join(" ") || undefined,
+            source: input.source || "Website - Newsletter Signup",
+            tags: ["newsletter-subscriber"],
+          });
+        } catch (hlErr) {
+          console.warn("[Newsletter] HighLevel sync failed (non-fatal):", hlErr);
+        }
         return { success: true, message: 'Successfully subscribed!' };
       }),
 
