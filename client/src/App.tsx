@@ -25,6 +25,7 @@ import AdminBlog from "./pages/AdminBlog";
 import AdminEbooks from "./pages/AdminEbooks";
 import AdminSupport from "./pages/AdminSupport";
 import CookieBanner from "./components/CookieBanner";
+import AskDotty from "./pages/AskDotty";
 
 function Router() {
   return (
@@ -50,6 +51,7 @@ function Router() {
           <Route path="/family-workshop" component={FamilyWorkshop} />
           <Route path="/dream-home" component={DreamHome} />
           <Route path="/consultancy" component={Consultancy} />
+          <Route path="/ask-dotty" component={AskDotty} />
           <Route path={"/404"} component={NotFound} />
           {/* Final fallback route */}
           <Route component={NotFound} />

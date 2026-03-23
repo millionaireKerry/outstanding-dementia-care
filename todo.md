@@ -481,3 +481,12 @@
 - [x] Add Facebook icon link to footer (profile.php?id=61572413940255)
 - [x] Add Instagram icon link to footer (@outstandingdementiacare)
 - [x] Add TikTok icon link to footer (@outstandingdementiacare)
+
+## Ask Dotty AI Chat Page (Mar 23, 2026)
+- [x] Create server-side tRPC procedure for Dotty AI chat (dotty.chat)
+- [x] Build AskDotty.tsx page with retro postcard/letter UI
+- [x] Dotty personality: cheeky, down-to-earth, English elderly woman, time-traveller
+- [x] Three modes: activity suggestions, quiz generator, reminiscence prompts
+- [x] Use Dotty images from CDN as character illustrations
+- [x] Add /ask-dotty route to App.tsx
+- [x] Add Ask Dotty to main navigation

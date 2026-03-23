@@ -21,6 +21,7 @@ export default function Header() {
     { name: "Family Workshop", href: "/family-workshop" },
     { name: "Dream Home", href: "/dream-home" },
     { name: "Consultancy", href: "/consultancy" },
+    { name: "Ask Dotty ✨", href: "/ask-dotty" },
   ];
 
   return (
