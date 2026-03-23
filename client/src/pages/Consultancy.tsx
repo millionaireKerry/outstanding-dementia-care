@@ -16,7 +16,7 @@ import {
 
 export default function Consultancy() {
   const handleDiscoveryCall = () => {
-    window.open("https://calendar.app.google/xbEjKsJCiFMWThpTA", "_blank");
+    window.open("https://calendar.app.google/r1FrZpnQRMx9q6N57", "_blank");
   };
 
   const handleBrochure = () => {

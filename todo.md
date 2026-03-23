@@ -467,3 +467,7 @@
 - [x] Update Consultancy page: all CTAs now say "Book a Free 30-Minute Call"
 - [ ] Add Stripe payment link for The Dementia Experience (awaiting link from Kerry)
 - [ ] Create 50% discount promo code in Stripe for March/April care home bookings
+
+## Unified Booking Link (Mar 23, 2026)
+- [x] Replace all Google Calendar booking links with unified 30-min Zoom call link (r1FrZpnQRMx9q6N57)
+- [x] Updated: Home.tsx, DementiaExperience.tsx, Consultancy.tsx, FamilyWorkshop.tsx

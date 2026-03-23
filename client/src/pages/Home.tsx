@@ -279,7 +279,7 @@ export default function Home() {
                         Find Out More
                       </Button>
                     </Link>
-                    <a href="https://calendar.app.google/xbEjKsJCiFMWThpTA" target="_blank" rel="noopener noreferrer">
+                    <a href="https://calendar.app.google/r1FrZpnQRMx9q6N57" target="_blank" rel="noopener noreferrer">
                       <Button
                         size="lg"
                         variant="outline"

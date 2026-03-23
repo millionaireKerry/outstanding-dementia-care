@@ -18,7 +18,7 @@ import {
   AlertCircle,
 } from "lucide-react";
 
-const BOOKING_URL = "https://calendar.app.google/xbEjKsJCiFMWThpTA";
+const BOOKING_URL = "https://calendar.app.google/r1FrZpnQRMx9q6N57";
 
 const benefits = [
   {

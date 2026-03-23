@@ -46,7 +46,7 @@ export default function FamilyWorkshop() {
     }
   }, [location]);
 
-  const WEBINAR_CALENDAR_URL = "https://calendar.app.google/nqrd2issowWwMiAt9";
+  const WEBINAR_CALENDAR_URL = "https://calendar.app.google/r1FrZpnQRMx9q6N57";
 
   const handleBook = () => {
     toast.info("Redirecting to secure checkout...", { description: "Opening Stripe payment page." });
