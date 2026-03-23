@@ -286,7 +286,7 @@ export default function Home() {
                         className="font-bold rounded-full border-[#E8DCC4] text-[#E8DCC4] hover:bg-[#E8DCC4] hover:text-[#2C5F4F] w-full sm:w-auto"
                       >
                         <Phone className="mr-2" size={18} />
-                        Book Free Discovery Call
+                        Book a Free 30-Minute Call
                       </Button>
                     </a>
                   </div>

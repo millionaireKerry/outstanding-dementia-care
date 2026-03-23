@@ -176,7 +176,7 @@ export default function Consultancy() {
               style={{ backgroundColor: "#bc9c2f", color: "#fff", fontFamily: "Playfair Display, serif" }}
             >
               <Phone className="mr-2" size={22} />
-              Book a Free Discovery Call
+              Book a Free 30-Minute Call
             </Button>
             <Button
               onClick={handleBrochure}
@@ -324,7 +324,7 @@ export default function Consultancy() {
                 style={{ backgroundColor: "#2C5F4F", color: "#fff", fontFamily: "Playfair Display, serif" }}
               >
                 <Phone className="mr-2" size={20} />
-                Click Here to Book Your Free Call
+                Book a Free 30-Minute Call
               </Button>
               <p className="text-xs text-muted-foreground mt-3">Free · No obligation · 30 minutes · Tailored to your home</p>
             </div>
@@ -400,7 +400,7 @@ export default function Consultancy() {
               style={{ backgroundColor: "#bc9c2f", color: "#fff" }}
             >
               <Phone className="mr-2" size={20} />
-              Book Free Discovery Call
+            Book a Free 30-Minute Call
             </Button>
             <Button
               onClick={handleBrochure}

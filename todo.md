@@ -458,3 +458,12 @@
 - [x] Connect newsletter subscribe procedure to HighLevel CRM
 - [x] Tag newsletter subscribers with "newsletter-subscriber" in HighLevel
 - [ ] Test newsletter signup flows into HighLevel (verify with real signup)
+
+## Booking Flow Simplification (Mar 23, 2026)
+- [x] Update DementiaExperience page: replace all "Book Your Workshop" CTAs with "Book a Free 30-Minute Call"
+- [x] Update DementiaExperience page: point BOOKING_URL to consultation calendar
+- [x] Update DementiaExperience page: remove "Full payment required" text
+- [x] Update Home page consultancy CTA to "Book a Free 30-Minute Call"
+- [x] Update Consultancy page: all CTAs now say "Book a Free 30-Minute Call"
+- [ ] Add Stripe payment link for The Dementia Experience (awaiting link from Kerry)
+- [ ] Create 50% discount promo code in Stripe for March/April care home bookings

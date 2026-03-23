@@ -18,7 +18,7 @@ import {
   AlertCircle,
 } from "lucide-react";
 
-const BOOKING_URL = "https://calendar.app.google/A7pUSzFxuMNbe4LD8";
+const BOOKING_URL = "https://calendar.app.google/xbEjKsJCiFMWThpTA";
 
 const benefits = [
   {
@@ -179,7 +179,7 @@ export default function DementiaExperience() {
                 onClick={() => window.open(BOOKING_URL, "_blank")}
               >
                 <CalendarCheck className="mr-2 h-5 w-5" />
-                Book Your Workshop
+                Book a Free 30-Minute Call
               </Button>
               <Button
                 size="lg"
@@ -365,10 +365,10 @@ export default function DementiaExperience() {
                   onClick={() => window.open(BOOKING_URL, "_blank")}
                 >
                   <CalendarCheck className="mr-2 h-5 w-5" />
-                  Check Availability & Book Now
+                  Book a Free 30-Minute Call
                 </Button>
                 <p className="text-center text-xs text-muted-foreground mt-3">
-                  Full payment required at time of booking. Secure payment processed via Google Calendar.
+                  Free, no-obligation call. Kerry will talk through your needs and suggest the right next step.
                 </p>
               </CardContent>
             </Card>
@@ -433,7 +433,7 @@ export default function DementiaExperience() {
             Ready to Transform Your Team?
           </h2>
           <p className="text-lg mb-8 opacity-90 max-w-2xl mx-auto">
-            Give your care staff the gift of understanding. Book The Dementia Experience and watch the quality of care in your home change, permanently.
+            Give your care staff the gift of understanding. Book a free 30-minute call with Kerry to find out how The Dementia Experience will transform your team — no obligation, no sales pressure.
           </p>
           <Button
             size="lg"
@@ -441,7 +441,7 @@ export default function DementiaExperience() {
             onClick={() => window.open(BOOKING_URL, "_blank")}
           >
             <CalendarCheck className="mr-2 h-5 w-5" />
-            Book Now: Check Availability
+            Book a Free 30-Minute Call
           </Button>
         </div>
       </section>
