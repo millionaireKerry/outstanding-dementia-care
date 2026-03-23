@@ -476,3 +476,8 @@
 - [x] Add prominent promo section to homepage advertising NEWCLIENT discount code
 - [x] Section to explain: 50% off first training session, use code NEWCLIENT, book a call to redeem
 - [x] Include "Book Your Call" button linking to unified calendar link
+
+## Social Media Footer Links (Mar 23, 2026)
+- [x] Add Facebook icon link to footer (profile.php?id=61572413940255)
+- [x] Add Instagram icon link to footer (@outstandingdementiacare)
+- [x] Add TikTok icon link to footer (@outstandingdementiacare)
