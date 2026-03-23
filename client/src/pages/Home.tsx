@@ -313,6 +313,64 @@ export default function Home() {
         </div>
       </section>
 
+      {/* NEWCLIENT Promo Banner */}
+      <section className="py-12 bg-[#bc9c2f]">
+        <div className="container">
+          <div className="max-w-5xl mx-auto">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+              {/* Left: Offer details */}
+              <div className="text-center md:text-left">
+                <div className="inline-block bg-white/20 rounded-full px-4 py-1 mb-3">
+                  <span className="text-white font-bold text-sm uppercase tracking-widest">New Client Offer</span>
+                </div>
+                <h2
+                  className="text-3xl md:text-4xl font-bold text-white mb-3"
+                  style={{ fontFamily: "'Playfair Display', serif" }}
+                >
+                  50% Off Your First Training Session
+                </h2>
+                <p className="text-white/90 text-lg leading-relaxed max-w-xl">
+                  Book a free 30-minute call to find out how The Dementia Experience will transform your team.
+                  Mention code <span className="font-bold bg-white/20 px-2 py-0.5 rounded">NEWCLIENT</span> when
+                  you book and receive half price on your first training day.
+                </p>
+              </div>
+              {/* Right: Code + CTA */}
+              <div className="flex flex-col items-center gap-4 shrink-0">
+                <div
+                  className="bg-white rounded-2xl px-10 py-5 text-center shadow-lg"
+                  style={{ border: "3px dashed #bc9c2f" }}
+                >
+                  <p className="text-xs font-bold uppercase tracking-widest text-[#2C5F4F] mb-1">Your Discount Code</p>
+                  <p
+                    className="text-4xl font-bold text-[#2C5F4F] tracking-widest"
+                    style={{ fontFamily: "'Playfair Display', serif", letterSpacing: "0.15em" }}
+                  >
+                    NEWCLIENT
+                  </p>
+                  <p className="text-xs text-[#2C5F4F]/70 mt-1">One use per care home &middot; First session only</p>
+                </div>
+                <a
+                  href="https://calendar.app.google/r1FrZpnQRMx9q6N57"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full"
+                >
+                  <Button
+                    size="lg"
+                    className="w-full font-bold rounded-full text-lg px-8 py-6 shadow-xl transition-transform hover:scale-105"
+                    style={{ backgroundColor: "#2C5F4F", color: "#fff", fontFamily: "'Playfair Display', serif" }}
+                  >
+                    <Phone className="mr-2" size={20} />
+                    Book Your Free Call
+                  </Button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Newsletter Section */}
       <section className="py-16 bg-background">
         <div className="container">

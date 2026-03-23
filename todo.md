@@ -471,3 +471,8 @@
 ## Unified Booking Link (Mar 23, 2026)
 - [x] Replace all Google Calendar booking links with unified 30-min Zoom call link (r1FrZpnQRMx9q6N57)
 - [x] Updated: Home.tsx, DementiaExperience.tsx, Consultancy.tsx, FamilyWorkshop.tsx
+
+## NEWCLIENT Promo Banner (Mar 23, 2026)
+- [x] Add prominent promo section to homepage advertising NEWCLIENT discount code
+- [x] Section to explain: 50% off first training session, use code NEWCLIENT, book a call to redeem
+- [x] Include "Book Your Call" button linking to unified calendar link
