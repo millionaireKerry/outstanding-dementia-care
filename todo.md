@@ -504,3 +504,10 @@
 - [x] Add per-page document.title to all 14 pages
 - [x] Confirm OG image, og:title, og:description set globally
 - [x] sitemap.xml updated with Ask Dotty, Training, Family Workshop, Dream Home, Consultancy
+
+## Header & UI Updates (Mar 24, 2026)
+- [x] Update Masters sentence to add "(completing this summer 2026)"
+- [x] New header: use OutstandingDementiaCareheader.png banner, two-row nav so all tabs fit
+- [x] Rename "Voice Assistant" nav link to "Chat with Dotty" (clearer label)
+- [x] Clarify voice assistant description on homepage hero
+- [x] Build floating Dotty chat widget on all pages (business Q&A, contact capture, email Kerry@outstandingdementiacare.com)

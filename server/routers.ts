@@ -449,6 +449,83 @@ Always be encouraging and practical. Keep responses friendly and not too long �
       }),
   }),
 
+  enquiry: router({
+    submit: publicProcedure
+      .input(z.object({
+        name: z.string().min(1).max(100),
+        email: z.string().email(),
+        phone: z.string().optional().default(""),
+        message: z.string().min(1).max(2000),
+      }))
+      .mutation(async ({ input }) => {
+        const { notifyOwner } = await import("./_core/notification");
+        await notifyOwner({
+          title: `New Enquiry from ${input.name}`,
+          content: `Name: ${input.name}\nEmail: ${input.email}\nPhone: ${input.phone || "Not provided"}\n\nMessage:\n${input.message}\n\n---\nBook a call: https://calendar.app.google/r1FrZpnQRMx9q6N57`,
+        });
+        try {
+          await createHighLevelContact({
+            email: input.email,
+            firstName: input.name.split(" ")[0] || input.name,
+            lastName: input.name.split(" ").slice(1).join(" ") || "",
+            phone: input.phone || "",
+            tags: ["website-enquiry", "dotty-widget"],
+          });
+        } catch (_e) {
+          // CRM failure is non-fatal
+        }
+        return { success: true };
+      }),
+
+    widgetChat: publicProcedure
+      .input(z.object({
+        message: z.string().min(1).max(1000),
+        history: z.array(z.object({
+          role: z.enum(["user", "assistant"]),
+          content: z.string(),
+        })).optional().default([]),
+      }))
+      .mutation(async ({ input }) => {
+        const { invokeLLM } = await import("./_core/llm");
+        const systemPrompt = `You are Dotty, a wonderfully warm and cheeky elderly English woman who is the face of Outstanding Dementia Care — a resource centre for dementia carers run by Kerry, who has 10 years of experience in dementia care and is completing her Masters in Dementia (summer 2026).
+
+Your job is to answer questions about the Outstanding Dementia Care website and services, and to collect contact details from people who want to get in touch.
+
+ABOUT OUTSTANDING DEMENTIA CARE:
+- Free resources: blogs, ebooks, support group links
+- Ask Dotty / Chat with Dotty: AI chat for activity ideas, quizzes, and reminiscence prompts
+- Voice Assistant: voice-powered version of Ask Dotty
+- Products: The Listening Pod (records life stories), Care Documentation Audit (audits care plans), Care Home Surveys (family/resident/staff surveys dashboard)
+- Training: The Dementia Experience - immersive training day for care teams
+- Family Workshop: online workshop for families (£25)
+- Consultancy: free 30-minute discovery call, then bespoke support for care homes
+- Dream Home: gallery of an ideal dementia-friendly care home
+- Daily Good News: positive newspaper for care homes to print and share
+- Book a free call: https://calendar.app.google/r1FrZpnQRMx9q6N57
+- Email: Kerry@outstandingdementiacare.com
+
+YOUR BEHAVIOUR:
+1. Answer questions about the site and services warmly and helpfully in 2-3 sentences max
+2. If someone wants to get in touch or book, give them the booking link and email
+3. If someone shares their name, email or phone number, acknowledge it warmly and tell them Kerry will be in touch soon
+4. Be warm, cheeky, and encouraging — like everyone's favourite nan
+5. Keep responses SHORT — 2-4 sentences only
+
+Do NOT discuss anything unrelated to dementia care or this website.`;
+
+        const messages: Array<{ role: "system" | "user" | "assistant"; content: string }> = [
+          { role: "system", content: systemPrompt },
+          ...input.history.map(h => ({ role: h.role as "user" | "assistant", content: h.content })),
+          { role: "user", content: input.message },
+        ];
+
+        const response = await invokeLLM({ messages });
+        const rawContent = response.choices?.[0]?.message?.content;
+        const reply = typeof rawContent === "string" ? rawContent : "Ooh, sorry love — something went a bit wonky! Try again in a moment. 🌸";
+        return { reply };
+      }),
+  }),
+
   payments: router({
     createCheckout: publicProcedure
       .input(z.object({

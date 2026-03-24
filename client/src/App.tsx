@@ -26,6 +26,7 @@ import AdminEbooks from "./pages/AdminEbooks";
 import AdminSupport from "./pages/AdminSupport";
 import CookieBanner from "./components/CookieBanner";
 import AskDotty from "./pages/AskDotty";
+import DottyWidget from "./components/DottyWidget";
 
 function Router() {
   return (
@@ -59,6 +60,7 @@ function Router() {
       </main>
       <Footer />
       <CookieBanner />
+      <DottyWidget />
     </div>
   );
 }

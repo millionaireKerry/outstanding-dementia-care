@@ -29,8 +29,8 @@ export default function Home() {
     },
     {
       icon: Mic,
-      title: "Voice Assistant",
-      description: "Get instant answers with our Dementia Pocket Expert voice agent",
+      title: "Chat with Dotty ✨",
+      description: "Ask Dotty anything — she answers questions about dementia care, suggests activities, and creates quizzes for your residents",
       href: "/voice-agent",
       color: "bg-mint text-foreground",
     },
@@ -65,7 +65,7 @@ export default function Home() {
               </Link>
               <Link href="/voice-agent">
                 <Button size="lg" variant="outline" className="retro-button bg-cream text-charcoal hover:bg-cream/90">
-                  Try Voice Assistant
+                  Chat with Dotty ✨
                   <Mic className="ml-2" size={20} />
                 </Button>
               </Link>
