@@ -27,10 +27,12 @@ import AdminSupport from "./pages/AdminSupport";
 import CookieBanner from "./components/CookieBanner";
 import AskDotty from "./pages/AskDotty";
 import DottyWidget from "./components/DottyWidget";
+import ScrollToTop from "./components/ScrollToTop";
 
 function Router() {
   return (
     <div className="min-h-screen flex flex-col">
+      <ScrollToTop />
       <Header />
       <main className="flex-1">
         <Switch>
