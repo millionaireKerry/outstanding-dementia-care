@@ -110,8 +110,8 @@ export default function DottyWidget() {
             <img src={DOTTY_IMG} alt="Dotty" className="w-full h-full object-cover" style={{ objectPosition: "center 15%" }} />
           </div>
           <div className="text-left">
-            <p className="text-white font-bold text-sm leading-tight" style={{ fontFamily: "var(--font-retro)" }}>Chat with Dotty</p>
-            <p className="text-gold text-xs leading-tight">Ask me anything! ✨</p>
+            <p className="font-bold text-base leading-tight" style={{ fontFamily: "var(--font-retro)", color: "#FFFFFF", textShadow: "0 1px 2px rgba(0,0,0,0.4)" }}>Chat with Dotty</p>
+            <p className="text-sm leading-tight font-semibold" style={{ color: "#FFE066", textShadow: "0 1px 2px rgba(0,0,0,0.4)" }}>Ask me anything! ✨</p>
           </div>
         </button>
       )}
