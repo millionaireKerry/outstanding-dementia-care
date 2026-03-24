@@ -167,6 +167,11 @@ export default function VoiceAgent() {
     await getAIResponse(userMessage.content);
     setIsProcessing(false);
   };
+  useEffect(() => {
+    document.title = "Voice Assistant | Outstanding Dementia Care";
+    return () => { document.title = "Outstanding Dementia Care - Resources for Carers"; };
+  }, []);
+
 
   return (
     <div className="min-h-screen bg-background py-12">

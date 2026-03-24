@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Mic2, FileCheck, BarChart3, Brain, Mail, ExternalLink } from "lucide-react";
 
@@ -94,6 +95,11 @@ export default function Products() {
       isExternal: true
     }
   ];
+  useEffect(() => {
+    document.title = "Products | Outstanding Dementia Care";
+    return () => { document.title = "Outstanding Dementia Care - Resources for Carers"; };
+  }, []);
+
 
   return (
     <div className="min-h-screen bg-background">

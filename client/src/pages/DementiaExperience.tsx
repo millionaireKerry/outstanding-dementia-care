@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -143,6 +144,11 @@ const included = [
 ];
 
 export default function DementiaExperience() {
+  useEffect(() => {
+    document.title = "The Dementia Experience Training | Outstanding Dementia Care";
+    return () => { document.title = "Outstanding Dementia Care - Resources for Carers"; };
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}

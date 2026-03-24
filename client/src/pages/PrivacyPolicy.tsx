@@ -1,4 +1,10 @@
+import { useEffect } from 'react';
 export default function PrivacyPolicy() {
+  useEffect(() => {
+    document.title = "Privacy Policy | Outstanding Dementia Care";
+    return () => { document.title = "Outstanding Dementia Care - Resources for Carers"; };
+  }, []);
+
   return (
     <div className="container py-12 max-w-4xl mx-auto">
       <div className="bg-card border-2 border-border rounded-lg p-8 md:p-12">

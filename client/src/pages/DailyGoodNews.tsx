@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -95,6 +95,11 @@ export default function DailyGoodNews() {
     const today = new Date();
     return editionDate.toDateString() === today.toDateString();
   });
+  useEffect(() => {
+    document.title = "Daily Good News | Outstanding Dementia Care";
+    return () => { document.title = "Outstanding Dementia Care - Resources for Carers"; };
+  }, []);
+
 
   return (
     <div className="min-h-screen bg-background">

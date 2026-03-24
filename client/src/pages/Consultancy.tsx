@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -116,6 +117,11 @@ export default function Consultancy() {
       desc: "Hands-on support to help your home navigate change — whether that is a new manager, a CQC improvement plan, or a culture shift towards person-centred care.",
     },
   ];
+  useEffect(() => {
+    document.title = "Dementia Consultancy | Outstanding Dementia Care";
+    return () => { document.title = "Outstanding Dementia Care - Resources for Carers"; };
+  }, []);
+
 
   return (
     <div className="min-h-screen bg-background">

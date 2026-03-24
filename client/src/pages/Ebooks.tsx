@@ -1,7 +1,7 @@
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Download, BookOpen, Loader2, FileText, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import { Link } from "wouter";
@@ -65,6 +65,11 @@ export default function Ebooks() {
     const mb = bytes / (1024 * 1024);
     return `${mb.toFixed(2)} MB`;
   };
+  useEffect(() => {
+    document.title = "Free Ebooks | Outstanding Dementia Care";
+    return () => { document.title = "Outstanding Dementia Care - Resources for Carers"; };
+  }, []);
+
 
   return (
     <div className="min-h-screen bg-background py-12">

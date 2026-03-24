@@ -496,3 +496,11 @@
 - [x] Set as og:image in index.html meta tags
 - [x] Set og:title, og:description, og:url correctly
 - [x] Add Twitter Card meta tags too
+
+## SEO & Analytics Audit (Mar 24, 2026)
+- [x] Verify Google Analytics (G-HSR8VEQMJF) fires on all pages
+- [x] Verify AdSense (ca-pub-3819753512414775) tag present in index.html
+- [x] Check all pages have correct document title via useEffect
+- [x] Add per-page document.title to all 14 pages
+- [x] Confirm OG image, og:title, og:description set globally
+- [x] sitemap.xml updated with Ask Dotty, Training, Family Workshop, Dream Home, Consultancy

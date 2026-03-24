@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { dreamHomeData, DreamHomeCard } from "@/data/dreamHomeData";
 import { X, ChevronDown, ChevronUp, Home, Flower2, Sparkles, Eye } from "lucide-react";
 
@@ -178,6 +178,11 @@ export default function DreamHome() {
     activeCategory === "All"
       ? dreamHomeData
       : dreamHomeData.filter((c) => c.category === activeCategory);
+  useEffect(() => {
+    document.title = "Dream Dementia Home | Outstanding Dementia Care";
+    return () => { document.title = "Outstanding Dementia Care - Resources for Carers"; };
+  }, []);
+
 
   return (
     <div className="min-h-screen bg-background">

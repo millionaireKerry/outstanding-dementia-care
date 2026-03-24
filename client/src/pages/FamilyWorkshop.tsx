@@ -87,6 +87,11 @@ export default function FamilyWorkshop() {
       name: "David, husband and carer",
     },
   ];
+  useEffect(() => {
+    document.title = "Family Workshop | Outstanding Dementia Care";
+    return () => { document.title = "Outstanding Dementia Care - Resources for Carers"; };
+  }, []);
+
 
   return (
     <div className="min-h-screen bg-background">

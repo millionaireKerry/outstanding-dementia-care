@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { BookOpen, Download, Users, Mic, Package, ArrowRight, Building2, Award, Phone } from "lucide-react";
@@ -34,6 +35,11 @@ export default function Home() {
       color: "bg-mint text-foreground",
     },
   ];
+  useEffect(() => {
+    document.title = "Outstanding Dementia Care - Free Resources for Carers";
+    return () => { document.title = "Outstanding Dementia Care - Resources for Carers"; };
+  }, []);
+
 
   return (
     <div className="min-h-screen flex flex-col">

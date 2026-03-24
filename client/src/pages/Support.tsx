@@ -1,7 +1,7 @@
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Users, ExternalLink, Mail, Phone, MapPin, Loader2 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Support() {
   const { data: groups, isLoading } = trpc.supportGroup.list.useQuery();
@@ -14,6 +14,11 @@ export default function Support() {
   const filteredGroups = selectedCategory === "all"
     ? groups
     : groups?.filter(g => g.category === selectedCategory);
+  useEffect(() => {
+    document.title = "Support Groups | Outstanding Dementia Care";
+    return () => { document.title = "Outstanding Dementia Care - Resources for Carers"; };
+  }, []);
+
 
   return (
     <div className="min-h-screen bg-background py-12">

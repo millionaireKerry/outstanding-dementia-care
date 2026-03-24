@@ -3,7 +3,7 @@ import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search, Calendar, Tag, Loader2 } from "lucide-react";
-import { useState, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { format } from "date-fns";
 import AdSense from "@/components/AdSense";
 
@@ -29,6 +29,11 @@ export default function Blog() {
     
     return filtered;
   }, [posts, searchResults, searchQuery, selectedCategory]);
+  useEffect(() => {
+    document.title = "Blog | Outstanding Dementia Care";
+    return () => { document.title = "Outstanding Dementia Care - Resources for Carers"; };
+  }, []);
+
 
   return (
     <div className="min-h-screen bg-background">

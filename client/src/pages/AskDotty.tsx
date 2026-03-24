@@ -93,6 +93,11 @@ export default function AskDotty() {
       sendMessage();
     }
   };
+  useEffect(() => {
+    document.title = "Ask Dotty | Outstanding Dementia Care";
+    return () => { document.title = "Outstanding Dementia Care - Resources for Carers"; };
+  }, []);
+
 
   return (
     <div className="min-h-screen" style={{ background: "var(--cream)" }}>
