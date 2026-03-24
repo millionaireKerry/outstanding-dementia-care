@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Send, Sparkles, BookOpen, Lightbulb, MessageSquare } from "lucide-react";
+import { Send, Sparkles, BookOpen, Lightbulb, MessageSquare, X } from "lucide-react";
 
 const DOTTY_RECORD_SHOP = "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/dotty-record-shop_3c717b45.webp";
 const DOTTY_ON_BUS = "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/dotty-on-bus_d86f8e2c.webp";
@@ -214,11 +214,20 @@ export default function AskDotty() {
                   <img src={DOTTY_ON_BUS} alt="Dotty" className="w-full h-full object-cover" style={{ objectPosition: "center 15%" }} />
                 </div>
                 <span className="text-white font-semibold text-sm">Chatting with Dotty</span>
-                <Sparkles className="w-4 h-4 text-gold ml-auto" />
+                <Sparkles className="w-4 h-4 text-gold ml-1" />
+                <button
+                  onClick={() => { setMessages([]); setHasStarted(false); }}
+                  className="ml-auto flex items-center gap-1.5 bg-white/20 hover:bg-white/30 text-white text-xs font-semibold px-3 py-1.5 rounded-full border border-white/40 transition-colors"
+                  title="Close chat"
+                  aria-label="Close chat and start over"
+                >
+                  <X className="w-3.5 h-3.5" />
+                  <span>Close</span>
+                </button>
               </div>
 
               {/* Messages list */}
-              <div className="p-5 space-y-4 max-h-[500px] overflow-y-auto">
+              <div className="p-5 space-y-4 overflow-y-auto" style={{ maxHeight: "60vh" }}>
                 {messages.map((msg, i) => (
                   <div key={i} className={`flex gap-3 ${msg.role === "user" ? "flex-row-reverse" : "flex-row"}`}>
                     {msg.role === "assistant" && (
