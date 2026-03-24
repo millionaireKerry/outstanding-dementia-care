@@ -54,7 +54,7 @@ export default function Home() {
             <p className="text-lg md:text-xl text-charcoal/80 mb-8 leading-relaxed">
               Your trusted resource centre for dementia care. Access free educational materials, 
               connect with support groups, and discover innovative tools designed by experts with 
-              10 years of experience and a Masters in Dementia.
+              10 years of experience and a Masters in Dementia (completing this summer 2026).
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/blog">
@@ -267,7 +267,7 @@ export default function Home() {
                     </div>
                     <div className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-1.5 text-[#E8DCC4] text-sm">
                       <BookOpen size={15} />
-                      <span>Masters in Dementia</span>
+                      <span>Masters in Dementia (completing summer 2026)</span>
                     </div>
                     <div className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-1.5 text-[#E8DCC4] text-sm">
                       <Users size={15} />
