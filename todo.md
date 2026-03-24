@@ -490,3 +490,9 @@
 - [x] Use Dotty images from CDN as character illustrations
 - [x] Add /ask-dotty route to App.tsx
 - [x] Add Ask Dotty to main navigation
+
+## OG Social Sharing Image (Mar 24, 2026)
+- [x] Upload "I'm Still Here" image to CDN
+- [x] Set as og:image in index.html meta tags
+- [x] Set og:title, og:description, og:url correctly
+- [x] Add Twitter Card meta tags too
