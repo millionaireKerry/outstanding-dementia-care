@@ -65,7 +65,7 @@ export default function Home() {
               </Link>
               <Link href="/voice-agent">
                 <Button size="lg" variant="outline" className="retro-button bg-cream text-charcoal hover:bg-cream/90">
-                  Chat with Dotty ✨
+                  Try Dementia Pocket Expert
                   <Mic className="ml-2" size={20} />
                 </Button>
               </Link>
