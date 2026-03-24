@@ -102,16 +102,16 @@ export default function DottyWidget() {
       {!open && (
         <button
           onClick={() => setOpen(true)}
-          className="fixed bottom-6 right-6 z-50 flex items-center gap-2 shadow-2xl rounded-full pr-4 pl-1 py-1 border-2 border-gold"
-          style={{ background: "var(--forest-green)" }}
+          className="fixed bottom-6 right-6 z-50 flex items-center gap-2 shadow-2xl rounded-full pr-4 pl-1 py-1 border-2"
+          style={{ background: "#F5F0E8", borderColor: "var(--forest-green)" }}
           aria-label="Chat with Dotty"
         >
           <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-gold flex-shrink-0">
             <img src={DOTTY_IMG} alt="Dotty" className="w-full h-full object-cover" style={{ objectPosition: "center 15%" }} />
           </div>
           <div className="text-left">
-            <p className="font-bold text-base leading-tight" style={{ fontFamily: "var(--font-retro)", color: "#FFFFFF", textShadow: "0 1px 2px rgba(0,0,0,0.4)" }}>Chat with Dotty</p>
-            <p className="text-sm leading-tight font-semibold" style={{ color: "#FFFFFF", textShadow: "0 1px 2px rgba(0,0,0,0.5)" }}>Ask me anything! ✨</p>
+            <p className="font-bold text-base leading-tight" style={{ fontFamily: "var(--font-retro)", color: "var(--forest-green)" }}>Chat with Dotty</p>
+            <p className="text-sm leading-tight font-semibold" style={{ color: "#1a1a1a" }}>Ask me anything! ✨</p>
           </div>
         </button>
       )}
