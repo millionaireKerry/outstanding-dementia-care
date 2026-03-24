@@ -1,0 +1,22 @@
+# Outstanding Dementia Care - robots.txt
+# Allow all search engines and social media crawlers
+
+User-agent: *
+Allow: /
+
+# Explicitly allow Facebook's crawler for OG image scraping
+User-agent: facebookexternalhit
+Allow: /
+
+# Explicitly allow other social media crawlers
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+# Sitemap location
+Sitemap: https://outstandingdementiacare.com/sitemap.xml
