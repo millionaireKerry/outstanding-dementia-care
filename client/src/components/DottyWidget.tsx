@@ -111,7 +111,7 @@ export default function DottyWidget() {
           </div>
           <div className="text-left">
             <p className="font-bold text-base leading-tight" style={{ fontFamily: "var(--font-retro)", color: "#FFFFFF", textShadow: "0 1px 2px rgba(0,0,0,0.4)" }}>Chat with Dotty</p>
-            <p className="text-sm leading-tight font-semibold" style={{ color: "#FFE066", textShadow: "0 1px 2px rgba(0,0,0,0.4)" }}>Ask me anything! ✨</p>
+            <p className="text-sm leading-tight font-semibold" style={{ color: "#FFFFFF", textShadow: "0 1px 2px rgba(0,0,0,0.5)" }}>Ask me anything! ✨</p>
           </div>
         </button>
       )}
