@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { BookOpen, Download, Users, Mic, Package, ArrowRight, Building2, Award, Phone } from "lucide-react";
+import { BookOpen, Download, Users, Mic, Package, ArrowRight, Building2, Award, Phone, Play, Calendar, Star } from "lucide-react";
 import NewsletterSignup from "@/components/NewsletterSignup";
 
 export default function Home() {
@@ -43,18 +43,83 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-teal via-mint to-peach py-20 md:py-32 overflow-hidden">
+
+      {/* ===== HERO: Dementia Experience ===== */}
+      <section className="relative overflow-hidden" style={{ background: "linear-gradient(135deg, #1a3d32 0%, #2C5F4F 50%, #1a3d32 100%)" }}>
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle, #ffffff 1px, transparent 1px)", backgroundSize: "28px 28px" }} />
+        <div className="container relative z-10 py-12 md:py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center max-w-6xl mx-auto">
+
+            {/* Left: copy */}
+            <div className="text-center lg:text-left">
+              <div className="inline-flex items-center gap-2 bg-[#bc9c2f]/20 border border-[#bc9c2f]/40 rounded-full px-4 py-1.5 mb-5">
+                <Star size={14} className="text-[#bc9c2f]" />
+                <span className="text-[#bc9c2f] text-sm font-bold uppercase tracking-widest">Flagship Training</span>
+              </div>
+              <h1 className="text-4xl md:text-5xl font-bold text-[#E8DCC4] mb-4 leading-tight" style={{ fontFamily: "'Playfair Display', serif" }}>
+                The Dementia Experience
+              </h1>
+              <p className="text-[#E8DCC4]/85 text-lg leading-relaxed mb-6">
+                An immersive, interactive workshop that puts your team inside the world of dementia —
+                transforming how they think, feel, and care. Designed by Kerry, with 10 years of experience
+                and a Masters in Dementia (completing summer 2026).
+              </p>
+              <div className="flex flex-wrap gap-3 justify-center lg:justify-start mb-8">
+                {[
+                  { label: "Half Day  •  £595", icon: "🕙" },
+                  { label: "Full Day  •  £895", icon: "📅" },
+                  { label: "Up to 40 people", icon: "👥" },
+                  { label: "UK-wide", icon: "🗺️" },
+                ].map(item => (
+                  <span key={item.label} className="flex items-center gap-1.5 bg-white/10 rounded-full px-4 py-1.5 text-[#E8DCC4] text-sm font-medium">
+                    <span>{item.icon}</span>{item.label}
+                  </span>
+                ))}
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+                <Link href="/dementia-experience">
+                  <Button size="lg" className="font-bold rounded-full shadow-lg w-full sm:w-auto" style={{ backgroundColor: "#bc9c2f", color: "#fff", fontFamily: "'Playfair Display', serif" }}>
+                    <Calendar className="mr-2" size={18} />
+                    Book a Date
+                  </Button>
+                </Link>
+                <Link href="/dementia-experience">
+                  <Button size="lg" variant="outline" className="font-bold rounded-full border-[#E8DCC4] text-[#E8DCC4] hover:bg-[#E8DCC4] hover:text-[#2C5F4F] w-full sm:w-auto">
+                    Find Out More
+                    <ArrowRight className="ml-2" size={18} />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+
+            {/* Right: video placeholder */}
+            <div className="flex justify-center">
+              <div className="relative w-full max-w-lg rounded-2xl overflow-hidden shadow-2xl" style={{ border: "3px solid #bc9c2f", aspectRatio: "16/9", background: "#0d2b22" }}>
+                {/* Replace the div below with your <video> or <iframe> embed when ready */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 p-8 text-center">
+                  <div className="w-20 h-20 rounded-full flex items-center justify-center" style={{ background: "#bc9c2f" }}>
+                    <Play size={36} className="text-white ml-1" />
+                  </div>
+                  <p className="text-[#E8DCC4] font-bold text-lg" style={{ fontFamily: "'Playfair Display', serif" }}>Your video coming soon</p>
+                  <p className="text-[#E8DCC4]/60 text-sm">Upload your Dementia Experience video here to bring this section to life</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ===== Secondary hero strip: free resources ===== */}
+      <section className="relative bg-gradient-to-br from-teal via-mint to-peach py-12 overflow-hidden">
         <div className="absolute inset-0 vintage-dots opacity-20"></div>
         <div className="container relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 retro-heading text-charcoal">
-              Welcome to Outstanding Dementia Care
-            </h1>
-            <p className="text-lg md:text-xl text-charcoal/80 mb-8 leading-relaxed">
-              Your trusted resource centre for dementia care. Access free educational materials, 
-              connect with support groups, and discover innovative tools designed by experts with 
-              10 years of experience and a Masters in Dementia (completing this summer 2026).
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 retro-heading text-charcoal">
+              Free Resources for Every Carer
+            </h2>
+            <p className="text-lg text-charcoal/80 mb-6 leading-relaxed">
+              Blogs, ebooks, support groups, and Dotty — our AI dementia expert — all completely free.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/blog">

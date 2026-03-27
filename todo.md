@@ -511,3 +511,13 @@
 - [x] Rename "Voice Assistant" nav link to "Chat with Dotty" (clearer label)
 - [x] Clarify voice assistant description on homepage hero
 - [x] Build floating Dotty chat widget on all pages (business Q&A, contact capture, email Kerry@outstandingdementiacare.com)
+
+## Dementia Experience Training Product (Mar 2026)
+- [ ] Redesign homepage hero to feature training as main product with video placeholder
+- [ ] Build Dementia Experience page with pricing (half day £595, full day £895)
+- [ ] Add session structure: 90 min sessions, 10 people per session, 2 sessions half day, 4 sessions full day
+- [ ] Add booking calendar to Dementia Experience page
+- [ ] Add Stripe payment link placeholders (to be replaced by Kerry)
+- [ ] Add hero video placeholder (to be replaced by Kerry)
+- [ ] Rename existing Family Workshop to Dementia Workshop on Training page
+- [ ] Add Dementia Experience to navigation menu

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -20,6 +20,10 @@ import {
 } from "lucide-react";
 
 const BOOKING_URL = "https://calendar.app.google/r1FrZpnQRMx9q6N57";
+
+// STRIPE LINKS — replace these when ready:
+const STRIPE_HALF_DAY = "https://buy.stripe.com/REPLACE_HALF_DAY";
+const STRIPE_FULL_DAY = "https://buy.stripe.com/REPLACE_FULL_DAY";
 
 const benefits = [
   {
@@ -315,69 +319,94 @@ export default function DementiaExperience() {
               className="text-3xl md:text-4xl font-bold text-foreground mb-4"
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
-              Investment & Pricing
+              Choose Your Session
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Everything your team needs for a transformative day of learning, delivered on-site at your care home.
+              Each 90-minute session accommodates up to 10 participants. All prices include travel anywhere in the UK — no hidden extras.
             </p>
           </div>
 
-          <div className="max-w-2xl mx-auto">
-            <Card className="retro-card border-4 border-primary shadow-xl">
-              <CardContent className="p-8">
-                <div className="text-center mb-8">
-                  <div className="flex items-center justify-center gap-2 mb-2">
-                    <Brain className="h-8 w-8 text-primary" />
-                    <h3
-                      className="text-2xl font-bold text-foreground"
-                      style={{ fontFamily: "'Playfair Display', serif" }}
-                    >
-                      Full-Day On-Site Workshop
-                    </h3>
-                  </div>
-                  <div className="mt-4">
-                    <span className="text-5xl font-bold text-primary">£650</span>
-                    <p className="text-muted-foreground mt-1">Day rate + travel expenses</p>
-                  </div>
-                  <div className="mt-3 inline-flex items-center gap-2 bg-secondary/30 rounded-full px-4 py-2">
-                    <Users className="h-4 w-4 text-foreground" />
-                    <span className="text-sm font-medium text-foreground">
-                      Up to 10 participants &nbsp;|&nbsp; +£50 per additional candidate
-                    </span>
-                  </div>
-                </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
 
-                <div className="border-t-2 border-border pt-6 mb-8">
-                  <h4
-                    className="font-bold text-foreground mb-4 flex items-center gap-2"
-                    style={{ fontFamily: "'Playfair Display', serif" }}
-                  >
-                    <Star className="h-5 w-5 text-gold" />
-                    Everything Included
-                  </h4>
-                  <ul className="space-y-3">
-                    {included.map((item) => (
-                      <li key={item} className="flex items-start gap-3">
-                        <CheckCircle className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                        <span className="text-muted-foreground text-sm">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+            {/* Half Day */}
+            <Card className="retro-card border-4 border-primary shadow-xl flex flex-col">
+              <CardContent className="p-8 flex flex-col flex-1">
+                <div className="text-center mb-6">
+                  <Badge className="mb-3 bg-secondary text-secondary-foreground">Half Day</Badge>
+                  <div className="text-5xl font-bold text-primary mb-1" style={{ fontFamily: "'Playfair Display', serif" }}>£595</div>
+                  <p className="text-muted-foreground text-sm">All travel included</p>
                 </div>
-
+                <div className="space-y-3 mb-6 flex-1">
+                  <div className="flex items-center gap-2 text-sm text-foreground">
+                    <Clock className="h-4 w-4 text-primary" />
+                    <span>10am–1pm <span className="text-muted-foreground">or</span> 1:30pm–4:30pm</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-foreground">
+                    <Users className="h-4 w-4 text-primary" />
+                    <span>2 sessions × 10 people = <strong>20 participants</strong></span>
+                  </div>
+                  {included.map((item) => (
+                    <div key={item} className="flex items-start gap-2">
+                      <CheckCircle className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+                      <span className="text-muted-foreground text-sm">{item}</span>
+                    </div>
+                  ))}
+                </div>
                 <Button
                   size="lg"
-                  className="w-full retro-button bg-primary text-primary-foreground hover:bg-primary/90 text-lg py-6"
+                  className="w-full retro-button bg-primary text-primary-foreground hover:bg-primary/90"
                   onClick={() => window.open(BOOKING_URL, "_blank")}
                 >
-                  <CalendarCheck className="mr-2 h-5 w-5" />
-                  Book a Free 30-Minute Call
+                  <CalendarCheck className="mr-2 h-4 w-4" />
+                  Book a Date
                 </Button>
-                <p className="text-center text-xs text-muted-foreground mt-3">
-                  Free, no-obligation call. Kerry will talk through your needs and suggest the right next step.
-                </p>
+                <p className="text-center text-xs text-muted-foreground mt-2">Stripe payment links coming soon</p>
               </CardContent>
             </Card>
+
+            {/* Full Day */}
+            <Card className="retro-card border-4 shadow-xl flex flex-col" style={{ borderColor: "#bc9c2f", background: "linear-gradient(135deg, #2C5F4F, #1a3d32)" }}>
+              <CardContent className="p-8 flex flex-col flex-1">
+                <div className="text-center mb-6">
+                  <Badge className="mb-3" style={{ background: "#bc9c2f", color: "#fff" }}>Full Day — Most Popular</Badge>
+                  <div className="text-5xl font-bold mb-1" style={{ fontFamily: "'Playfair Display', serif", color: "#E8DCC4" }}>£895</div>
+                  <p className="text-sm" style={{ color: "#E8DCC4", opacity: 0.7 }}>All travel included</p>
+                </div>
+                <div className="space-y-3 mb-6 flex-1">
+                  <div className="flex items-center gap-2 text-sm" style={{ color: "#E8DCC4" }}>
+                    <Clock className="h-4 w-4" style={{ color: "#bc9c2f" }} />
+                    <span>10am–4:30pm</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm" style={{ color: "#E8DCC4" }}>
+                    <Users className="h-4 w-4" style={{ color: "#bc9c2f" }} />
+                    <span>4 sessions × 10 people = <strong>40 participants</strong></span>
+                  </div>
+                  {included.map((item) => (
+                    <div key={item} className="flex items-start gap-2">
+                      <CheckCircle className="h-4 w-4 shrink-0 mt-0.5" style={{ color: "#bc9c2f" }} />
+                      <span className="text-sm" style={{ color: "#E8DCC4", opacity: 0.85 }}>{item}</span>
+                    </div>
+                  ))}
+                </div>
+                <Button
+                  size="lg"
+                  className="w-full font-bold rounded-full"
+                  style={{ backgroundColor: "#bc9c2f", color: "#fff", fontFamily: "'Playfair Display', serif" }}
+                  onClick={() => window.open(BOOKING_URL, "_blank")}
+                >
+                  <CalendarCheck className="mr-2 h-4 w-4" />
+                  Book a Date
+                </Button>
+                <p className="text-center text-xs mt-2" style={{ color: "#E8DCC4", opacity: 0.5 }}>Stripe payment links coming soon</p>
+              </CardContent>
+            </Card>
+
+          </div>
+
+          {/* New client offer */}
+          <div className="mt-10 text-center bg-secondary/20 border-2 border-secondary rounded-2xl p-6 max-w-2xl mx-auto">
+            <p className="font-bold text-foreground text-lg mb-1" style={{ fontFamily: "'Playfair Display', serif" }}>🎉 New Client Offer</p>
+            <p className="text-muted-foreground">Use code <strong className="text-primary">NEWCLIENT</strong> when booking your first session to receive <strong>50% off</strong>.</p>
           </div>
         </div>
       </section>
@@ -410,11 +439,11 @@ export default function DementiaExperience() {
                   <p>We understand that care homes face unpredictable staffing pressures. Our cancellation policy is designed to be fair to both parties. Cancellations made with 14 or more days' notice will receive a full refund or free rescheduling. Cancellations made between 7 and 13 days' notice will be offered one free rescheduling to an alternative date. Cancellations made with less than 7 days' notice will forfeit the full fee, though we will always endeavour to rearrange where circumstances allow.</p>
                 </div>
               </div>
-              <div className="flex items-start gap-3 p-4 bg-background rounded-lg border-2 border-border">
+                <div className="flex items-start gap-3 p-4 bg-background rounded-lg border-2 border-border">
                 <AlertCircle className="h-5 w-5 text-muted-foreground shrink-0 mt-0.5" />
                 <div>
-                  <p className="font-semibold text-foreground mb-1">Travel Expenses</p>
-                  <p>Travel expenses are charged in addition to the day rate and will be confirmed at the time of booking based on your location. Mileage is charged at the HMRC approved rate of 45p per mile. We travel throughout the UK.</p>
+                  <p className="font-semibold text-foreground mb-1">Travel</p>
+                  <p>Travel is included in the price. All prices are all-inclusive — there are no additional travel charges. We deliver throughout the UK.</p>
                 </div>
               </div>
               <div className="flex items-start gap-3 p-4 bg-background rounded-lg border-2 border-border">

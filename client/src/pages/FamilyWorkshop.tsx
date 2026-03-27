@@ -88,7 +88,7 @@ export default function FamilyWorkshop() {
     },
   ];
   useEffect(() => {
-    document.title = "Family Workshop | Outstanding Dementia Care";
+    document.title = "The Dementia Workshop | Outstanding Dementia Care";
     return () => { document.title = "Outstanding Dementia Care - Resources for Carers"; };
   }, []);
 
@@ -124,13 +124,13 @@ export default function FamilyWorkshop() {
               className="text-4xl md:text-6xl font-bold text-[#E8DCC4]"
               style={{ fontFamily: "Playfair Display, serif" }}
             >
-              Family Dementia Workshop
+              The Dementia Workshop
             </h1>
           </div>
           <p className="text-xl md:text-2xl text-[#E8DCC4]/90 max-w-3xl mx-auto mb-8 leading-relaxed">
-            A warm, honest 90-minute Zoom session for families navigating
+            A warm, honest 90-minute Zoom session for families and carers navigating
             dementia — led by Kerry Goodearl, dementia specialist with 10 years'
-            experience and a Masters in Dementia.
+            experience and a Masters in Dementia (completing summer 2026).
           </p>
           <div className="flex flex-wrap justify-center gap-4 mb-10">
             <div className="flex items-center gap-2 bg-white/10 rounded-full px-5 py-2 text-[#E8DCC4]">
