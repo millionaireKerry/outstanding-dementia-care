@@ -21,9 +21,8 @@ import {
 
 const BOOKING_URL = "https://calendar.app.google/r1FrZpnQRMx9q6N57";
 
-// STRIPE LINKS — replace these when ready:
-const STRIPE_HALF_DAY = "https://buy.stripe.com/REPLACE_HALF_DAY";
-const STRIPE_FULL_DAY = "https://buy.stripe.com/REPLACE_FULL_DAY";
+const STRIPE_HALF_DAY = "https://buy.stripe.com/00w3cxflx0Ub81iaxTg7e03";
+const STRIPE_FULL_DAY = "https://buy.stripe.com/3cI4gB7T5eL181ieO9g7e02";
 
 const benefits = [
   {
@@ -355,12 +354,11 @@ export default function DementiaExperience() {
                 <Button
                   size="lg"
                   className="w-full retro-button bg-primary text-primary-foreground hover:bg-primary/90"
-                  onClick={() => window.open(BOOKING_URL, "_blank")}
+                  onClick={() => window.open(STRIPE_HALF_DAY, "_blank")}
                 >
                   <CalendarCheck className="mr-2 h-4 w-4" />
-                  Book a Date
+                  Book & Pay — £595
                 </Button>
-                <p className="text-center text-xs text-muted-foreground mt-2">Stripe payment links coming soon</p>
               </CardContent>
             </Card>
 
@@ -392,12 +390,11 @@ export default function DementiaExperience() {
                   size="lg"
                   className="w-full font-bold rounded-full"
                   style={{ backgroundColor: "#bc9c2f", color: "#fff", fontFamily: "'Playfair Display', serif" }}
-                  onClick={() => window.open(BOOKING_URL, "_blank")}
+                  onClick={() => window.open(STRIPE_FULL_DAY, "_blank")}
                 >
                   <CalendarCheck className="mr-2 h-4 w-4" />
-                  Book a Date
+                  Book & Pay — £895
                 </Button>
-                <p className="text-center text-xs mt-2" style={{ color: "#E8DCC4", opacity: 0.5 }}>Stripe payment links coming soon</p>
               </CardContent>
             </Card>
 

@@ -12,25 +12,14 @@ import {
   MessageCircle,
   BookOpen,
   Shield,
-  Loader2,
 } from "lucide-react";
-import { trpc } from "@/lib/trpc";
 import { toast } from "sonner";
 import { useEffect } from "react";
 import { useLocation } from "wouter";
 
 export default function FamilyWorkshop() {
   const [location] = useLocation();
-  const checkoutMutation = trpc.payments.createCheckout.useMutation({
-    onSuccess: (data) => {
-      window.open(data.url, "_blank");
-    },
-    onError: (error) => {
-      toast.error("Booking unavailable", {
-        description: error.message || "Please try again shortly.",
-      });
-    },
-  });
+  const STRIPE_WORKSHOP = "https://buy.stripe.com/eVq6oJ3CPgT995mfSdg7e01";
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -49,8 +38,7 @@ export default function FamilyWorkshop() {
   const WEBINAR_CALENDAR_URL = "https://calendar.app.google/r1FrZpnQRMx9q6N57";
 
   const handleBook = () => {
-    toast.info("Redirecting to secure checkout...", { description: "Opening Stripe payment page." });
-    checkoutMutation.mutate({ productKey: "familyWorkshop", origin: window.location.origin });
+    window.open(STRIPE_WORKSHOP, "_blank");
   };
 
   const handleAddToCalendar = () => {
@@ -256,15 +244,10 @@ export default function FamilyWorkshop() {
                 </p>
                 <Button
                   onClick={handleBook}
-                  disabled={checkoutMutation.isPending}
                   className="w-full font-bold text-base"
                   style={{ backgroundColor: "#bc9c2f", color: "#fff" }}
                 >
-                  {checkoutMutation.isPending ? (
-                    <><Loader2 className="mr-2 animate-spin" size={18} />Processing...</>
-                  ) : (
-                    <><Calendar className="mr-2" size={18} />Book Now — Secure Payment</>
-                  )}
+                  <Calendar className="mr-2" size={18} />Book Now — £650
                 </Button>
                 <p className="text-[#E8DCC4]/60 text-xs mt-3">
                   Powered by Stripe · Secure checkout
