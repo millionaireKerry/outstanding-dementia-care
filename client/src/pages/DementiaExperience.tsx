@@ -18,11 +18,40 @@ import {
   CalendarCheck,
   AlertCircle,
 } from "lucide-react";
+import BookingCalendar, { type CourseOption } from "@/components/BookingCalendar";
 
 const BOOKING_URL = "https://calendar.app.google/r1FrZpnQRMx9q6N57";
-
 const STRIPE_HALF_DAY = "https://buy.stripe.com/00w3cxflx0Ub81iaxTg7e03";
 const STRIPE_FULL_DAY = "https://buy.stripe.com/3cI4gB7T5eL181ieO9g7e02";
+
+const EXPERIENCE_COURSES: CourseOption[] = [
+  {
+    key: "half-day",
+    label: "The Dementia Experience — Half Day",
+    price: "£595",
+    stripeUrl: "https://buy.stripe.com/00w3cxflx0Ub81iaxTg7e03",
+    sessions: [
+      "Session 1: 10:00am – 11:30am (10 people)",
+      "Session 2: 11:30am – 1:00pm (10 people)",
+    ],
+    people: "2 sessions × 10 people = 20 participants",
+    description: "Morning or afternoon. 2 × 90-min sessions. Up to 20 participants. All travel included.",
+  },
+  {
+    key: "full-day",
+    label: "The Dementia Experience — Full Day",
+    price: "£895",
+    stripeUrl: "https://buy.stripe.com/3cI4gB7T5eL181ieO9g7e02",
+    sessions: [
+      "Session 1: 10:00am – 11:30am (10 people)",
+      "Session 2: 11:30am – 1:00pm (10 people)",
+      "Session 3: 1:30pm – 3:00pm (10 people)",
+      "Session 4: 3:00pm – 4:30pm (10 people)",
+    ],
+    people: "4 sessions × 10 people = 40 participants",
+    description: "Full day. 4 × 90-min sessions. Up to 40 participants. All travel included.",
+  },
+];
 
 const benefits = [
   {
@@ -185,10 +214,14 @@ export default function DementiaExperience() {
               <Button
                 size="lg"
                 className="retro-button bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 py-6"
-                onClick={() => window.open(BOOKING_URL, "_blank")}
+                onClick={() =>
+                  document
+                    .getElementById("booking")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
               >
                 <CalendarCheck className="mr-2 h-5 w-5" />
-                Book a Free 30-Minute Call
+                Book a Date
               </Button>
               <Button
                 size="lg"
@@ -310,101 +343,21 @@ export default function DementiaExperience() {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section className="py-16 bg-background">
+      {/* Booking Calendar Section */}
+      <section id="booking" className="py-16 bg-background">
         <div className="container">
           <div className="text-center mb-12">
             <h2
               className="text-3xl md:text-4xl font-bold text-foreground mb-4"
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
-              Choose Your Session
+              Choose a Date & Book
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Each 90-minute session accommodates up to 10 participants. All prices include travel anywhere in the UK — no hidden extras.
+              Select an available date, choose your session type, and pay securely online. No phone calls needed — just pick, book, and we'll be in touch within 24 hours.
             </p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-
-            {/* Half Day */}
-            <Card className="retro-card border-4 border-primary shadow-xl flex flex-col">
-              <CardContent className="p-8 flex flex-col flex-1">
-                <div className="text-center mb-6">
-                  <Badge className="mb-3 bg-secondary text-secondary-foreground">Half Day</Badge>
-                  <div className="text-5xl font-bold text-primary mb-1" style={{ fontFamily: "'Playfair Display', serif" }}>£595</div>
-                  <p className="text-muted-foreground text-sm">All travel included</p>
-                </div>
-                <div className="space-y-3 mb-6 flex-1">
-                  <div className="flex items-center gap-2 text-sm text-foreground">
-                    <Clock className="h-4 w-4 text-primary" />
-                    <span>10am–1pm <span className="text-muted-foreground">or</span> 1:30pm–4:30pm</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-foreground">
-                    <Users className="h-4 w-4 text-primary" />
-                    <span>2 sessions × 10 people = <strong>20 participants</strong></span>
-                  </div>
-                  {included.map((item) => (
-                    <div key={item} className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-primary shrink-0 mt-0.5" />
-                      <span className="text-muted-foreground text-sm">{item}</span>
-                    </div>
-                  ))}
-                </div>
-                <Button
-                  size="lg"
-                  className="w-full retro-button bg-primary text-primary-foreground hover:bg-primary/90"
-                  onClick={() => window.open(STRIPE_HALF_DAY, "_blank")}
-                >
-                  <CalendarCheck className="mr-2 h-4 w-4" />
-                  Book & Pay — £595
-                </Button>
-              </CardContent>
-            </Card>
-
-            {/* Full Day */}
-            <Card className="retro-card border-4 shadow-xl flex flex-col" style={{ borderColor: "#bc9c2f", background: "linear-gradient(135deg, #2C5F4F, #1a3d32)" }}>
-              <CardContent className="p-8 flex flex-col flex-1">
-                <div className="text-center mb-6">
-                  <Badge className="mb-3" style={{ background: "#bc9c2f", color: "#fff" }}>Full Day — Most Popular</Badge>
-                  <div className="text-5xl font-bold mb-1" style={{ fontFamily: "'Playfair Display', serif", color: "#E8DCC4" }}>£895</div>
-                  <p className="text-sm" style={{ color: "#E8DCC4", opacity: 0.7 }}>All travel included</p>
-                </div>
-                <div className="space-y-3 mb-6 flex-1">
-                  <div className="flex items-center gap-2 text-sm" style={{ color: "#E8DCC4" }}>
-                    <Clock className="h-4 w-4" style={{ color: "#bc9c2f" }} />
-                    <span>10am–4:30pm</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm" style={{ color: "#E8DCC4" }}>
-                    <Users className="h-4 w-4" style={{ color: "#bc9c2f" }} />
-                    <span>4 sessions × 10 people = <strong>40 participants</strong></span>
-                  </div>
-                  {included.map((item) => (
-                    <div key={item} className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 shrink-0 mt-0.5" style={{ color: "#bc9c2f" }} />
-                      <span className="text-sm" style={{ color: "#E8DCC4", opacity: 0.85 }}>{item}</span>
-                    </div>
-                  ))}
-                </div>
-                <Button
-                  size="lg"
-                  className="w-full font-bold rounded-full"
-                  style={{ backgroundColor: "#bc9c2f", color: "#fff", fontFamily: "'Playfair Display', serif" }}
-                  onClick={() => window.open(STRIPE_FULL_DAY, "_blank")}
-                >
-                  <CalendarCheck className="mr-2 h-4 w-4" />
-                  Book & Pay — £895
-                </Button>
-              </CardContent>
-            </Card>
-
-          </div>
-
-          {/* New client offer */}
-          <div className="mt-10 text-center bg-secondary/20 border-2 border-secondary rounded-2xl p-6 max-w-2xl mx-auto">
-            <p className="font-bold text-foreground text-lg mb-1" style={{ fontFamily: "'Playfair Display', serif" }}>🎉 New Client Offer</p>
-            <p className="text-muted-foreground">Use code <strong className="text-primary">NEWCLIENT</strong> when booking your first session to receive <strong>50% off</strong>.</p>
-          </div>
+          <BookingCalendar courses={EXPERIENCE_COURSES} defaultCourse="full-day" />
         </div>
       </section>
 

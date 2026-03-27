@@ -77,7 +77,7 @@ export default function Home() {
                 ))}
               </div>
               <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-                <Link href="/dementia-experience">
+                <Link href="/dementia-experience#booking">
                   <Button size="lg" className="font-bold rounded-full shadow-lg w-full sm:w-auto" style={{ backgroundColor: "#bc9c2f", color: "#fff", fontFamily: "'Playfair Display', serif" }}>
                     <Calendar className="mr-2" size={18} />
                     Book a Date

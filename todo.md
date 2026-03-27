@@ -521,3 +521,12 @@
 - [ ] Add hero video placeholder (to be replaced by Kerry)
 - [ ] Rename existing Family Workshop to Dementia Workshop on Training page
 - [ ] Add Dementia Experience to navigation menu
+
+## Booking Calendar System (Mar 2026)
+- [ ] Dementia Experience page: interactive calendar with available dates
+- [ ] Calendar: click date → select Half Day (£595) or Full Day (£895) → Stripe payment
+- [ ] Half day session times: 10am-11.30am + 11.30am-1pm (20 people)
+- [ ] Full day session times: 10am-11.30am, 11.30am-1pm, 1.30pm-3pm, 3pm-4.30pm (40 people)
+- [ ] Training page: calendar with 3 course options (Workshop £650, Experience Half Day £595, Experience Full Day £895)
+- [ ] Homepage hero: Book a Date button links to Dementia Experience calendar
+- [ ] Dementia Workshop page: correct description (full day, 10 people, agenda, £650, 50% new customer discount)

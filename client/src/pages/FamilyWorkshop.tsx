@@ -16,6 +16,48 @@ import {
 import { toast } from "sonner";
 import { useEffect } from "react";
 import { useLocation } from "wouter";
+import BookingCalendar, { type CourseOption } from "@/components/BookingCalendar";
+
+const ALL_COURSES: CourseOption[] = [
+  {
+    key: "workshop",
+    label: "The Dementia Workshop — Full Day",
+    price: "£650",
+    stripeUrl: "https://buy.stripe.com/eVq6oJ3CPgT995mfSdg7e01",
+    sessions: [
+      "10:00am – 4:30pm (full day)",
+      "Includes interactive simulation experience + debrief",
+    ],
+    people: "Up to 10 participants",
+    description: "Full-day training for care home teams. Includes simulation experience. New customers: 50% off with code NEWCLIENT.",
+  },
+  {
+    key: "experience-half",
+    label: "The Dementia Experience — Half Day",
+    price: "£595",
+    stripeUrl: "https://buy.stripe.com/00w3cxflx0Ub81iaxTg7e03",
+    sessions: [
+      "Session 1: 10:00am – 11:30am (10 people)",
+      "Session 2: 11:30am – 1:00pm (10 people)",
+    ],
+    people: "2 sessions × 10 people = 20 participants",
+    description: "Interactive simulation experience + debrief only. 2 × 90-min sessions. All travel included.",
+  },
+  {
+    key: "experience-full",
+    label: "The Dementia Experience — Full Day",
+    price: "£895",
+    stripeUrl: "https://buy.stripe.com/3cI4gB7T5eL181ieO9g7e02",
+    sessions: [
+      "Session 1: 10:00am – 11:30am (10 people)",
+      "Session 2: 11:30am – 1:00pm (10 people)",
+      "Session 3: 1:30pm – 3:00pm (10 people)",
+      "Session 4: 3:00pm – 4:30pm (10 people)",
+    ],
+    people: "4 sessions × 10 people = 40 participants",
+    description: "Full day. 4 × 90-min sessions. Up to 40 participants. All travel included.",
+  },
+];
 
 export default function FamilyWorkshop() {
   const [location] = useLocation();
@@ -231,16 +273,19 @@ export default function FamilyWorkshop() {
             <Card className="retro-border bg-[#2C5F4F] text-white">
               <CardContent className="p-6 text-center">
                 <p className="text-[#E8DCC4] text-sm font-semibold uppercase tracking-widest mb-1">
-                  Per person
+                  Full Day — Up to 10 people
                 </p>
                 <p
                   className="text-6xl font-bold text-[#E8DCC4] mb-1"
                   style={{ fontFamily: "Playfair Display, serif" }}
                 >
-                  £25
+                  £650
                 </p>
-                <p className="text-[#E8DCC4]/80 text-sm mb-4">
-                  90-minute live Zoom session
+                <p className="text-[#E8DCC4]/80 text-sm mb-2">
+                  10:00am – 4:30pm · On-site at your care home
+                </p>
+                <p className="text-[#bc9c2f] text-sm font-bold mb-4">
+                  🎉 New customers: 50% off with code NEWCLIENT
                 </p>
                 <Button
                   onClick={handleBook}
@@ -343,29 +388,18 @@ export default function FamilyWorkshop() {
           </p>
         </div>
 
-        {/* Future sessions teaser */}
-        <div
-          className="rounded-2xl p-10 text-center retro-border"
-          style={{ background: "linear-gradient(135deg, #2C5F4F, #1a3d32)" }}
-        >
+        {/* Booking Calendar */}
+        <div id="training-booking" className="mb-16">
           <h3
-            className="text-2xl font-bold text-[#E8DCC4] mb-3"
+            className="text-2xl font-bold mb-2 text-center text-[#2C5F4F]"
             style={{ fontFamily: "Playfair Display, serif" }}
           >
-            Coming soon: in-person workshops
+            Choose a Date & Book
           </h3>
-          <p className="text-[#E8DCC4]/80 max-w-xl mx-auto mb-6">
-            Future workshops will include hands-on activities, the Dementia
-            Experience simulation, and specialist topics such as managing a
-            crisis, activities at home, and navigating care home placement.
+          <p className="text-center text-muted-foreground mb-8">
+            Select a date, choose your course, and pay securely online. Kerry will confirm your booking within 24 hours.
           </p>
-          <Button
-            onClick={handleBook}
-            variant="outline"
-            className="border-[#E8DCC4] text-[#E8DCC4] hover:bg-[#E8DCC4] hover:text-[#2C5F4F] font-bold"
-          >
-            Register Your Interest
-          </Button>
+          <BookingCalendar courses={ALL_COURSES} defaultCourse="workshop" />
         </div>
       </div>
     </div>
