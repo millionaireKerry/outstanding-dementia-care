@@ -494,7 +494,7 @@ export default function FamilyWorkshop() {
           </div>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button
-              onClick={() => window.open(STRIPE_WORKSHOP, "_blank")}
+              onClick={() => document.getElementById('training-booking')?.scrollIntoView({ behavior: 'smooth' })}
               size="lg"
               className="text-lg px-10 py-6 font-bold rounded-full shadow-xl transition-transform hover:scale-105"
               style={{
@@ -561,13 +561,13 @@ export default function FamilyWorkshop() {
                 Mapped to the Dementia Training Standards Framework (2026) · Aligned to Tier 2 and Tier 3 learning outcomes
               </p>
               <Button
-                onClick={() => window.open(STRIPE_WORKSHOP, "_blank")}
+                onClick={() => document.getElementById('training-booking')?.scrollIntoView({ behavior: 'smooth' })}
                 size="lg"
                 className="text-lg px-10 py-5 font-bold rounded-full shadow-xl"
                 style={{ backgroundColor: "#2C5F4F", color: "#E8DCC4", fontFamily: "Playfair Display, serif" }}
               >
                 <Calendar className="mr-2" size={20} />
-                Book This Training — £650
+                Choose a Date — £650
               </Button>
             </div>
           </div>

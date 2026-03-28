@@ -444,18 +444,18 @@ export default function DementiaExperience() {
             <Button
               size="lg"
               className="retro-button bg-card text-foreground hover:bg-card/90 text-lg px-10 py-6"
-              onClick={() => window.open(STRIPE_HALF_DAY, "_blank")}
+              onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
             >
               <CalendarCheck className="mr-2 h-5 w-5" />
-              Book Half Day — £595
+              Choose a Date — Half Day
             </Button>
             <Button
               size="lg"
               className="retro-button bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-10 py-6"
-              onClick={() => window.open(STRIPE_FULL_DAY, "_blank")}
+              onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
             >
               <CalendarCheck className="mr-2 h-5 w-5" />
-              Book Full Day — £895
+              Choose a Date — Full Day
             </Button>
           </div>
         </div>
