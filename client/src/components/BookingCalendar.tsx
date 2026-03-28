@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ChevronLeft, ChevronRight, Clock, Users, CheckCircle } from "lucide-react";
+import { ChevronLeft, ChevronRight, Clock, Users, CheckCircle, XCircle } from "lucide-react";
 
 export type CourseOption = {
   key: string;
@@ -19,15 +19,45 @@ type Props = {
   defaultCourse?: string;
 };
 
-// Dates that are available — stored as "YYYY-MM-DD"
-// Kerry will update these; for now we seed a realistic set of future dates.
+// ─── Real availability ────────────────────────────────────────────────────────
+// April 2026: Mon–Sat. Sold out: 3rd (Fri), 6th (Mon), 11th (Sat).
+// May 2026:   Mon–Sat. Bank holidays unavailable: 4th (Mon), 25th (Mon).
+// One booking per day — any course.
+// Family webinar dates (11 Apr, 9 May) are managed separately by Kerry.
+
 const AVAILABLE_DATES: string[] = [
-  "2026-04-22", "2026-04-23",
-  "2026-05-07", "2026-05-12", "2026-05-19", "2026-05-20",
-  "2026-06-03", "2026-06-09", "2026-06-10", "2026-06-16", "2026-06-17", "2026-06-23",
-  "2026-07-01", "2026-07-07", "2026-07-08", "2026-07-14", "2026-07-15",
-  "2026-08-04", "2026-08-05", "2026-08-11", "2026-08-18",
-  "2026-09-01", "2026-09-08", "2026-09-09", "2026-09-15", "2026-09-22",
+  // April — available Mon–Sat (excluding sold-out and past dates)
+  "2026-04-01", "2026-04-02",
+  "2026-04-04",
+  "2026-04-07", "2026-04-08", "2026-04-09", "2026-04-10",
+  "2026-04-13", "2026-04-14", "2026-04-15", "2026-04-16", "2026-04-17", "2026-04-18",
+  "2026-04-20", "2026-04-21", "2026-04-22", "2026-04-23", "2026-04-24", "2026-04-25",
+  "2026-04-27", "2026-04-28", "2026-04-29", "2026-04-30",
+  // May — available Mon–Sat (excluding bank holidays 4th and 25th)
+  "2026-05-01", "2026-05-02",
+  "2026-05-05", "2026-05-06", "2026-05-07", "2026-05-08", "2026-05-09",
+  "2026-05-11", "2026-05-12", "2026-05-13", "2026-05-14", "2026-05-15", "2026-05-16",
+  "2026-05-18", "2026-05-19", "2026-05-20", "2026-05-21", "2026-05-22", "2026-05-23",
+  "2026-05-26", "2026-05-27", "2026-05-28", "2026-05-29", "2026-05-30",
+];
+
+// Sold-out dates — shown greyed with a "Sold out" label
+const SOLD_OUT_DATES: string[] = [
+  "2026-04-03", // Fri
+  "2026-04-06", // Mon
+  "2026-04-11", // Sat
+];
+
+// Unavailable dates — bank holidays, shown greyed with no label
+const UNAVAILABLE_DATES: string[] = [
+  "2026-05-04", // Early May bank holiday
+  "2026-05-25", // Spring bank holiday
+];
+
+// Family webinar dates — shown with a special indicator
+const WEBINAR_DATES: string[] = [
+  "2026-04-11", // Sat — also sold out for training; webinar is separate
+  "2026-05-09", // Sat
 ];
 
 function pad(n: number) { return n.toString().padStart(2, "0"); }
@@ -41,8 +71,9 @@ const DAY_NAMES = ["Su","Mo","Tu","We","Th","Fr","Sa"];
 
 export default function BookingCalendar({ courses, defaultCourse }: Props) {
   const today = new Date();
-  const [viewYear, setViewYear] = useState(today.getFullYear());
-  const [viewMonth, setViewMonth] = useState(today.getMonth());
+  // Default view to April 2026 since that's the first availability month
+  const [viewYear, setViewYear] = useState(2026);
+  const [viewMonth, setViewMonth] = useState(3); // April = index 3
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [selectedCourse, setSelectedCourse] = useState<string>(defaultCourse ?? courses[0]?.key ?? "");
 
@@ -58,13 +89,16 @@ export default function BookingCalendar({ courses, defaultCourse }: Props) {
     else setViewMonth(m => m + 1);
   };
 
-  const isAvailable = (d: number) => AVAILABLE_DATES.includes(toKey(viewYear, viewMonth, d));
   const isPast = (d: number) => {
     const dt = new Date(viewYear, viewMonth, d);
-    dt.setHours(0,0,0,0);
-    const t = new Date(); t.setHours(0,0,0,0);
+    dt.setHours(0, 0, 0, 0);
+    const t = new Date(); t.setHours(0, 0, 0, 0);
     return dt < t;
   };
+  const isAvailable = (d: number) => AVAILABLE_DATES.includes(toKey(viewYear, viewMonth, d)) && !isPast(d);
+  const isSoldOut = (d: number) => SOLD_OUT_DATES.includes(toKey(viewYear, viewMonth, d));
+  const isUnavailable = (d: number) => UNAVAILABLE_DATES.includes(toKey(viewYear, viewMonth, d));
+  const isWebinar = (d: number) => WEBINAR_DATES.includes(toKey(viewYear, viewMonth, d));
 
   const activeCourse = courses.find(c => c.key === selectedCourse) ?? courses[0];
 
@@ -73,7 +107,7 @@ export default function BookingCalendar({ courses, defaultCourse }: Props) {
     window.open(activeCourse.stripeUrl, "_blank");
   };
 
-  // Build calendar grid (leading empty cells + day cells)
+  // Build calendar grid
   const cells: (number | null)[] = [
     ...Array(firstDay).fill(null),
     ...Array.from({ length: daysInMonth }, (_, i) => i + 1),
@@ -107,9 +141,22 @@ export default function BookingCalendar({ courses, defaultCourse }: Props) {
 
         {/* Legend */}
         <div className="flex flex-wrap gap-3 mb-4 text-xs text-muted-foreground">
-          <span className="flex items-center gap-1"><span className="w-3 h-3 rounded-full bg-muted inline-block border border-border" /> Available</span>
-          <span className="flex items-center gap-1"><span className="w-3 h-3 rounded-full bg-primary inline-block" /> Selected</span>
-          <span className="flex items-center gap-1"><span className="w-3 h-3 rounded-full bg-muted/30 inline-block border border-muted" /> Unavailable</span>
+          <span className="flex items-center gap-1">
+            <span className="w-3 h-3 rounded-full bg-muted inline-block border border-border" />
+            Available
+          </span>
+          <span className="flex items-center gap-1">
+            <span className="w-3 h-3 rounded-full bg-primary inline-block" />
+            Selected
+          </span>
+          <span className="flex items-center gap-1">
+            <span className="w-3 h-3 rounded-full bg-red-200 inline-block border border-red-300" />
+            Sold out
+          </span>
+          <span className="flex items-center gap-1">
+            <span className="w-3 h-3 rounded-full bg-muted/30 inline-block border border-muted" />
+            Unavailable
+          </span>
         </div>
 
         {/* Day names */}
@@ -124,34 +171,60 @@ export default function BookingCalendar({ courses, defaultCourse }: Props) {
           {cells.map((day, idx) => {
             if (!day) return <div key={`empty-${idx}`} />;
             const key = toKey(viewYear, viewMonth, day);
-            const avail = isAvailable(day) && !isPast(day);
+            const avail = isAvailable(day);
+            const soldOut = isSoldOut(day);
+            const unavail = isUnavailable(day);
             const past = isPast(day);
+            const webinar = isWebinar(day);
             const selected = selectedDate === key;
+
+            let cellClass = "aspect-square rounded-lg text-sm font-semibold transition-all flex flex-col items-center justify-center relative";
+
+            if (selected) {
+              cellClass += " bg-primary text-primary-foreground border-2 border-primary scale-105 shadow-md";
+            } else if (avail) {
+              cellClass += " bg-muted hover:bg-primary/20 text-foreground border-2 border-border cursor-pointer";
+            } else if (soldOut) {
+              cellClass += " bg-red-100 text-red-400 border border-red-200 cursor-not-allowed";
+            } else if (unavail) {
+              cellClass += " bg-amber-50 text-amber-400 border border-amber-200 cursor-not-allowed";
+            } else if (past) {
+              cellClass += " text-muted-foreground/30 cursor-not-allowed";
+            } else {
+              cellClass += " bg-muted/20 text-muted-foreground/40 cursor-not-allowed";
+            }
+
             return (
               <button
                 key={key}
                 disabled={!avail}
                 onClick={() => setSelectedDate(key)}
-                className={[
-                  "aspect-square rounded-lg text-sm font-semibold transition-all",
-                  avail && !selected
-                    ? "bg-muted hover:bg-primary/20 text-foreground border-2 border-border cursor-pointer"
-                    : "",
-                  selected
-                    ? "bg-primary text-primary-foreground border-2 border-primary scale-105 shadow-md"
-                    : "",
-                  !avail
-                    ? past
-                      ? "text-muted-foreground/30 cursor-not-allowed"
-                      : "bg-muted/20 text-muted-foreground/40 cursor-not-allowed"
-                    : "",
-                ].join(" ")}
+                className={cellClass}
+                title={
+                  soldOut ? "Sold out" :
+                  unavail ? "Bank holiday — unavailable" :
+                  webinar && !avail ? "Family webinar day" :
+                  avail ? "Available — click to select" : ""
+                }
               >
-                {day}
+                <span>{day}</span>
+                {soldOut && <span className="text-[8px] leading-none text-red-400 font-bold">FULL</span>}
+                {unavail && <span className="text-[8px] leading-none text-amber-500 font-bold">B/H</span>}
+                {webinar && avail && (
+                  <span className="absolute top-0.5 right-0.5 w-1.5 h-1.5 rounded-full bg-[#bc9c2f]" title="Family webinar day" />
+                )}
               </button>
             );
           })}
         </div>
+
+        {/* Webinar note if either webinar date is in this month */}
+        {(viewMonth === 3 || viewMonth === 4) && (
+          <p className="text-xs text-muted-foreground mt-3 text-center">
+            <span className="inline-block w-2 h-2 rounded-full bg-[#bc9c2f] mr-1 align-middle" />
+            Gold dot = Family Webinar day (book separately at £25)
+          </p>
+        )}
       </div>
 
       {/* ── Booking Panel ── */}
@@ -233,9 +306,14 @@ export default function BookingCalendar({ courses, defaultCourse }: Props) {
           </div>
         )}
 
-        {/* Legend note */}
-        <div className="text-xs text-muted-foreground bg-muted/30 rounded-xl p-3 border border-border">
-          <strong>Note:</strong> Dates shown are indicative availability. Once payment is confirmed, Kerry will contact you within 24 hours to confirm your booking details and send your joining instructions.
+        {/* Info note */}
+        <div className="text-xs text-muted-foreground bg-muted/30 rounded-xl p-3 border border-border space-y-1">
+          <p><strong>One booking per day</strong> — any course can be booked on any available date.</p>
+          <p>Once payment is confirmed, Kerry will contact you within 24 hours with your booking details and joining instructions.</p>
+          <p className="flex items-center gap-1">
+            <XCircle className="h-3 w-3 text-red-400 shrink-0" />
+            <span><strong>FULL</strong> = sold out · <strong>B/H</strong> = bank holiday</span>
+          </p>
         </div>
       </div>
     </div>
