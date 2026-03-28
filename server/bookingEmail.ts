@@ -107,7 +107,7 @@ function buildEmailHtml(params: BookingConfirmationParams): string {
                 <tr>
                   <td style="padding:20px 28px;text-align:center;">
                     <p style="margin:0 0 6px;font-size:14px;color:#a8c5b5;font-family:Arial,sans-serif;">Kerry — Outstanding Dementia Care</p>
-                    <a href="mailto:hello@outstandingdementiacare.com" style="color:#f5f0e8;font-size:15px;font-family:Arial,sans-serif;text-decoration:none;">hello@outstandingdementiacare.com</a>
+                    <a href="mailto:kerry@outstandingdementiacare.com" style="color:#f5f0e8;font-size:15px;font-family:Arial,sans-serif;text-decoration:none;">kerry@outstandingdementiacare.com</a>
                   </td>
                 </tr>
               </table>
@@ -189,6 +189,9 @@ export async function sendBookingConfirmationEmail(
         subject,
         html,
         locationId: LOCATION_ID,
+        fromEmail: "kerry@outstandingdementiacare.com",
+        fromName: "Kerry — Outstanding Dementia Care",
+        replyToEmail: "kerry@outstandingdementiacare.com",
       }),
     });
 
