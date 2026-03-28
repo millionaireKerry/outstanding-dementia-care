@@ -12,6 +12,7 @@ import type { Express } from "express";
 import Stripe from "stripe";
 import { notifyOwner } from "./_core/notification";
 import * as db from "./db";
+import { sendBookingConfirmationEmail } from "./bookingEmail";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? "", {
   apiVersion: "2026-02-25.clover",
@@ -83,6 +84,17 @@ export function registerStripeWebhook(app: Express) {
           }
 
           console.log(`[Stripe] Payment completed: ${productName} by ${customerEmail} for ${amount}`);
+
+          // Send booking confirmation email to the customer
+          const customerName = session.customer_details?.name ?? session.metadata?.customer_name;
+          await sendBookingConfirmationEmail({
+            customerEmail,
+            customerName: customerName ?? undefined,
+            productName,
+            bookingDate: bookingDate || undefined,
+            amount: session.amount_total ?? 0,
+            courseKey,
+          });
 
           await notifyOwner({
             title: `New booking: ${productName}`,

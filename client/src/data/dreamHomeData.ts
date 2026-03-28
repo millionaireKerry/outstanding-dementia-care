@@ -13,7 +13,7 @@ export const dreamHomeData: DreamHomeCard[] = [
     id: "music-room",
     title: "The Cavern Music Room",
     category: "Room",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_music_room-HF8hZddFubjdVCTySpXc4z.webp",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_music_room_9a1ca7a7.png",
     shortDescription: "A warm, nostalgic music venue inspired by the Cavern Club, completely achievable without structural changes.",
     howToAchieve: [
       "Paint main walls in a deep, warm terracotta or dark red to create an intimate atmosphere.",
@@ -34,7 +34,7 @@ export const dreamHomeData: DreamHomeCard[] = [
     id: "tea-room",
     title: "The Vintage Tea Room",
     category: "Room",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_tearoom-S5dEgbhj9weYefk6AdMAyR.webp",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_tearoom_bb27bffe.png",
     shortDescription: "A charming 1950s British café setting for socialising and afternoon tea.",
     howToAchieve: [
       "Paint walls in soft pastel mint green and pale pink.",
@@ -54,7 +54,7 @@ export const dreamHomeData: DreamHomeCard[] = [
     id: "baking-kitchen",
     title: "1970s Baking Kitchen",
     category: "Room",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_kitchen-3dS4Wc5KEhSGz2vZfcTWbe.webp",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_kitchen_63769480.png",
     shortDescription: "A cosy, nostalgic kitchen activity room styled for safe, supervised baking.",
     howToAchieve: [
       "Paint walls warm cream and use retro floral wallpaper panels as a feature.",
@@ -74,7 +74,7 @@ export const dreamHomeData: DreamHomeCard[] = [
     id: "tv-lounge",
     title: "1970s TV Lounge",
     category: "Room",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_tv_lounge-M9G6EBjDCpENgc7pQUs7LN.webp",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_tv_lounge_40f3c3a2.png",
     shortDescription: "A comfortable, retro lounge perfect for watching classic television programmes.",
     howToAchieve: [
       "Create a feature wall with retro orange and gold floral wallpaper.",
@@ -94,7 +94,7 @@ export const dreamHomeData: DreamHomeCard[] = [
     id: "highstreet-corridor",
     title: "Vintage High Street",
     category: "Corridor",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_highstreet_corridor-Mbc5DsDn3Wnq5iLU9WHePH.webp",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_highstreet_corridor_11c8fda9.png",
     shortDescription: "A corridor transformed into a 1950s British high street using flat murals.",
     howToAchieve: [
       "Apply printed wall murals of a Post Office and Newsagents directly to the flat wall.",
@@ -114,7 +114,7 @@ export const dreamHomeData: DreamHomeCard[] = [
     id: "reminiscence-office",
     title: "1980s Secretary's Office",
     category: "Room",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_office-DmSPuEk7gqC3F7g4dVYhtq.webp",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_office_703cfb37.png",
     shortDescription: "A purposeful reminiscence room for residents who worked in offices.",
     howToAchieve: [
       "Cover one wall with a large cork noticeboard pinned with old memos, calendars, and photos.",
@@ -134,7 +134,7 @@ export const dreamHomeData: DreamHomeCard[] = [
     id: "holiday-corridor",
     title: "Mediterranean Holiday Corridor",
     category: "Corridor",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_holiday_corridor-hPUTRsetzQS52oAvFToTyW.webp",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_holiday_corridor_64517ecc.png",
     shortDescription: "A sunny, cheerful corridor evoking memories of Spanish or Greek holidays.",
     howToAchieve: [
       "Apply large photographic wall murals of a sunny village street with blue skies.",
@@ -154,7 +154,7 @@ export const dreamHomeData: DreamHomeCard[] = [
     id: "seaside-corridor",
     title: "British Seaside Corridor",
     category: "Corridor",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_seaside_corridor-JFKFGWS5t2fG9R7XihM68i.webp",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_seaside_corridor_46952de8.png",
     shortDescription: "A classic British beach scene complete with deckchairs and a beach hut.",
     howToAchieve: [
       "Use a photographic mural of a British beach and pier.",
@@ -174,7 +174,7 @@ export const dreamHomeData: DreamHomeCard[] = [
     id: "ice-cream-parlour",
     title: "Vintage Ice Cream Parlour",
     category: "Room",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_icecream_parlour-gAYg7zjvEBQWxJKwbEvqdK.webp",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_icecream_parlour_35a300a3.png",
     shortDescription: "A joyful, pastel-coloured social space for enjoying sweet treats.",
     howToAchieve: [
       "Paint walls soft pastel pink and cream.",
@@ -194,7 +194,7 @@ export const dreamHomeData: DreamHomeCard[] = [
     id: "listening-pod",
     title: "The Listening Pod Studio",
     category: "Room",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_listening_pod-o4YH2iBfJADjFM7z9B2Faw.webp",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_listening_pod_ee0dd206.png",
     shortDescription: "An intimate recording studio booth for residents to record their life stories.",
     howToAchieve: [
       "Mount fabric-wrapped acoustic panels (wooden frames covered in fabric) to the walls.",
@@ -214,7 +214,7 @@ export const dreamHomeData: DreamHomeCard[] = [
     id: "pub-snug",
     title: "The Pub Snug",
     category: "Room",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_pub_snug-5R7tQmAo6w2tauo2GPKsbE.webp",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_pub_snug_ba0020c7.png",
     shortDescription: "A classic British public house corner, achievable without structural work.",
     howToAchieve: [
       "Use brick-effect wallpaper on the feature wall.",
@@ -234,7 +234,7 @@ export const dreamHomeData: DreamHomeCard[] = [
     id: "nursery",
     title: "Reminiscence Nursery",
     category: "Room",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_nursery-6EdEembezkgYtKsRU86fFA.webp",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_nursery_b085908a.png",
     shortDescription: "A tender, nostalgic space evoking memories of motherhood and childhood.",
     howToAchieve: [
       "Paint walls warm cream with a delicate pastel floral wallpaper panel.",
@@ -254,7 +254,7 @@ export const dreamHomeData: DreamHomeCard[] = [
     id: "sensory-room",
     title: "Calming Sensory Room",
     category: "Room",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_sensory_room-XxyxirsM5UkRnmF6a7gbZL.webp",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_sensory_room_350410ff.png",
     shortDescription: "A peaceful therapeutic space using standard, accessible sensory equipment.",
     howToAchieve: [
       "Paint walls in soft lavender or pale lilac.",
@@ -274,7 +274,7 @@ export const dreamHomeData: DreamHomeCard[] = [
     id: "accessible-garden",
     title: "Accessible Sensory Garden",
     category: "Outdoor",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_garden-QeEFJk3w6iddTNV3fzXLGH.webp",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_garden_0adf12b0.png",
     shortDescription: "A safe, uncluttered garden designed specifically for wheelchairs and easy reach.",
     howToAchieve: [
       "Build tall raised beds at waist height (75-80cm) to eliminate bending.",
@@ -294,7 +294,7 @@ export const dreamHomeData: DreamHomeCard[] = [
     id: "front-doors",
     title: "Personalised Front Doors",
     category: "Corridor",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_front_doors-Q6vPh4aKb4UKrbjczZQ2ce.webp",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_front_doors_481ad6cc.png",
     shortDescription: "Bedroom doors wrapped in full-size photos of residents' actual former front doors.",
     howToAchieve: [
       "Order full-size, custom-printed vinyl door stickers showing each resident's old front door.",
@@ -314,7 +314,7 @@ export const dreamHomeData: DreamHomeCard[] = [
     id: "library",
     title: "Reading Library Corner",
     category: "Room",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_library-aFFNq5Aec2Z9KJLTJfuHXr.webp",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_library_d0d17bde.png",
     shortDescription: "A quiet, cosy reading nook created with freestanding furniture.",
     howToAchieve: [
       "Use tall freestanding dark oak bookshelves.",
@@ -334,7 +334,7 @@ export const dreamHomeData: DreamHomeCard[] = [
     id: "hair-salon",
     title: "Vintage Hair Salon",
     category: "Room",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_salon-eEX8nUeRJMsyAucotT9QTi.webp",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_salon_46dd5e33.png",
     shortDescription: "A glamorous 1960s-style ladies' hairdresser for weekly pampering.",
     howToAchieve: [
       "Paint walls soft blush pink.",
@@ -354,7 +354,7 @@ export const dreamHomeData: DreamHomeCard[] = [
     id: "sweet-shop",
     title: "The Sweet Shop",
     category: "Room",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_sweet_shop-ivaKUuMnkrZY6iQrW5dEKg.webp",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_sweet_shop_899cc211.png",
     shortDescription: "A joyful traditional sweet shop corner using a mural and a freestanding counter.",
     howToAchieve: [
       "Apply a white metro tile wallpaper mural to the wall.",
@@ -374,7 +374,7 @@ export const dreamHomeData: DreamHomeCard[] = [
     id: "bus-stop",
     title: "The Bus Stop Corridor",
     category: "Corridor",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_bus_stop-bELFRhqwTURxzanLGVFqx7.webp",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_bus_stop_38ad6b66.png",
     shortDescription: "A calming wayfinding feature for residents experiencing exit-seeking anxiety.",
     howToAchieve: [
       "Mount a full-size blue and white bus stop pole and sign securely.",
@@ -394,7 +394,7 @@ export const dreamHomeData: DreamHomeCard[] = [
     id: "quiet-room",
     title: "Multi-Faith Quiet Room",
     category: "Room",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_quiet_room-GEz4XBWTaTzq2mLq7tdCrb.webp",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_quiet_room_333f3d7f.png",
     shortDescription: "A peaceful, inclusive space for reflection, prayer, and calm.",
     howToAchieve: [
       "Paint walls soft warm cream and keep the room uncluttered.",
@@ -414,7 +414,7 @@ export const dreamHomeData: DreamHomeCard[] = [
     id: "cinema",
     title: "Vintage Cinema",
     category: "Room",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_cinema-HaokJWub5ba85Dd7V3ybA8.webp",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_cinema_3fa86a9f.png",
     shortDescription: "A glamorous picture house experience using standard projector equipment.",
     howToAchieve: [
       "Paint walls deep burgundy red with gold coving.",
@@ -434,7 +434,7 @@ export const dreamHomeData: DreamHomeCard[] = [
     id: "laundry",
     title: "Laundry Activity Room",
     category: "Room",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_laundry-Rqb4ZQfXbodAWB3oBG6L3g.webp",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_laundry_62f0ab3d.png",
     shortDescription: "A safe, purposeful space for residents to engage in familiar domestic tasks.",
     howToAchieve: [
       "Install a single front-loading washing machine on a low, accessible plinth.",
@@ -454,7 +454,7 @@ export const dreamHomeData: DreamHomeCard[] = [
     id: "potting-shed",
     title: "Indoor Potting Shed",
     category: "Room",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_potting_shed-BbY4DxvU9yEgZidnHqBQQ9.webp",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_potting_shed_7a3b0fa0.png",
     shortDescription: "An accessible gardening space bringing the joy of the shed safely indoors.",
     howToAchieve: [
       "Clad the walls in warm honey-coloured tongue and groove wood panelling.",
@@ -474,7 +474,7 @@ export const dreamHomeData: DreamHomeCard[] = [
     id: "hen-house",
     title: "The Hen House",
     category: "Outdoor",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_chickens-gc99QV4Lwpk8CUcKvoVcaj.webp",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_chickens_07ccb123.png",
     shortDescription: "A joyful outdoor activity area for collecting eggs and watching chickens.",
     howToAchieve: [
       "Install a sturdy wooden chicken coop painted in sage green.",
@@ -494,7 +494,7 @@ export const dreamHomeData: DreamHomeCard[] = [
     id: "activities-room",
     title: "Bright Activities Room",
     category: "Room",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_activities_room-kpisv7EsV5dozRP5YgVk4k.webp",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663195447750/C4sZdm4AzTGBpMWqRug5mc/care_home_activities_room_d4721a20.png",
     shortDescription: "A spacious, organised hub for games, crafts, and socialising.",
     howToAchieve: [
       "Paint walls in a warm, uplifting sunshine yellow.",
