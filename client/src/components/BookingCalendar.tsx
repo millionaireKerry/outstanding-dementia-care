@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { ChevronLeft, ChevronRight, Clock, Users, CheckCircle, XCircle } from "lucide-react";
+import { ChevronLeft, ChevronRight, Clock, Users, CheckCircle, XCircle, Loader2 } from "lucide-react";
+import { trpc } from "@/lib/trpc";
+import { toast } from "sonner";
 
 export type CourseOption = {
   key: string;
   label: string;
   price: string;
-  stripeUrl: string;
+  /** Stripe product key matching the enum in routers.ts */
+  productKey: "familyWorkshop" | "dementiaExperience" | "excellenceProgramme";
   sessions: string[];
   people: string;
   description: string;
@@ -19,21 +21,20 @@ type Props = {
   defaultCourse?: string;
 };
 
-// ─── Real availability ────────────────────────────────────────────────────────
-// April 2026: Mon–Sat. Sold out: 3rd (Fri), 6th (Mon), 11th (Sat).
-// May 2026:   Mon–Sat. Bank holidays unavailable: 4th (Mon), 25th (Mon).
-// One booking per day — any course.
-// Family webinar dates (11 Apr, 9 May) are managed separately by Kerry.
+// ─── Static availability ──────────────────────────────────────────────────────
+// April 2026: Mon–Sat. Sold out (static): 3rd, 6th, 11th.
+// May 2026:   Mon–Sat. Bank holidays unavailable: 4th, 25th.
+// DB-booked dates are merged in at runtime via trpc.booking.getBookedDates.
 
-const AVAILABLE_DATES: string[] = [
-  // April — available Mon–Sat (excluding sold-out and past dates)
+const STATIC_AVAILABLE_DATES: string[] = [
+  // April
   "2026-04-01", "2026-04-02",
   "2026-04-04",
   "2026-04-07", "2026-04-08", "2026-04-09", "2026-04-10",
   "2026-04-13", "2026-04-14", "2026-04-15", "2026-04-16", "2026-04-17", "2026-04-18",
   "2026-04-20", "2026-04-21", "2026-04-22", "2026-04-23", "2026-04-24", "2026-04-25",
   "2026-04-27", "2026-04-28", "2026-04-29", "2026-04-30",
-  // May — available Mon–Sat (excluding bank holidays 4th and 25th)
+  // May
   "2026-05-01", "2026-05-02",
   "2026-05-05", "2026-05-06", "2026-05-07", "2026-05-08", "2026-05-09",
   "2026-05-11", "2026-05-12", "2026-05-13", "2026-05-14", "2026-05-15", "2026-05-16",
@@ -41,23 +42,19 @@ const AVAILABLE_DATES: string[] = [
   "2026-05-26", "2026-05-27", "2026-05-28", "2026-05-29", "2026-05-30",
 ];
 
-// Sold-out dates — shown greyed with a "Sold out" label
-const SOLD_OUT_DATES: string[] = [
-  "2026-04-03", // Fri
-  "2026-04-06", // Mon
-  "2026-04-11", // Sat
+// Pre-sold dates (static — Kerry confirmed these are already taken)
+const STATIC_SOLD_OUT: string[] = [
+  "2026-04-03", "2026-04-06", "2026-04-11",
 ];
 
-// Unavailable dates — bank holidays, shown greyed with no label
+// Bank holidays — unavailable
 const UNAVAILABLE_DATES: string[] = [
-  "2026-05-04", // Early May bank holiday
-  "2026-05-25", // Spring bank holiday
+  "2026-05-04", "2026-05-25",
 ];
 
-// Family webinar dates — shown with a special indicator
+// Family webinar dates — shown with a gold dot
 const WEBINAR_DATES: string[] = [
-  "2026-04-11", // Sat — also sold out for training; webinar is separate
-  "2026-05-09", // Sat
+  "2026-04-11", "2026-05-09",
 ];
 
 function pad(n: number) { return n.toString().padStart(2, "0"); }
@@ -70,12 +67,27 @@ const MONTH_NAMES = [
 const DAY_NAMES = ["Su","Mo","Tu","We","Th","Fr","Sa"];
 
 export default function BookingCalendar({ courses, defaultCourse }: Props) {
-  const today = new Date();
-  // Default view to April 2026 since that's the first availability month
   const [viewYear, setViewYear] = useState(2026);
   const [viewMonth, setViewMonth] = useState(3); // April = index 3
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [selectedCourse, setSelectedCourse] = useState<string>(defaultCourse ?? courses[0]?.key ?? "");
+
+  // Fetch live booked dates from DB
+  const { data: dbBookedDates = [] } = trpc.booking.getBookedDates.useQuery(undefined, {
+    staleTime: 60_000, // re-fetch every 60s
+  });
+
+  // Merge static sold-out + DB-booked dates
+  const allSoldOut = [...STATIC_SOLD_OUT, ...dbBookedDates];
+
+  const createCheckout = trpc.payments.createCheckout.useMutation({
+    onSuccess: (data) => {
+      window.open(data.url, "_blank");
+    },
+    onError: (err) => {
+      toast.error(`Booking error: ${err.message}`);
+    },
+  });
 
   const firstDay = new Date(viewYear, viewMonth, 1).getDay();
   const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
@@ -95,19 +107,26 @@ export default function BookingCalendar({ courses, defaultCourse }: Props) {
     const t = new Date(); t.setHours(0, 0, 0, 0);
     return dt < t;
   };
-  const isAvailable = (d: number) => AVAILABLE_DATES.includes(toKey(viewYear, viewMonth, d)) && !isPast(d);
-  const isSoldOut = (d: number) => SOLD_OUT_DATES.includes(toKey(viewYear, viewMonth, d));
+  const isAvailable = (d: number) => {
+    const key = toKey(viewYear, viewMonth, d);
+    return STATIC_AVAILABLE_DATES.includes(key) && !allSoldOut.includes(key) && !isPast(d);
+  };
+  const isSoldOut = (d: number) => allSoldOut.includes(toKey(viewYear, viewMonth, d));
   const isUnavailable = (d: number) => UNAVAILABLE_DATES.includes(toKey(viewYear, viewMonth, d));
   const isWebinar = (d: number) => WEBINAR_DATES.includes(toKey(viewYear, viewMonth, d));
 
   const activeCourse = courses.find(c => c.key === selectedCourse) ?? courses[0];
 
   const handleBook = () => {
-    if (!activeCourse) return;
-    window.open(activeCourse.stripeUrl, "_blank");
+    if (!activeCourse || !selectedDate) return;
+    createCheckout.mutate({
+      productKey: activeCourse.productKey,
+      origin: window.location.origin,
+      bookingDate: selectedDate,
+      courseKey: activeCourse.key,
+    });
   };
 
-  // Build calendar grid
   const cells: (number | null)[] = [
     ...Array(firstDay).fill(null),
     ...Array.from({ length: daysInMonth }, (_, i) => i + 1),
@@ -118,45 +137,24 @@ export default function BookingCalendar({ courses, defaultCourse }: Props) {
 
       {/* ── Calendar ── */}
       <div className="bg-card border-4 border-charcoal rounded-2xl p-6 shadow-xl">
-        {/* Header */}
         <div className="flex items-center justify-between mb-4">
-          <button
-            onClick={prevMonth}
-            className="p-2 rounded-full hover:bg-muted transition-colors"
-            aria-label="Previous month"
-          >
+          <button onClick={prevMonth} className="p-2 rounded-full hover:bg-muted transition-colors" aria-label="Previous month">
             <ChevronLeft className="h-5 w-5 text-foreground" />
           </button>
           <h3 className="text-xl font-bold text-foreground" style={{ fontFamily: "'Playfair Display', serif" }}>
             {MONTH_NAMES[viewMonth]} {viewYear}
           </h3>
-          <button
-            onClick={nextMonth}
-            className="p-2 rounded-full hover:bg-muted transition-colors"
-            aria-label="Next month"
-          >
+          <button onClick={nextMonth} className="p-2 rounded-full hover:bg-muted transition-colors" aria-label="Next month">
             <ChevronRight className="h-5 w-5 text-foreground" />
           </button>
         </div>
 
         {/* Legend */}
         <div className="flex flex-wrap gap-3 mb-4 text-xs text-muted-foreground">
-          <span className="flex items-center gap-1">
-            <span className="w-3 h-3 rounded-full bg-muted inline-block border border-border" />
-            Available
-          </span>
-          <span className="flex items-center gap-1">
-            <span className="w-3 h-3 rounded-full bg-primary inline-block" />
-            Selected
-          </span>
-          <span className="flex items-center gap-1">
-            <span className="w-3 h-3 rounded-full bg-red-200 inline-block border border-red-300" />
-            Sold out
-          </span>
-          <span className="flex items-center gap-1">
-            <span className="w-3 h-3 rounded-full bg-muted/30 inline-block border border-muted" />
-            Unavailable
-          </span>
+          <span className="flex items-center gap-1"><span className="w-3 h-3 rounded-full bg-muted inline-block border border-border" /> Available</span>
+          <span className="flex items-center gap-1"><span className="w-3 h-3 rounded-full bg-primary inline-block" /> Selected</span>
+          <span className="flex items-center gap-1"><span className="w-3 h-3 rounded-full bg-red-200 inline-block border border-red-300" /> Sold out</span>
+          <span className="flex items-center gap-1"><span className="w-3 h-3 rounded-full bg-muted/30 inline-block border border-muted" /> Unavailable</span>
         </div>
 
         {/* Day names */}
@@ -203,7 +201,6 @@ export default function BookingCalendar({ courses, defaultCourse }: Props) {
                 title={
                   soldOut ? "Sold out" :
                   unavail ? "Bank holiday — unavailable" :
-                  webinar && !avail ? "Family webinar day" :
                   avail ? "Available — click to select" : ""
                 }
               >
@@ -218,7 +215,6 @@ export default function BookingCalendar({ courses, defaultCourse }: Props) {
           })}
         </div>
 
-        {/* Webinar note if either webinar date is in this month */}
         {(viewMonth === 3 || viewMonth === 4) && (
           <p className="text-xs text-muted-foreground mt-3 text-center">
             <span className="inline-block w-2 h-2 rounded-full bg-[#bc9c2f] mr-1 align-middle" />
@@ -229,7 +225,6 @@ export default function BookingCalendar({ courses, defaultCourse }: Props) {
 
       {/* ── Booking Panel ── */}
       <div className="flex flex-col gap-6">
-        {/* Course selector */}
         <div className="bg-card border-4 border-charcoal rounded-2xl p-6 shadow-xl">
           <h3 className="text-lg font-bold text-foreground mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
             Select Your Course
@@ -258,7 +253,6 @@ export default function BookingCalendar({ courses, defaultCourse }: Props) {
           </div>
         </div>
 
-        {/* Session times */}
         {activeCourse && (
           <div className="bg-card border-4 border-charcoal rounded-2xl p-6 shadow-xl">
             <h3 className="text-lg font-bold text-foreground mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>
@@ -295,10 +289,14 @@ export default function BookingCalendar({ courses, defaultCourse }: Props) {
             <Button
               size="lg"
               className="w-full retro-button bg-primary text-primary-foreground hover:bg-primary/90 text-base font-bold"
-              disabled={!selectedDate}
+              disabled={!selectedDate || createCheckout.isPending}
               onClick={handleBook}
             >
-              Book & Pay — {activeCourse.price}
+              {createCheckout.isPending ? (
+                <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Redirecting to payment…</>
+              ) : (
+                <>Book & Pay — {activeCourse.price}</>
+              )}
             </Button>
             <p className="text-xs text-muted-foreground text-center mt-2">
               Secure payment via Stripe · Travel included · No hidden extras
@@ -306,7 +304,6 @@ export default function BookingCalendar({ courses, defaultCourse }: Props) {
           </div>
         )}
 
-        {/* Info note */}
         <div className="text-xs text-muted-foreground bg-muted/30 rounded-xl p-3 border border-border space-y-1">
           <p><strong>One booking per day</strong> — any course can be booked on any available date.</p>
           <p>Once payment is confirmed, Kerry will contact you within 24 hours with your booking details and joining instructions.</p>

@@ -2,11 +2,16 @@
  * Stripe webhook handler for Outstanding Dementia Care.
  * Registers the /api/stripe/webhook route on the Express app.
  * Must be called BEFORE express.json() middleware.
+ *
+ * When a checkout.session.completed event arrives, if the session metadata
+ * contains a `booking_date` field (YYYY-MM-DD), that date is inserted into
+ * the `bookedDates` table so the BookingCalendar automatically marks it sold out.
  */
 
 import type { Express } from "express";
 import Stripe from "stripe";
 import { notifyOwner } from "./_core/notification";
+import * as db from "./db";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? "", {
   apiVersion: "2026-02-25.clover",
@@ -16,9 +21,7 @@ export function registerStripeWebhook(app: Express) {
   // MUST use raw body parser for Stripe signature verification
   app.post(
     "/api/stripe/webhook",
-    // express.raw is applied per-route here
     (req, res, next) => {
-      // Buffer the raw body for signature verification
       let data = "";
       req.setEncoding("utf8");
       req.on("data", (chunk) => { data += chunk; });
@@ -55,16 +58,35 @@ export function registerStripeWebhook(app: Express) {
       switch (event.type) {
         case "checkout.session.completed": {
           const session = event.data.object as Stripe.Checkout.Session;
-          const customerEmail = session.customer_details?.email ?? session.metadata?.customer_email ?? "unknown";
+          const customerEmail =
+            session.customer_details?.email ??
+            session.metadata?.customer_email ??
+            "unknown";
           const productName = session.metadata?.product_name ?? "Unknown product";
-          const amount = session.amount_total ? `£${(session.amount_total / 100).toFixed(2)}` : "unknown";
+          const amount = session.amount_total
+            ? `£${(session.amount_total / 100).toFixed(2)}`
+            : "unknown";
+
+          // Auto-mark the booked date as sold out
+          const bookingDate = session.metadata?.booking_date; // "YYYY-MM-DD"
+          const courseKey = session.metadata?.course_key ?? "unknown";
+
+          if (bookingDate) {
+            await db.insertBookedDate({
+              bookingDate,
+              courseKey,
+              stripeSessionId: session.id,
+              customerEmail: customerEmail !== "unknown" ? customerEmail : undefined,
+              amount: session.amount_total ?? undefined,
+            });
+            console.log(`[Stripe] Marked ${bookingDate} as booked for course: ${courseKey}`);
+          }
 
           console.log(`[Stripe] Payment completed: ${productName} by ${customerEmail} for ${amount}`);
 
-          // Notify site owner
           await notifyOwner({
             title: `New booking: ${productName}`,
-            content: `${customerEmail} has booked ${productName} for ${amount}. Check your Stripe dashboard for details.`,
+            content: `${customerEmail} has booked ${productName} for ${amount}${bookingDate ? ` on ${bookingDate}` : ""}. Check your Stripe dashboard for details.`,
           });
           break;
         }
@@ -91,7 +113,9 @@ export function registerStripeWebhook(app: Express) {
 }
 
 /**
- * Create a Stripe Checkout Session for a product.
+ * Create a Stripe Checkout Session for a training booking.
+ * Pass `bookingDate` (YYYY-MM-DD) and `courseKey` in params so the webhook
+ * can auto-mark the date as sold out when payment completes.
  */
 export async function createCheckoutSession(params: {
   productKey: string;
@@ -103,6 +127,8 @@ export async function createCheckoutSession(params: {
   origin: string;
   successPath?: string;
   cancelPath?: string;
+  bookingDate?: string; // "YYYY-MM-DD"
+  courseKey?: string;
 }): Promise<{ url: string }> {
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
@@ -126,6 +152,8 @@ export async function createCheckoutSession(params: {
       product_name: params.productName,
       user_id: params.userId ?? "",
       customer_email: params.customerEmail ?? "",
+      booking_date: params.bookingDate ?? "",
+      course_key: params.courseKey ?? params.productKey,
     },
     allow_promotion_codes: true,
     success_url: `${params.origin}${params.successPath ?? "/family-workshop?booked=true"}`,

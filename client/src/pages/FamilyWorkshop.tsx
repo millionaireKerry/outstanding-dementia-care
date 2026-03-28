@@ -25,7 +25,7 @@ const CARE_HOME_COURSES: CourseOption[] = [
     key: "workshop",
     label: "The Dementia Workshop — Full Day",
     price: "£650",
-    stripeUrl: "https://buy.stripe.com/eVq6oJ3CPgT995mfSdg7e01",
+    productKey: "familyWorkshop" as const,
     sessions: [
       "9:00am – 4:15pm (full day)",
       "On-site at your care home",
@@ -37,7 +37,7 @@ const CARE_HOME_COURSES: CourseOption[] = [
     key: "experience-half",
     label: "The Dementia Experience — Half Day",
     price: "£595",
-    stripeUrl: "https://buy.stripe.com/00w3cxflx0Ub81iaxTg7e03",
+    productKey: "dementiaExperience" as const,
     sessions: [
       "Session 1: 10:00am – 11:30am (10 people)",
       "Session 2: 11:30am – 1:00pm (10 people)",
@@ -49,7 +49,7 @@ const CARE_HOME_COURSES: CourseOption[] = [
     key: "experience-full",
     label: "The Dementia Experience — Full Day",
     price: "£895",
-    stripeUrl: "https://buy.stripe.com/3cI4gB7T5eL181ieO9g7e02",
+    productKey: "dementiaExperience" as const,
     sessions: [
       "Session 1: 10:00am – 11:30am (10 people)",
       "Session 2: 11:30am – 1:00pm (10 people)",

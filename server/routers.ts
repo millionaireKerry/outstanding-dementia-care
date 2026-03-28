@@ -526,11 +526,20 @@ Do NOT discuss anything unrelated to dementia care or this website.`;
       }),
   }),
 
+  booking: router({
+    // Returns all dates already booked so the calendar can mark them sold out
+    getBookedDates: publicProcedure.query(async () => {
+      return await db.getBookedDates();
+    }),
+  }),
+
   payments: router({
     createCheckout: publicProcedure
       .input(z.object({
         productKey: z.enum(["familyWorkshop", "dementiaExperience", "excellenceProgramme"]),
         origin: z.string().url(),
+        bookingDate: z.string().optional(), // "YYYY-MM-DD"
+        courseKey: z.string().optional(),
       }))
       .mutation(async ({ input, ctx }) => {
         const product = PRODUCTS[input.productKey as ProductKey];
@@ -547,6 +556,8 @@ Do NOT discuss anything unrelated to dementia care or this website.`;
           origin: input.origin,
           successPath: input.productKey === "familyWorkshop" ? "/family-workshop?booked=true" : "/dementia-experience?booked=true",
           cancelPath: input.productKey === "familyWorkshop" ? "/family-workshop" : "/dementia-experience",
+          bookingDate: input.bookingDate,
+          courseKey: input.courseKey ?? input.productKey,
         });
         return session;
       }),

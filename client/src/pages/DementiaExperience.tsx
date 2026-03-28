@@ -29,7 +29,7 @@ const EXPERIENCE_COURSES: CourseOption[] = [
     key: "half-day",
     label: "The Dementia Experience — Half Day",
     price: "£595",
-    stripeUrl: "https://buy.stripe.com/00w3cxflx0Ub81iaxTg7e03",
+    productKey: "dementiaExperience" as const,
     sessions: [
       "Session 1: 10:00am – 11:30am (10 people)",
       "Session 2: 11:30am – 1:00pm (10 people)",
@@ -41,7 +41,7 @@ const EXPERIENCE_COURSES: CourseOption[] = [
     key: "full-day",
     label: "The Dementia Experience — Full Day",
     price: "£895",
-    stripeUrl: "https://buy.stripe.com/3cI4gB7T5eL181ieO9g7e02",
+    productKey: "dementiaExperience" as const,
     sessions: [
       "Session 1: 10:00am – 11:30am (10 people)",
       "Session 2: 11:30am – 1:00pm (10 people)",

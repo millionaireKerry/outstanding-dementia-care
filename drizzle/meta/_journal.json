@@ -36,6 +36,13 @@
       "when": 1771762985823,
       "tag": "0004_ancient_titania",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1774726360096,
+      "tag": "0005_strong_devos",
+      "breakpoints": true
     }
   ]
 }

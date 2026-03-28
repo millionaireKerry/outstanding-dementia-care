@@ -145,3 +145,19 @@ export const dailyGoodNewsEditions = mysqlTable("dailyGoodNewsEditions", {
 
 export type DailyGoodNewsEdition = typeof dailyGoodNewsEditions.$inferSelect;
 export type InsertDailyGoodNewsEdition = typeof dailyGoodNewsEditions.$inferInsert;
+/**
+ * Booked training dates — auto-populated by Stripe webhook.
+ * When a checkout.session.completed event arrives with a booking_date in metadata,
+ * that date is inserted here and the calendar marks it as sold out.
+ */
+export const bookedDates = mysqlTable("bookedDates", {
+  id: int("id").autoincrement().primaryKey(),
+  bookingDate: varchar("bookingDate", { length: 10 }).notNull().unique(), // "YYYY-MM-DD"
+  courseKey: varchar("courseKey", { length: 100 }).notNull(),
+  stripeSessionId: varchar("stripeSessionId", { length: 255 }).notNull().unique(),
+  customerEmail: varchar("customerEmail", { length: 320 }),
+  amount: int("amount"), // in pence
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+export type BookedDate = typeof bookedDates.$inferSelect;
+export type InsertBookedDate = typeof bookedDates.$inferInsert;

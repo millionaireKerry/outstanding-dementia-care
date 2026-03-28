@@ -1,6 +1,6 @@
 import { eq, desc, like, or, and, gte, lt } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users, blogPosts, InsertBlogPost, ebooks, InsertEbook, supportGroups, InsertSupportGroup, newsletterSubscribers, InsertNewsletterSubscriber, dailyGoodNewsEditions, InsertDailyGoodNewsEdition } from "../drizzle/schema";
+import { InsertUser, users, blogPosts, InsertBlogPost, ebooks, InsertEbook, supportGroups, InsertSupportGroup, newsletterSubscribers, InsertNewsletterSubscriber, dailyGoodNewsEditions, InsertDailyGoodNewsEdition, bookedDates } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -369,4 +369,31 @@ export async function incrementDailyGoodNewsDownloadCount(id: number) {
   await db.update(dailyGoodNewsEditions)
     .set({ downloadCount: currentCount + 1 })
     .where(eq(dailyGoodNewsEditions.id, id));
+}
+
+// ─── Booked Dates ─────────────────────────────────────────────────────────────
+
+export async function getBookedDates(): Promise<string[]> {
+  const db = await getDb();
+  if (!db) return [];
+  const rows = await db.select({ bookingDate: bookedDates.bookingDate })
+    .from(bookedDates);
+  return rows.map(r => r.bookingDate);
+}
+
+export async function insertBookedDate(data: {
+  bookingDate: string;
+  courseKey: string;
+  stripeSessionId: string;
+  customerEmail?: string;
+  amount?: number;
+}) {
+  const db = await getDb();
+  if (!db) return;
+  try {
+    await db.insert(bookedDates).values(data);
+  } catch (e: any) {
+    // Ignore duplicate entry (date already booked)
+    if (!e?.message?.includes("Duplicate entry")) throw e;
+  }
 }
