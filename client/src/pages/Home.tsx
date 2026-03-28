@@ -95,14 +95,12 @@ export default function Home() {
             {/* Right: video placeholder */}
             <div className="flex justify-center">
               <div className="relative w-full max-w-lg rounded-2xl overflow-hidden shadow-2xl" style={{ border: "3px solid #bc9c2f", aspectRatio: "16/9", background: "#0d2b22" }}>
-                {/* Replace the div below with your <video> or <iframe> embed when ready */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 p-8 text-center">
-                  <div className="w-20 h-20 rounded-full flex items-center justify-center" style={{ background: "#bc9c2f" }}>
-                    <Play size={36} className="text-white ml-1" />
-                  </div>
-                  <p className="text-[#E8DCC4] font-bold text-lg" style={{ fontFamily: "'Playfair Display', serif" }}>Your video coming soon</p>
-                  <p className="text-[#E8DCC4]/60 text-sm">Upload your Dementia Experience video here to bring this section to life</p>
-                </div>
+                <iframe
+                  src="https://player.vimeo.com/video/1178012813?badge=0&autopause=0&player_id=0&app_id=58479"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                  style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
+                  title="The Dementia Experience"
+                />
               </div>
             </div>
 

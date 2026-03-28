@@ -530,3 +530,4 @@
 - [ ] Training page: calendar with 3 course options (Workshop £650, Experience Half Day £595, Experience Full Day £895)
 - [ ] Homepage hero: Book a Date button links to Dementia Experience calendar
 - [ ] Dementia Workshop page: correct description (full day, 10 people, agenda, £650, 50% new customer discount)
+- [x] Embed Vimeo video (1178012813) in homepage hero
