@@ -92,77 +92,62 @@ const benefits = [
   },
 ];
 
-const agenda = [
+const halfDaySessions = [
   {
-    time: "09:00 - 09:45",
-    title: "Introduction to Dementia",
-    description:
-      "An engaging introduction to the different types of dementia, including Alzheimer's, Lewy Body, Vascular, and more. We explore the neurobiology of dementia in accessible terms: what is happening in the brain, how it progresses, and crucially, what this means from the resident's perspective. We also address common myths and stigma that can affect the quality of care.",
-    color: "bg-primary/10 border-primary",
-  },
-  {
-    time: "09:45 - 10:45",
-    title: "Life History & Identity",
-    description:
-      "A person's identity does not disappear with dementia; it becomes more important than ever. This session explores the power of life history work, how to record it meaningfully, and practical tools including memory boxes and person-centred care planning. We introduce the 'This is Me' profile tool, widely used across UK care settings to support personalised, compassionate care.",
-    color: "bg-secondary/30 border-secondary",
-  },
-  {
-    time: "10:45 - 11:00",
-    title: "Morning Break",
-    description: "Refreshments provided.",
-    color: "bg-muted/30 border-muted",
-    isBreak: true,
-  },
-  {
-    time: "11:00 - 11:15",
-    title: "Simulation Pre-Brief",
-    description:
-      "Before the simulation begins, we take time to explain clearly what the experience involves and what it does not. The simulation is a learning tool designed to build empathy and awareness; it is not a clinical recreation of any single person's dementia journey. Participants are reminded of the opt-out signal and how facilitators will support them throughout. Psychological safety comes first.",
-    color: "bg-accent/20 border-accent",
-  },
-  {
-    time: "11:15 - 12:30",
-    title: "The Simulation Experience",
-    description:
-      "The heart of the day. Staff rotate through immersive round-robin stations wearing specialist simulation equipment, experiencing perceptual, auditory, tactile, and mobility challenges whilst attempting everyday tasks. The equipment simulates a blend of the brain-based perceptual changes associated with dementia and the sensory impairments that commonly co-exist in older age. This is where understanding becomes empathy.",
+    time: "10:00 – 11:30am",
+    title: "Session 1 — Interactive Experience",
+    description: "Up to 10 participants rotate through immersive simulation stations wearing specialist equipment that replicates the perceptual, auditory, and tactile challenges of living with dementia. A powerful, unforgettable 45 minutes.",
     color: "bg-accent/20 border-accent",
     highlight: true,
   },
   {
-    time: "12:30 - 13:30",
-    title: "Lunch Break",
-    description: "Time to reflect on the morning's experience.",
-    color: "bg-muted/30 border-muted",
-    isBreak: true,
-  },
-  {
-    time: "13:30 - 14:30",
-    title: "Debrief & Communication Skills",
-    description:
-      "The most critical component of the day. A facilitated reflection on the feelings of vulnerability, confusion, and frustration experienced during simulation. Staff learn the Positive Physical Approach and the transformative power of 'the pause': the moment between stimulus and response that can change everything. We explore how calm environments, good lighting, and reduced background noise directly support communication.",
+    time: "10:00 – 11:30am",
+    title: "Session 1 — Structured Debrief",
+    description: "A facilitated group reflection exploring what participants felt, saw, and heard during the simulation. Expert-led discussion translating the experience into practical, compassionate care skills.",
     color: "bg-primary/10 border-primary",
   },
   {
-    time: "14:30 - 15:30",
-    title: "Behaviours, Capacity & Person-Centred Care",
-    description:
-      "We reframe 'challenging behaviours' as 'adaptive behaviours': expressions of unmet needs. Staff learn a practical framework for identifying triggers (pain, hunger, environmental overstimulation) and responding with curiosity rather than correction. We also cover the core principles of the Mental Capacity Act 2005, including presuming capacity, supporting decision-making, and applying the least restrictive approach in everyday care routines.",
-    color: "bg-secondary/30 border-secondary",
-  },
-  {
-    time: "15:30 - 15:45",
-    title: "Afternoon Break",
-    description: "Refreshments provided.",
-    color: "bg-muted/30 border-muted",
-    isBreak: true,
-  },
-  {
-    time: "15:45 - 16:15",
-    title: "Action Planning & Daily Living",
-    description:
-      "Applying the day's insights to the routines that matter most, namely bathing, dressing, and dining, guided by the philosophy of 'doing with' rather than 'doing for'. Each participant leaves with a personal action plan to implement immediately. The home manager receives a post-session summary report to support ongoing quality improvement.",
+    time: "11:30am – 1:00pm",
+    title: "Session 2 — Interactive Experience",
+    description: "The next group of up to 10 participants complete the same immersive simulation, ensuring every team member has an equal, meaningful experience.",
     color: "bg-accent/20 border-accent",
+    highlight: true,
+  },
+  {
+    time: "11:30am – 1:00pm",
+    title: "Session 2 — Structured Debrief",
+    description: "Facilitated debrief for the second group, drawing out key learning and building shared language and understanding across the whole team.",
+    color: "bg-primary/10 border-primary",
+  },
+];
+
+const fullDaySessions = [
+  ...halfDaySessions,
+  {
+    time: "1:30pm – 3:00pm",
+    title: "Session 3 — Interactive Experience",
+    description: "Up to 10 more participants experience the immersive simulation in the afternoon, keeping group sizes small for maximum impact and psychological safety.",
+    color: "bg-accent/20 border-accent",
+    highlight: true,
+  },
+  {
+    time: "1:30pm – 3:00pm",
+    title: "Session 3 — Structured Debrief",
+    description: "Expert-facilitated debrief for the third group, reinforcing key insights and practical skills.",
+    color: "bg-primary/10 border-primary",
+  },
+  {
+    time: "3:00pm – 4:30pm",
+    title: "Session 4 — Interactive Experience",
+    description: "The final group of up to 10 participants completes the simulation, meaning up to 40 team members can experience the training in a single day.",
+    color: "bg-accent/20 border-accent",
+    highlight: true,
+  },
+  {
+    time: "3:00pm – 4:30pm",
+    title: "Session 4 — Structured Debrief",
+    description: "Final debrief of the day. Participants leave with clear, actionable commitments to apply their learning immediately in their care practice.",
+    color: "bg-primary/10 border-primary",
   },
 ];
 
@@ -289,52 +274,87 @@ export default function DementiaExperience() {
         </div>
       </section>
 
-      {/* Agenda Section */}
+      {/* Session Structure Section */}
       <section id="agenda" className="py-16 bg-card border-y-4 border-charcoal">
         <div className="container">
-          <div className="text-center mb-12">
+          <div className="text-center mb-10">
             <h2
               className="text-3xl md:text-4xl font-bold text-foreground mb-4"
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
-              Full-Day Agenda
+              How the Day is Structured
             </h2>
-            <p className="text-muted-foreground text-lg">
-              9:00 AM - 4:15 PM &nbsp;|&nbsp; On-site at your care home
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Each 90-minute session is for up to 10 people and follows the same format: 45 minutes of immersive simulation followed by a 45-minute expert-led debrief.
             </p>
           </div>
-          <div className="max-w-3xl mx-auto space-y-4">
-            {agenda.map((item) => (
-              <div
-                key={item.time}
-                className={`rounded-lg border-2 p-5 ${item.color} ${item.highlight ? "shadow-md" : ""}`}
-              >
+
+          {/* Half Day vs Full Day toggle */}
+          <div className="flex justify-center gap-4 mb-10">
+            <button
+              id="tab-half"
+              onClick={() => {
+                document.getElementById('sessions-half')!.style.display = 'block';
+                document.getElementById('sessions-full')!.style.display = 'none';
+                document.getElementById('tab-half')!.style.background = 'var(--color-primary)';
+                document.getElementById('tab-half')!.style.color = '#fff';
+                document.getElementById('tab-full')!.style.background = 'transparent';
+                document.getElementById('tab-full')!.style.color = 'var(--color-primary)';
+              }}
+              style={{ background: 'var(--color-primary)', color: '#fff', border: '2px solid var(--color-primary)', borderRadius: '8px', padding: '10px 28px', fontWeight: 700, cursor: 'pointer', fontSize: '1rem' }}
+            >
+              Half Day (2 sessions · 20 people)
+            </button>
+            <button
+              id="tab-full"
+              onClick={() => {
+                document.getElementById('sessions-full')!.style.display = 'block';
+                document.getElementById('sessions-half')!.style.display = 'none';
+                document.getElementById('tab-full')!.style.background = 'var(--color-primary)';
+                document.getElementById('tab-full')!.style.color = '#fff';
+                document.getElementById('tab-half')!.style.background = 'transparent';
+                document.getElementById('tab-half')!.style.color = 'var(--color-primary)';
+              }}
+              style={{ background: 'transparent', color: 'var(--color-primary)', border: '2px solid var(--color-primary)', borderRadius: '8px', padding: '10px 28px', fontWeight: 700, cursor: 'pointer', fontSize: '1rem' }}
+            >
+              Full Day (4 sessions · 40 people)
+            </button>
+          </div>
+
+          <div id="sessions-half" className="max-w-3xl mx-auto space-y-4">
+            {halfDaySessions.map((item, i) => (
+              <div key={i} className={`rounded-lg border-2 p-5 ${item.color} ${item.highlight ? 'shadow-md' : ''}`}>
                 <div className="flex flex-col sm:flex-row sm:items-start gap-3">
-                  <div className="flex items-center gap-2 min-w-[160px]">
+                  <div className="flex items-center gap-2 min-w-[170px]">
                     <Clock className="h-4 w-4 text-primary shrink-0" />
-                    <span className="font-bold text-sm text-primary whitespace-nowrap">
-                      {item.time}
-                    </span>
+                    <span className="font-bold text-sm text-primary whitespace-nowrap">{item.time}</span>
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
-                      <h3
-                        className="font-bold text-foreground"
-                        style={{ fontFamily: "'Playfair Display', serif" }}
-                      >
-                        {item.title}
-                      </h3>
-                      {item.highlight && (
-                        <Badge className="bg-primary text-primary-foreground text-xs">
-                          Core Experience
-                        </Badge>
-                      )}
+                      <h3 className="font-bold text-foreground" style={{ fontFamily: "'Playfair Display', serif" }}>{item.title}</h3>
+                      {item.highlight && <Badge className="bg-primary text-primary-foreground text-xs">Immersive Simulation</Badge>}
                     </div>
-                    {!item.isBreak && (
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        {item.description}
-                      </p>
-                    )}
+                    <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div id="sessions-full" className="max-w-3xl mx-auto space-y-4" style={{ display: 'none' }}>
+            {fullDaySessions.map((item, i) => (
+              <div key={i} className={`rounded-lg border-2 p-5 ${item.color} ${item.highlight ? 'shadow-md' : ''}`}>
+                <div className="flex flex-col sm:flex-row sm:items-start gap-3">
+                  <div className="flex items-center gap-2 min-w-[170px]">
+                    <Clock className="h-4 w-4 text-primary shrink-0" />
+                    <span className="font-bold text-sm text-primary whitespace-nowrap">{item.time}</span>
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-1">
+                      <h3 className="font-bold text-foreground" style={{ fontFamily: "'Playfair Display', serif" }}>{item.title}</h3>
+                      {item.highlight && <Badge className="bg-primary text-primary-foreground text-xs">Immersive Simulation</Badge>}
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
                   </div>
                 </div>
               </div>
@@ -418,16 +438,26 @@ export default function DementiaExperience() {
             Ready to Transform Your Team?
           </h2>
           <p className="text-lg mb-8 opacity-90 max-w-2xl mx-auto">
-            Give your care staff the gift of understanding. Book a free 30-minute call with Kerry to find out how The Dementia Experience will transform your team — no obligation, no sales pressure.
+            Give your care staff the gift of understanding. Select a date above, choose your session type, and pay securely online. Kerry will confirm your booking within 24 hours.
           </p>
-          <Button
-            size="lg"
-            className="retro-button bg-card text-foreground hover:bg-card/90 text-lg px-10 py-6"
-            onClick={() => window.open(BOOKING_URL, "_blank")}
-          >
-            <CalendarCheck className="mr-2 h-5 w-5" />
-            Book a Free 30-Minute Call
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              size="lg"
+              className="retro-button bg-card text-foreground hover:bg-card/90 text-lg px-10 py-6"
+              onClick={() => window.open(STRIPE_HALF_DAY, "_blank")}
+            >
+              <CalendarCheck className="mr-2 h-5 w-5" />
+              Book Half Day — £595
+            </Button>
+            <Button
+              size="lg"
+              className="retro-button bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-10 py-6"
+              onClick={() => window.open(STRIPE_FULL_DAY, "_blank")}
+            >
+              <CalendarCheck className="mr-2 h-5 w-5" />
+              Book Full Day — £895
+            </Button>
+          </div>
         </div>
       </section>
     </div>

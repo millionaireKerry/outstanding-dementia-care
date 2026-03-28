@@ -531,3 +531,6 @@
 - [ ] Homepage hero: Book a Date button links to Dementia Experience calendar
 - [ ] Dementia Workshop page: correct description (full day, 10 people, agenda, £650, 50% new customer discount)
 - [x] Embed Vimeo video (1178012813) in homepage hero
+- [ ] Fix Dementia Experience agenda: remove care home agenda, show 2 or 4 x 90-min sessions (45 min interactive + 45 min debrief, 10 people per session)
+- [ ] Dementia Workshop care home version: add correct full-day agenda, link to booking calendar
+- [ ] Dementia Workshop family webinar: wire £25 Stripe link https://buy.stripe.com/dRm14pc9lcCT5Ta5dzg7e04
